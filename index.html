@@ -1,206 +1,488 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>니짐내짐 — 내 주변 헬스장, 최저가로 바로 시작</title>
-<!-- 마스터 태그라인(로고락업/푸터/앱스토어·메타만): "헬스장 찾을 땐, 니짐내짐" · 카피 SSOT v1.0 -->
-<meta name="description" content="헬스장 찾을 땐, 니짐내짐 — 내 주변 헬스장을 최저가로 바로 시작. 찾고, 구독하고, 넘기고 헬스장의 처음부터 끝까지 앱 하나로." />
-<meta property="og:title" content="니짐내짐 — 내 주변 헬스장, 최저가로 바로 시작" />
-<meta property="og:description" content="찾고 · 구독하고 · 넘기고 — 헬스장의 처음부터 끝까지 앱 하나로." />
-<meta property="og:type" content="website" />
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-<link rel="stylesheet" href="assets/css/tokens.css" />
-<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<style>
+  :root{
+    --pink:#FC2066; --pink-strong:#D4004E; --pink-pressed:#B00042;
+    --pink-tint:#FFF0F5; --pink-tint2:#FFD9E5; --pink-ondark:#FF5C8F;
+    --sky:#39B4FF; --sky-text:#0A6FA8; --sky-tint:#EAF6FF;
+    --ink:#16161C; --ink-card:#1F1F27;
+    --text:#202024; --slate:#6B6B73; --fog:#A8A8B2;
+    --hair:#ECECEF; --bg:#FAFAFA; --surface:#FFFFFF;
+    --success:#00C281;
+    --maxw:1180px;
+    --font:'Pretendard','Pretendard Variable',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--text);background:var(--surface);-webkit-font-smoothing:antialiased;line-height:1.5;letter-spacing:-.01em}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;border-radius:12px;cursor:pointer;border:0;transition:.15s;white-space:nowrap;font-family:var(--font)}
+  .btn-pink{background:var(--pink);color:#fff;padding:16px 28px;font-size:17px;box-shadow:0 8px 20px rgba(252,32,102,.28)}
+  .btn-pink:hover{background:var(--pink-strong);box-shadow:0 10px 26px rgba(212,0,78,.34)}
+  .btn-ghost{background:#fff;color:var(--text);padding:16px 26px;font-size:17px;border:1.5px solid var(--hair)}
+  .btn-ghost:hover{border-color:#d8d8dd;background:#fbfbfc}
+  .eyebrow{font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--pink-strong);text-transform:uppercase}
+  h2.sec{font-size:34px;font-weight:900;letter-spacing:-.02em;margin-top:10px}
+  .sec-sub{color:var(--slate);font-size:17px;margin-top:12px;max-width:640px}
+
+  /* ---------- NAV ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--hair)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{height:23px}
+  .brand span{font-size:12.5px;color:var(--slate);font-weight:600}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:15.5px;font-weight:600;color:#3a3a42}
+  .nav-links a:hover{color:var(--pink-strong)}
+  .nav-cta{background:var(--pink);color:#fff;padding:10px 20px;border-radius:10px;font-weight:800;font-size:14.5px}
+  .nav-cta:hover{background:var(--pink-strong)}
+  .menu-btn{display:none}
+
+  /* ---------- HERO ---------- */
+  .hero{background:linear-gradient(180deg,#FFF6F9 0%,#FAFAFA 100%);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:76px 0 84px}
+  .hero-badge{display:inline-block;background:var(--pink-tint2);color:var(--pink-pressed);font-weight:800;font-size:13.5px;padding:8px 15px;border-radius:999px}
+  .hero h1{font-size:56px;line-height:1.1;font-weight:900;letter-spacing:-.035em;margin:22px 0 0}
+  .hero h1 .pk{color:var(--pink)}
+  .hero p.lead{font-size:19px;color:var(--slate);margin-top:22px;font-weight:500}
+  .hero-cta{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+  .stores{display:flex;gap:12px;margin-top:20px}
+  .store{display:flex;align-items:center;gap:9px;background:#111;color:#fff;border-radius:11px;padding:9px 17px}
+  .store .ico{width:19px;height:19px;fill:#fff}
+  .store b{font-size:15px;font-weight:800;line-height:1.05}
+  .store small{font-size:10px;opacity:.8;display:block}
+  .hero-visual{display:flex;justify-content:center;position:relative}
+  .hero-visual .blob{position:absolute;width:360px;height:360px;background:radial-gradient(circle,rgba(252,32,102,.16),transparent 68%);top:20px;z-index:0}
+
+  /* ---------- PHONE ---------- */
+  .phone{position:relative;z-index:1;width:270px;background:#0f0f14;border-radius:38px;padding:11px;box-shadow:0 30px 60px rgba(20,10,30,.22);flex:none}
+  .phone.sm{width:214px;border-radius:32px;padding:9px;box-shadow:0 18px 40px rgba(20,10,30,.16)}
+  .screen{background:#fff;border-radius:28px;overflow:hidden;position:relative;aspect-ratio:9/19.2}
+  .phone.sm .screen{border-radius:24px}
+  .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:96px;height:22px;background:#0f0f14;border-radius:0 0 14px 14px;z-index:3}
+  .phone.sm .notch{width:74px;height:17px}
+  .app{position:absolute;inset:0;font-size:11px;display:flex;flex-direction:column}
+  .app-top{padding:34px 14px 10px;display:flex;align-items:center;gap:8px}
+  .app-search{flex:1;background:#f1f1f4;border-radius:9px;padding:8px 11px;font-size:11px;color:#8a8f98;font-weight:600}
+  .app-loc{font-size:12px;font-weight:800}
+  /* map screen */
+  .map{flex:1;position:relative;background:
+      linear-gradient(0deg,rgba(0,0,0,.03),rgba(0,0,0,.03)),
+      repeating-linear-gradient(0deg,#eef0f4 0 39px,#e4e7ee 39px 41px),
+      repeating-linear-gradient(90deg,#eef0f4 0 39px,#e4e7ee 39px 41px)}
+  .pin{position:absolute;background:var(--pink);color:#fff;font-weight:800;font-size:10px;padding:4px 8px;border-radius:999px;box-shadow:0 4px 10px rgba(252,32,102,.4);white-space:nowrap}
+  .pin::after{content:"";position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--pink);border-bottom:0}
+  .dot{position:absolute;width:14px;height:14px;background:var(--sky);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 4px rgba(57,180,255,.25)}
+  .sheet{background:#fff;border-radius:16px 16px 0 0;box-shadow:0 -6px 20px rgba(0,0,0,.08);padding:12px 13px 14px;margin-top:-10px;position:relative;z-index:2}
+  .sheet h5{font-size:12px;font-weight:900;margin-bottom:9px;display:flex;justify-content:space-between}
+  .sheet h5 span{color:var(--pink-strong);font-size:10px;font-weight:700}
+  .gcard{display:flex;align-items:center;gap:9px;padding:8px;border-radius:11px;background:var(--pink-tint);margin-bottom:7px}
+  .gcard.t2{background:var(--pink-tint2)}
+  .gthumb{width:34px;height:34px;border-radius:9px;background:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+  .gthumb svg{width:18px;height:18px;fill:var(--pink)}
+  .ginfo{flex:1;min-width:0}
+  .ginfo b{font-size:11.5px;font-weight:800;display:block}
+  .ginfo small{font-size:9.5px;color:var(--slate)}
+  .gprice{text-align:right;flex:none}
+  .gprice .off{background:var(--pink);color:#fff;font-size:8.5px;font-weight:800;padding:2px 6px;border-radius:6px}
+  .gprice b{font-size:11px;display:block;margin-top:3px}
+  /* list screen */
+  .listwrap{flex:1;padding:6px 12px;background:#fafafa;overflow:hidden}
+  .lrow{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid #eee;border-radius:12px;padding:9px;margin-bottom:8px}
+  /* compare screen */
+  .cmp{flex:1;padding:14px 13px;background:#fafafa}
+  .cmp h5{font-size:12.5px;font-weight:900;margin-bottom:12px}
+  .crow{display:flex;justify-content:space-between;padding:11px 12px;border-radius:10px;font-size:11px;font-weight:600;margin-bottom:7px;background:#fff;border:1px solid #eee}
+  .crow.best{background:var(--pink);color:#fff;border:0;font-weight:800}
+  .crow.best .cp{color:#fff}
+  .cp{font-weight:800;color:var(--text)}
+  .cbtn{background:var(--pink);color:#fff;text-align:center;font-weight:800;font-size:12px;padding:12px;border-radius:11px;margin-top:6px}
+  .cnote{text-align:center;font-size:9.5px;color:var(--slate);margin-top:9px}
+  /* membership QR */
+  .mbg{flex:1;background:linear-gradient(160deg,#FF3D7A,#C8004B);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:18px}
+  .mbg .mt{font-size:11px;font-weight:700;opacity:.9}
+  .mbg .mn{font-size:15px;font-weight:900;margin:3px 0 16px}
+  .qr{width:112px;height:112px;background:
+      repeating-linear-gradient(90deg,#111 0 8px,#fff 8px 16px),
+      repeating-linear-gradient(0deg,#111 0 8px,#fff 8px 16px);
+      background-blend-mode:multiply;border-radius:10px;border:7px solid #fff}
+  .mbg .mid{font-size:10px;opacity:.9;margin-top:14px;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:8px}
+  /* owner toggle screen */
+  .octl{flex:1;padding:32px 13px 12px;background:#12121a;color:#fff}
+  .octl h5{font-size:12.5px;font-weight:900;margin-bottom:12px}
+  .otog{display:flex;align-items:center;justify-content:space-between;background:#1e1e28;border-radius:12px;padding:11px 13px;margin-bottom:9px}
+  .otog b{font-size:11.5px;font-weight:700}
+  .sw{width:38px;height:22px;border-radius:999px;background:#3a3a46;position:relative;flex:none}
+  .sw.on{background:var(--sky)}
+  .sw::after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;top:3px;left:3px;transition:.2s}
+  .sw.on::after{left:19px}
+
+  .badge-num{width:32px;height:32px;border-radius:9px;background:var(--pink-tint);color:var(--pink-strong);font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center}
+
+  /* ---------- STATS ---------- */
+  .stats{background:var(--ink);color:#fff}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:34px 0}
+  .stat{text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+  .stat:last-child{border-right:0}
+  .stat b{font-size:30px;font-weight:900;display:block;letter-spacing:-.02em}
+  .stat span{font-size:14px;color:var(--fog);margin-top:5px;display:block}
+  .stat-note{text-align:center;color:#6c6c78;font-size:11.5px;padding-bottom:18px}
+
+  /* ---------- STEPS ---------- */
+  .steps{padding:88px 0}
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:46px;align-items:start}
+  .step{text-align:center}
+  .step .phwrap{display:flex;justify-content:center;margin-bottom:22px}
+  .step .snum{color:var(--pink-strong);font-weight:900;font-size:15px}
+  .step h3{font-size:20px;font-weight:900;margin:6px 0 8px}
+  .step p{color:var(--slate);font-size:15px;line-height:1.55}
+
+  /* ---------- WHY (photo cards) ---------- */
+  .why{padding:84px 0;background:var(--bg)}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:46px}
+  .bcard{background:#fff;border:1px solid var(--hair);border-radius:20px;overflow:hidden;display:flex;transition:.18s}
+  .bcard:hover{box-shadow:0 16px 40px rgba(20,10,30,.09);transform:translateY(-3px)}
+  .bcard .ph{width:172px;flex:none;overflow:hidden}
+  .bcard .ph img{width:100%;height:100%;object-fit:cover}
+  .bcard .bx{padding:24px 26px}
+  .bcard .bx .n{color:var(--pink-strong);font-weight:900;font-size:14px}
+  .bcard .bx h3{font-size:19px;font-weight:900;margin:6px 0 9px}
+  .bcard .bx p{color:var(--slate);font-size:14.5px;line-height:1.55}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{padding:84px 0;background:var(--pink-tint)}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+  .rcard{background:#fff;border-radius:18px;padding:26px 24px;box-shadow:0 4px 18px rgba(252,32,102,.06)}
+  .rhead{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .rhead img{width:46px;height:46px;border-radius:50%;object-fit:cover}
+  .rhead .who b{font-size:14.5px;font-weight:800;display:block}
+  .rhead .who .st{color:var(--pink);font-size:13px;letter-spacing:1px}
+  .rcard p{font-size:15.5px;font-weight:600;line-height:1.6;color:#33333a}
+  .logos{display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-top:40px;justify-content:center;opacity:.75}
+  .logos .lg{font-size:13px;font-weight:800;color:#9a9aa2;letter-spacing:.05em;border:1px dashed #d4d4da;padding:9px 20px;border-radius:8px}
+
+  /* ---------- OWNER BAND ---------- */
+  .owner{padding:96px 0;background:var(--ink);color:#fff;overflow:hidden}
+  .owner-grid{display:grid;grid-template-columns:1fr .8fr;gap:48px;align-items:center}
+  .owner .eyebrow{color:var(--pink-ondark)}
+  .owner h2{font-size:38px;font-weight:900;line-height:1.18;margin:14px 0 0;letter-spacing:-.02em}
+  .owner h2 .sky{color:var(--sky)}
+  .owner p{color:var(--fog);font-size:17px;margin-top:18px;line-height:1.6}
+  .owner-feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+  .ofeat{background:var(--ink-card);border:1px solid #2a2a34;border-radius:14px;padding:18px 18px}
+  .ofeat b{font-size:15px;font-weight:800;display:block}
+  .ofeat .bar{width:26px;height:3px;border-radius:2px;margin-bottom:12px}
+  .ofeat small{color:var(--fog);font-size:12.5px;line-height:1.5;display:block;margin-top:6px}
+  .owner-cta{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn-sky{background:var(--sky);color:#08344d;padding:16px 28px;font-weight:800;font-size:16px;border-radius:12px}
+  .btn-sky:hover{background:#5cc0ff}
+  .owner-visual{display:flex;justify-content:center}
+
+  /* ---------- FINAL CTA ---------- */
+  .final{padding:96px 0;text-align:center;background:#fff}
+  .final h2{font-size:40px;font-weight:900;letter-spacing:-.03em}
+  .final .fcta{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+  .faq{max-width:var(--maxw);margin:0 auto;border:1px solid var(--hair);border-radius:16px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+  .faq .fx b{font-size:16px;font-weight:800}
+  .faq .fx small{color:var(--slate);font-size:13px;display:block;margin-top:3px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--fog);padding:54px 0 46px}
+  footer .fbrand img{height:26px;margin-bottom:16px}
+  footer p{font-size:13.5px;line-height:1.7}
+  footer .cr{font-size:12px;color:#5b5b66;margin-top:16px}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .menu-btn{display:flex;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
+    .menu-btn span{width:22px;height:2px;background:var(--text);border-radius:2px}
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px 0 56px;text-align:center}
+    .hero h1{font-size:40px}
+    .hero-cta,.stores{justify-content:center}
+    .hero-badge{margin:0 auto}
+    .steps-grid{grid-template-columns:1fr;gap:52px}
+    .why-grid{grid-template-columns:1fr}
+    .rev-grid{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:1fr 1fr;gap:26px 0}
+    .stat:nth-child(2){border-right:0}
+    .stat{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+    .owner-grid{grid-template-columns:1fr;gap:40px;text-align:center}
+    .owner-feats{text-align:left}
+    .owner-cta,.owner .eyebrow{justify-content:center}
+    .owner .eyebrow,.hero-badge{display:inline-block}
+    h2.sec,.final h2,.owner h2{font-size:28px}
+    .sec-sub{margin-left:auto;margin-right:auto}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px}
+    .hero h1{font-size:33px}
+    .bcard{flex-direction:column}
+    .bcard .ph{width:100%;height:180px}
+    .faq{flex-direction:column;gap:16px;align-items:flex-start}
+    .stat b{font-size:25px}
+  }
+</style>
 </head>
 <body>
 
-<!-- ── 네비게이션 ─────────────────────────────── -->
-<nav class="nav">
-  <a class="nav-logo" href="index.html" aria-label="니짐내짐 홈">
-    <img src="assets/img/nijim-wordmark-white.svg" alt="니짐내짐" />
-  </a>
-  <div class="nav-links">
-    <a class="hide-sm" href="#how">서비스</a>
-    <a class="hide-sm" href="enter.html">헬스장 등록</a>
-    <a class="btn btn-primary" href="#download">앱 다운로드</a>
-  </div>
-</nav>
-
-<!-- ── 히어로 (고객) · SSOT §2-1 ─────────────────── -->
-<header class="hero">
-  <div class="wrap hero-inner">
-    <span class="eyebrow">헬스장 찾을 땐, 니짐내짐</span>
-    <h1>
-      내 주변 헬스장,<br />
-      <span class="accent">최저가</span>로 바로 시작
-    </h1>
-    <p class="hero-sub">
-      <b>찾고 · 구독하고 · 넘기고</b> — 헬스장의 처음부터 끝까지 앱 하나로.
-    </p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#find">내 주변 헬스장 찾기</a>
-      <a class="btn btn-ghost" href="#download">앱 다운로드</a>
-    </div>
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img src="media/nijim_logo_full_black.svg" alt="니짐내짐">
+      <span>헬스장 찾을 땐, 니짐내짐</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#how">둘러보기</a>
+      <a href="#how">이용방법</a>
+      <a href="#faq">자주 묻는 질문</a>
+      <a href="#owner">헬스장 등록</a>
+      <a class="nav-cta" href="#hero">앱 다운로드</a>
+    </nav>
+    <button class="menu-btn" aria-label="메뉴"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<!-- ── 신뢰지표 바 (TRUST BAR) · SSOT §2-2 ──────────────
-     ⚠️ 운영/dev 수치 확정 전까지 hidden 유지(빈 수치 노출 금지·[STAT_*] placeholder).
-     수치 확보 후 각 [STAT_*] 치환 + 아래 section의 hidden 속성 제거. -->
-<section class="trust band-trust" hidden aria-label="니짐내짐 신뢰지표">
-  <div class="wrap">
-    <div class="stat"><b>[STAT_GYM]곳</b><span>입점 헬스장</span></div>
-    <div class="stat"><b>[STAT_USER]명</b><span>누적 가입자</span></div>
-    <div class="stat"><b>월 [STAT_SAVING]원</b><span>평균 절약액</span></div>
-    <div class="stat"><b>[STAT_RATING]</b><span>앱 평점</span></div>
-  </div>
-</section>
-
-<!-- ── 작동 3스텝 · SSOT §2-3 ─────────────────────── -->
-<section id="how" class="band">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="kicker">HOW IT WORKS</div>
-      <h2>헬스장의 처음부터 끝까지,<br />앱 하나로 끝냅니다</h2>
-      <p>전화도 방문도 종이계약서도 없이. 손가락 하나로 찾고, 구독하고, 넘기세요.</p>
-    </div>
-    <div class="grid" id="find">
-      <article class="card reveal" data-delay="0">
-        <div class="card-ico" aria-hidden="true">🔍</div>
-        <div class="step-n">STEP 1</div>
-        <h3>검색</h3>
-        <p>내 주변 헬스장·PT·필라테스를 지도에서 한눈에.</p>
-      </article>
-      <article class="card reveal" data-delay="120">
-        <div class="card-ico" aria-hidden="true">💳</div>
-        <div class="step-n">STEP 2</div>
-        <h3>비교·구독</h3>
-        <p>최저가·쿠폰 비교하고 월 단위로 바로 구독.</p>
-      </article>
-      <article class="card reveal" data-delay="240">
-        <div class="card-ico" aria-hidden="true">🔁</div>
-        <div class="step-n">STEP 3</div>
-        <h3>이용·양도</h3>
-        <p>오늘 바로 운동 시작. 안 맞으면 친구에게 양도.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ── 핵심 베네핏 캐스케이드 4블록 · SSOT §2-4 ──────── -->
-<section class="band paper">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="kicker">WHY 니짐내짐</div>
-      <h2>발품도 약정도 없이,<br />운동만 시작하세요</h2>
-      <p>찾는 순간부터 그만두는 순간까지, 니짐내짐 하나로 가볍게.</p>
-    </div>
-    <div class="grid four">
-      <article class="card reveal" data-delay="0">
-        <span class="bene-n">1</span>
-        <h3>내 주변부터 한눈에</h3>
-        <p>근처 헬스장·PT·필라테스를 지도에서 한눈에 비교. 전화도 방문도 필요 없어요.</p>
-      </article>
-      <article class="card reveal" data-delay="80">
-        <span class="bene-n">2</span>
-        <h3>앱에서만 되는 최저가</h3>
-        <p>니짐내짐 전용 할인가에 실시간 쿠폰까지. 발품 팔 필요 없이 늘 업계 최저가로.</p>
-      </article>
-      <article class="card reveal" data-delay="160">
-        <span class="bene-n">3</span>
-        <h3>월 구독이라 부담 제로</h3>
-        <p>1년 약정에 묶이지 않아요. 월 단위로 가볍게 시작하고, 안 맞으면 언제든 정리.</p>
-      </article>
-      <article class="card reveal" data-delay="240">
-        <span class="bene-n">4</span>
-        <h3>가입은 터치 한 번</h3>
-        <p>종이계약서도, 긴 상담 전화도 없어요. 앱에서 결제하면 오늘 바로 운동 시작.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ── 사회적 증거 · SSOT §2-5 ─────────────────────
-     ⚠️ 후기·입점 헬스장 로고 확보 후 노출. 미확보 시 섹션 보류(hidden 유지). -->
-<section class="band" hidden aria-label="이용 후기">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="kicker">REVIEWS</div>
-      <h2>이미 많은 분들이<br />니짐내짐으로 갈아탔어요</h2>
-      <p><!-- 실제 후기 + 입점 헬스장 로고 삽입 --></p>
-    </div>
-  </div>
-</section>
-
-<!-- ── 사장님(B2B) 진입 배너 · SSOT §2-6 ──────────── -->
-<section class="band dark">
-  <div class="wrap b2b-banner">
-    <div class="reveal">
-      <div class="kicker sky">FOR 사장님</div>
-      <h3>헬스장 사장님이세요?</h3>
-      <p>폰 하나로 매장을 원격 운영하고, 니짐내짐 회원까지 만나보세요.</p>
-    </div>
-    <div class="hero-cta reveal" data-delay="120">
-      <a class="btn btn-primary" href="enter.html">헬스장 등록</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── 마감 CTA · SSOT §2-7 ─────────────────────── -->
-<section id="download" class="band">
-  <div class="wrap finale reveal">
-    <h2 style="color:var(--ink)">내 주변 헬스장,<br />지금 바로 찾아보세요</h2>
-    <p style="color:var(--muted-dark)">헬스장 찾을 땐, 니짐내짐.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#find">내 주변 헬스장 찾기</a>
-      <a class="btn btn-ghost on-light" href="#download">앱 다운로드</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── FAQ 연결 · SSOT §2-8 ─────────────────────
-     ⚠️ 결제 전 이탈 지점 🔴 — 운영자 FAQ 정책·실제 문답 확정 후 노출.
-     빈 상태 노출 금지 → 문답 확보 전까지 hidden 유지.
-     헤드라인(확정): "결제 전, 궁금한 건 여기서" -->
-<section class="band paper" hidden aria-label="자주 묻는 질문">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="kicker">FAQ</div>
-      <h2>결제 전, 궁금한 건 여기서</h2>
-    </div>
-    <!-- 실제 문답 삽입 위치 (운영자 정책 확정 후) -->
-  </div>
-</section>
-
-<!-- ── 푸터 ─────────────────────────────── -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-top">
-      <div>
-        <img src="assets/img/nijim-wordmark-white.svg" alt="니짐내짐" />
-        <div class="tagline">헬스장 찾을 땐, 니짐내짐</div>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid" id="hero">
+    <div class="hero-copy">
+      <span class="hero-badge">헬스장도 구독하는 시대</span>
+      <h1>내 주변 헬스장,<br><span class="pk">최저가로 바로 시작</span></h1>
+      <p class="lead">찾고 · 비교하고 · 구독하고 —<br>내 주변 검색부터 월 구독까지, 앱 하나로.</p>
+      <div class="hero-cta">
+        <a class="btn btn-pink" href="#hero">내 주변 헬스장 찾기</a>
+        <a class="btn btn-ghost" href="#hero">앱 다운로드</a>
       </div>
-      <nav class="footer-nav">
-        <div class="footer-col">
-          <h4>서비스</h4>
-          <a href="#how">이용 방법</a>
-          <a href="#find">내 주변 찾기</a>
-          <a href="#download">앱 다운로드</a>
-        </div>
-        <div class="footer-col">
-          <h4>사장님</h4>
-          <a href="enter.html">헬스장 등록</a>
-          <a href="enter.html#iot">시설 원격제어</a>
-          <a href="enter.html#apply">무료로 시작하기</a>
-        </div>
-      </nav>
+      <div class="stores">
+        <a class="store" href="#hero">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M16.4 12.9c0-2 1.6-3 1.7-3-1-1.3-2.4-1.5-2.9-1.5-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7c-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.4 2s1.3-.6 2.5-.6 1.5.6 2.6.6 1.7-1 2.3-1.9c.7-1.1 1-2.1 1-2.2 0 0-2-.8-2.2-3.4zM14.6 6c.5-.7.9-1.6.8-2.5-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.4.9.1 1.7-.4 2.3-1.1z"/></svg>
+          <span><small>Download on the</small><b>App Store</b></span>
+        </a>
+        <a class="store" href="#hero">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M4 3.5v17c0 .5.5.8.9.5l9.6-8.5-9.6-8.5c-.4-.3-.9 0-.9.5zm12 5.9L6.5 3.2 15 8.5l1 .9zm2.7 1.5-2.3-1.3-1.6 1.9 1.6 1.9 2.3-1.3c.7-.4.7-1.4 0-1.9zM6.5 20.8l9.5-6.2-1-.9-8.5 7.1z"/></svg>
+          <span><small>GET IT ON</small><b>Google Play</b></span>
+        </a>
+      </div>
     </div>
-    <div class="footer-bottom">© 니짐내짐 · nijim. All rights reserved.</div>
+    <div class="hero-visual">
+      <div class="blob"></div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="app">
+            <div class="app-top"><span class="app-loc">내 주변 헬스장</span><span class="app-search">📍 강남구 역삼동</span></div>
+            <div class="map">
+              <span class="pin" style="top:22%;left:16%">6.6만</span>
+              <span class="pin" style="top:16%;right:14%">5.9만</span>
+              <span class="pin" style="top:44%;left:40%">7.2만</span>
+              <span class="dot" style="top:38%;left:47%"></span>
+            </div>
+            <div class="sheet">
+              <h5>내 주변 인기 헬스장 <span>전체보기</span></h5>
+              <div class="gcard">
+                <div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div>
+                <div class="ginfo"><b>파워핏 역삼</b><small>★ 4.9 · 도보 5분</small></div>
+                <div class="gprice"><span class="off">-30%</span><b>월 6.6만</b></div>
+              </div>
+              <div class="gcard t2">
+                <div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div>
+                <div class="ginfo"><b>스마트짐 강남</b><small>★ 4.8 · 도보 8분</small></div>
+                <div class="gprice"><span class="off">-25%</span><b>월 5.9만</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><b>3,200곳</b><span>입점 헬스장</span></div>
+      <div class="stat"><b>12만+</b><span>누적 가입자</span></div>
+      <div class="stat"><b>월 4.2만원</b><span>평균 절약액</span></div>
+      <div class="stat"><b>4.8★</b><span>앱 평점</span></div>
+    </div>
+    <p class="stat-note">* 수치는 예시 — 운영 확정 후 실제 값으로 대체</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps" id="how">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2 class="sec">검색부터 구독까지, 앱 하나로</h2>
+    <p class="sec-sub">복잡한 상담도, 종이 계약도 없이. 세 단계면 오늘 바로 운동을 시작해요.</p>
+    <div class="steps-grid">
+      <!-- step 1: search/list -->
+      <div class="step">
+        <div class="phwrap"><div class="phone sm"><div class="notch"></div><div class="screen"><div class="app">
+          <div class="app-top"><span class="app-search">🔍 강남 헬스장</span></div>
+          <div class="listwrap">
+            <div class="lrow"><div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div><div class="ginfo"><b>파워핏 역삼</b><small>★ 4.9 · 도보 5분</small></div><div class="gprice"><span class="off">-30%</span></div></div>
+            <div class="lrow"><div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div><div class="ginfo"><b>스마트짐 강남</b><small>★ 4.8 · 도보 8분</small></div><div class="gprice"><span class="off">-25%</span></div></div>
+            <div class="lrow"><div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div><div class="ginfo"><b>필라테스 논현</b><small>★ 4.9 · 도보 3분</small></div><div class="gprice"><span class="off">-20%</span></div></div>
+            <div class="lrow"><div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div><div class="ginfo"><b>PT스튜디오 삼성</b><small>★ 4.7 · 도보 6분</small></div><div class="gprice"><span class="off">-15%</span></div></div>
+          </div>
+        </div></div></div></div>
+        <div class="snum">01</div><h3>검색</h3>
+        <p>내 주변 헬스장·PT·필라테스를<br>지도에서 한눈에.</p>
+      </div>
+      <!-- step 2: compare -->
+      <div class="step">
+        <div class="phwrap"><div class="phone sm"><div class="notch"></div><div class="screen"><div class="app">
+          <div class="cmp">
+            <h5>가격 비교 · 파워핏 역삼</h5>
+            <div class="crow"><span>현장 등록가</span><span class="cp">88,000원</span></div>
+            <div class="crow"><span>타 플랫폼</span><span class="cp">74,000원</span></div>
+            <div class="crow best"><span>니짐 최저가</span><span class="cp">62,000원</span></div>
+            <div class="cbtn">이 가격으로 구독하기</div>
+            <div class="cnote">월 구독 · 약정 없음</div>
+          </div>
+        </div></div></div></div>
+        <div class="snum">02</div><h3>비교·구독</h3>
+        <p>최저가·쿠폰 비교하고<br>월 단위로 바로 구독.</p>
+      </div>
+      <!-- step 3: membership -->
+      <div class="step">
+        <div class="phwrap"><div class="phone sm"><div class="notch"></div><div class="screen"><div class="app">
+          <div class="mbg">
+            <div class="mt">모바일 회원증</div>
+            <div class="mn">파워핏 역삼</div>
+            <div class="qr"></div>
+            <div class="mid">이용중 · 2026.08.01~</div>
+          </div>
+        </div></div></div></div>
+        <div class="snum">03</div><h3>바로 이용</h3>
+        <p>종이계약도 상담 전화도 없이<br>앱에서 결제, 오늘 바로 운동 시작.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY (photo cards) -->
+<section class="why">
+  <div class="wrap">
+    <span class="eyebrow">Why nijim</span>
+    <h2 class="sec">왜 다들 니짐내짐으로 갈아탈까</h2>
+    <p class="sec-sub">발품·전화·1년 약정 없이. 검색부터 결제까지 앱 하나로 끝내는 이유.</p>
+    <div class="why-grid">
+      <div class="bcard">
+        <div class="ph"><img src="media/gym1_thumb.jpg" alt="헬스장 내부"></div>
+        <div class="bx"><div class="n">01</div><h3>내 주변부터 한눈에</h3><p>근처 헬스장·PT·필라테스를 지도에서 한눈에 비교. 전화도 방문도 필요 없어요.</p></div>
+      </div>
+      <div class="bcard">
+        <div class="ph"><img src="media/woman1_thumb.jpg" alt="앱으로 최저가 확인"></div>
+        <div class="bx"><div class="n">02</div><h3>앱에서만 되는 최저가</h3><p>니짐내짐 전용 할인가에 실시간 쿠폰까지. 발품 팔 필요 없이 늘 업계 최저가로.</p></div>
+      </div>
+      <div class="bcard">
+        <div class="ph"><img src="media/pilates1_thumb.jpg" alt="필라테스"></div>
+        <div class="bx"><div class="n">03</div><h3>월 구독이라 부담 제로</h3><p>1년 약정에 묶이지 않아요. 월 단위로 가볍게 시작하고, 안 맞으면 언제든 정리.</p></div>
+      </div>
+      <div class="bcard">
+        <div class="ph"><img src="media/gym2_thumb.jpg" alt="운동하는 모습"></div>
+        <div class="bx"><div class="n">04</div><h3>가입은 터치 한 번</h3><p>종이계약서도, 긴 상담 전화도 없어요. 앱에서 결제하면 오늘 바로 운동 시작.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="wrap">
+    <span class="eyebrow">Reviews</span>
+    <h2 class="sec">이미 많은 분들이 니짐내짐으로 갈아탔어요</h2>
+    <p class="sec-sub">실제 이용 후기와 입점 헬스장. (후기·로고 확보 후 노출 — 미확보 시 섹션 보류)</p>
+    <div class="rev-grid">
+      <div class="rcard">
+        <div class="rhead"><img src="media/man1_av.jpg" alt=""><div class="who"><b>김서연 · 니짐 회원</b><span class="st">★★★★★</span></div></div>
+        <p>“발품 안 팔고 앱에서 최저가로 바로 등록했어요.”</p>
+      </div>
+      <div class="rcard">
+        <div class="rhead"><img src="media/woman1_av.jpg" alt=""><div class="who"><b>박준호 · 니짐 회원</b><span class="st">★★★★★</span></div></div>
+        <p>“1년 약정 부담 없이 월 단위로 편하게 다녀요.”</p>
+      </div>
+      <div class="rcard">
+        <div class="rhead"><img src="media/woman2_av.jpg" alt=""><div class="who"><b>이지은 · 니짐 회원</b><span class="st">★★★★★</span></div></div>
+        <p>“종이계약도 상담 전화도 없이 앱에서 결제하고 바로 시작했어요.”</p>
+      </div>
+    </div>
+    <div class="logos">
+      <span class="lg">입점 헬스장 로고</span><span class="lg">LOGO</span><span class="lg">LOGO</span><span class="lg">LOGO</span><span class="lg">LOGO</span>
+    </div>
+  </div>
+</section>
+
+<!-- OWNER BAND -->
+<section class="owner" id="owner">
+  <div class="wrap owner-grid">
+    <div>
+      <span class="eyebrow">For owners</span>
+      <h2>헬스장 사장님이세요?<br>매장은 <span class="sky">폰 안에</span>, 사장님은 어디에나.</h2>
+      <p>출입·조명·에어컨까지 폰으로 원격 관리하고, 새 회원은 니짐내짐이 데려옵니다. 사장님은 본업에만 집중하세요.</p>
+      <div class="owner-feats">
+        <div class="ofeat"><div class="bar" style="background:var(--pink-ondark)"></div><b>원격 운영</b><small>출입·기기를 폰으로 원격 제어.</small></div>
+        <div class="ofeat"><div class="bar" style="background:var(--sky)"></div><b>무인 관리</b><small>회원관리·정산은 앱이 자동으로.</small></div>
+        <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>회원 모집</b><small>내 주변 검색 회원에게 매장 노출.</small></div>
+        <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>비용 절감</b><small>상주 인력·전단 없이 매장 운영.</small></div>
+      </div>
+      <div class="owner-cta">
+        <a class="btn btn-sky" href="#owner">헬스장 등록하기</a>
+        <a class="btn btn-ghost" style="background:transparent;color:#fff;border-color:#3a3a46" href="#owner">사장님 서비스 보기</a>
+      </div>
+    </div>
+    <div class="owner-visual">
+      <div class="phone"><div class="notch"></div><div class="screen"><div class="app">
+        <div class="octl">
+          <h5>파워핏 역삼 · 원격 제어</h5>
+          <div class="otog"><b>🚪 출입문</b><div class="sw on"></div></div>
+          <div class="otog"><b>💡 조명</b><div class="sw on"></div></div>
+          <div class="otog"><b>❄️ 에어컨</b><div class="sw"></div></div>
+          <div class="otog"><b>🌀 환풍기</b><div class="sw on"></div></div>
+          <div class="otog"><b>🪟 블라인드</b><div class="sw"></div></div>
+        </div>
+      </div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>내 주변 헬스장, 지금 바로 찾아보세요</h2>
+    <div class="fcta">
+      <a class="btn btn-pink" href="#hero">내 주변 헬스장 찾기</a>
+      <a class="btn btn-ghost" href="#hero">앱 다운로드</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:44px">
+    <div class="faq" id="faq">
+      <div class="fx"><b>결제 전, 궁금한 건 여기서</b><small>운영자 FAQ 정책 확정 후 실제 문답 노출 (빈 상태 노출 금지)</small></div>
+      <a class="btn btn-ghost" href="#faq">자주 묻는 질문</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="media/nijim_logo_full_white.svg" alt="니짐내짐"></div>
+    <p>헬스장 찾을 땐, 니짐내짐 · (주)인디펜던트</p>
+    <p class="cr">© 2026 nijim. 이용약관 · 개인정보처리방침</p>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
 </body>
 </html>
