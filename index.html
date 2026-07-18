@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>니짐내짐 — 내 주변 헬스장, 최저가로 바로 시작</title>
-<!-- 1층 · 마스터 태그라인(앱스토어 서브타이틀/메타용): "헬스장 찾을 땐, 니짐내짐" -->
+<!-- 마스터 태그라인(로고락업/푸터/앱스토어·메타만): "헬스장 찾을 땐, 니짐내짐" · 카피 SSOT v1.0 -->
 <meta name="description" content="헬스장 찾을 땐, 니짐내짐 — 내 주변 헬스장을 최저가로 바로 시작. 찾고, 구독하고, 넘기고 헬스장의 처음부터 끝까지 앱 하나로." />
 <meta property="og:title" content="니짐내짐 — 내 주변 헬스장, 최저가로 바로 시작" />
 <meta property="og:description" content="찾고 · 구독하고 · 넘기고 — 헬스장의 처음부터 끝까지 앱 하나로." />
@@ -22,12 +22,12 @@
   </a>
   <div class="nav-links">
     <a class="hide-sm" href="#how">서비스</a>
-    <a class="hide-sm" href="enter.html">사장님 입점</a>
+    <a class="hide-sm" href="enter.html">헬스장 등록</a>
     <a class="btn btn-primary" href="#download">앱 다운로드</a>
   </div>
 </nav>
 
-<!-- ── 히어로 (고객) ─────────────────────────────── -->
+<!-- ── 히어로 (고객) · SSOT §2-1 ─────────────────── -->
 <header class="hero">
   <div class="wrap hero-inner">
     <span class="eyebrow">헬스장 찾을 땐, 니짐내짐</span>
@@ -45,7 +45,19 @@
   </div>
 </header>
 
-<!-- ── 3동사: 찾고 · 구독하고 · 넘기고 ───────────────── -->
+<!-- ── 신뢰지표 바 (TRUST BAR) · SSOT §2-2 ──────────────
+     ⚠️ 운영/dev 수치 확정 전까지 hidden 유지(빈 수치 노출 금지·[STAT_*] placeholder).
+     수치 확보 후 각 [STAT_*] 치환 + 아래 section의 hidden 속성 제거. -->
+<section class="trust band-trust" hidden aria-label="니짐내짐 신뢰지표">
+  <div class="wrap">
+    <div class="stat"><b>[STAT_GYM]곳</b><span>입점 헬스장</span></div>
+    <div class="stat"><b>[STAT_USER]명</b><span>누적 가입자</span></div>
+    <div class="stat"><b>월 [STAT_SAVING]원</b><span>평균 절약액</span></div>
+    <div class="stat"><b>[STAT_RATING]</b><span>앱 평점</span></div>
+  </div>
+</section>
+
+<!-- ── 작동 3스텝 · SSOT §2-3 ─────────────────────── -->
 <section id="how" class="band">
   <div class="wrap">
     <div class="section-head reveal">
@@ -56,84 +68,108 @@
     <div class="grid" id="find">
       <article class="card reveal" data-delay="0">
         <div class="card-ico" aria-hidden="true">🔍</div>
-        <div class="step-n">01 · 찾고</div>
-        <h3>내 주변부터 한눈에</h3>
-        <p>근처 헬스장·PT·필라테스를 지도에서 한눈에 비교. 가격도 위치도 앱에서 바로 확인해요.</p>
+        <div class="step-n">STEP 1</div>
+        <h3>검색</h3>
+        <p>내 주변 헬스장·PT·필라테스를 지도에서 한눈에.</p>
       </article>
       <article class="card reveal" data-delay="120">
         <div class="card-ico" aria-hidden="true">💳</div>
-        <div class="step-n">02 · 구독하고</div>
-        <h3>월 구독이라 부담 제로</h3>
-        <p>1년 약정에 묶이지 않아요. 앱 전용 최저가로 월 단위로 가볍게 시작하고, 오늘 바로 운동 시작.</p>
+        <div class="step-n">STEP 2</div>
+        <h3>비교·구독</h3>
+        <p>최저가·쿠폰 비교하고 월 단위로 바로 구독.</p>
       </article>
       <article class="card reveal" data-delay="240">
         <div class="card-ico" aria-hidden="true">🔁</div>
-        <div class="step-n">03 · 넘기고</div>
-        <h3>안 맞으면 언제든 양도</h3>
-        <p>사정이 생기면 남은 이용권을 다른 회원에게 넘기세요. 위약금 걱정 없이 깔끔하게 정리.</p>
+        <div class="step-n">STEP 3</div>
+        <h3>이용·양도</h3>
+        <p>오늘 바로 운동 시작. 안 맞으면 친구에게 양도.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ── 양면 브릿지 (고객 ↔ 사장님) ─────────────────── -->
+<!-- ── 핵심 베네핏 캐스케이드 4블록 · SSOT §2-4 ──────── -->
 <section class="band paper">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="kicker sky">ONE PLATFORM · TWO SIDES</div>
-      <h2>고객도, 사장님도<br />니짐내짐 하나로</h2>
-      <p>운동하는 사람과 센터를 운영하는 사장님을 하나의 플랫폼에서 연결합니다.</p>
+      <div class="kicker">WHY 니짐내짐</div>
+      <h2>발품도 약정도 없이,<br />운동만 시작하세요</h2>
+      <p>찾는 순간부터 그만두는 순간까지, 니짐내짐 하나로 가볍게.</p>
     </div>
-    <div class="bridge">
-      <div class="bridge-card reveal" data-delay="0">
-        <div class="tag">FOR 회원</div>
-        <h3>운동할 곳을 찾는다면</h3>
-        <p>내 주변 헬스장을 최저가로 골라 월 단위로 구독하고, 필요하면 양도까지. 지금 앱에서 시작하세요.</p>
-        <a href="#download">앱 다운로드 →</a>
-      </div>
-      <div class="bridge-card accent reveal" data-delay="120">
-        <div class="tag">FOR 사장님</div>
-        <h3>센터를 운영한다면</h3>
-        <p>입점하면 신규 회원 노출부터 무인운영, 조명·에어컨까지 시설 원격제어를 폰 하나로. 사장님은 회원에만 집중하세요.</p>
-        <a href="enter.html">사장님 입점 알아보기 →</a>
-      </div>
+    <div class="grid four">
+      <article class="card reveal" data-delay="0">
+        <span class="bene-n">1</span>
+        <h3>내 주변부터 한눈에</h3>
+        <p>근처 헬스장·PT·필라테스를 지도에서 한눈에 비교. 전화도 방문도 필요 없어요.</p>
+      </article>
+      <article class="card reveal" data-delay="80">
+        <span class="bene-n">2</span>
+        <h3>앱에서만 되는 최저가</h3>
+        <p>니짐내짐 전용 할인가에 실시간 쿠폰까지. 발품 팔 필요 없이 늘 업계 최저가로.</p>
+      </article>
+      <article class="card reveal" data-delay="160">
+        <span class="bene-n">3</span>
+        <h3>월 구독이라 부담 제로</h3>
+        <p>1년 약정에 묶이지 않아요. 월 단위로 가볍게 시작하고, 안 맞으면 언제든 정리.</p>
+      </article>
+      <article class="card reveal" data-delay="240">
+        <span class="bene-n">4</span>
+        <h3>가입은 터치 한 번</h3>
+        <p>종이계약서도, 긴 상담 전화도 없어요. 앱에서 결제하면 오늘 바로 운동 시작.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ── 사장님 티저 (IoT 미리보기) ─────────────────── -->
-<section class="band dark">
+<!-- ── 사회적 증거 · SSOT §2-5 ─────────────────────
+     ⚠️ 후기·입점 헬스장 로고 확보 후 노출. 미확보 시 섹션 보류(hidden 유지). -->
+<section class="band" hidden aria-label="이용 후기">
   <div class="wrap">
-    <div class="iot">
-      <div class="reveal">
-        <div class="kicker sky">FOR 사장님</div>
-        <h2>센터 전체를 <span class="accent">폰 하나로</span>.<br />사장님은 회원에만 집중</h2>
-        <p>조명·에어컨·블라인드·환풍기까지 센터 시설 전체를 원격 제어·자동화. 영업 시간에 맞춰 알아서 켜지고 꺼집니다. 무인운영·회원관리·신규 노출까지 니짐내짐 하나로.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="enter.html">우리 센터 입점 신청</a>
-        </div>
-      </div>
-      <div class="chips reveal" data-delay="120">
-        <div class="chip grid-item"><span class="dot"></span>조명 자동화</div>
-        <div class="chip grid-item"><span class="dot"></span>에어컨 제어</div>
-        <div class="chip grid-item"><span class="dot"></span>블라인드</div>
-        <div class="chip grid-item"><span class="dot"></span>환풍기</div>
-        <div class="chip grid-item"><span class="dot"></span>무인운영</div>
-        <div class="chip grid-item"><span class="dot"></span>회원관리</div>
-      </div>
+    <div class="section-head reveal">
+      <div class="kicker">REVIEWS</div>
+      <h2>이미 많은 분들이<br />니짐내짐으로 갈아탔어요</h2>
+      <p><!-- 실제 후기 + 입점 헬스장 로고 삽입 --></p>
     </div>
   </div>
 </section>
 
-<!-- ── 최종 CTA (앱 다운로드) ─────────────────────── -->
+<!-- ── 사장님(B2B) 진입 배너 · SSOT §2-6 ──────────── -->
+<section class="band dark">
+  <div class="wrap b2b-banner">
+    <div class="reveal">
+      <div class="kicker sky">FOR 사장님</div>
+      <h3>헬스장 사장님이세요?</h3>
+      <p>폰 하나로 매장을 원격 운영하고, 니짐내짐 회원까지 만나보세요.</p>
+    </div>
+    <div class="hero-cta reveal" data-delay="120">
+      <a class="btn btn-primary" href="enter.html">헬스장 등록</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── 마감 CTA · SSOT §2-7 ─────────────────────── -->
 <section id="download" class="band">
   <div class="wrap finale reveal">
-    <h2>내 주변 헬스장,<br />지금 최저가로 시작하세요</h2>
-    <p>헬스장 찾을 땐, 니짐내짐.</p>
+    <h2 style="color:var(--ink)">내 주변 헬스장,<br />지금 바로 찾아보세요</h2>
+    <p style="color:var(--muted-dark)">헬스장 찾을 땐, 니짐내짐.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#download">App Store 다운로드</a>
-      <a class="btn btn-ghost on-light" href="#download">Google Play 다운로드</a>
+      <a class="btn btn-primary" href="#find">내 주변 헬스장 찾기</a>
+      <a class="btn btn-ghost on-light" href="#download">앱 다운로드</a>
     </div>
+  </div>
+</section>
+
+<!-- ── FAQ 연결 · SSOT §2-8 ─────────────────────
+     ⚠️ 결제 전 이탈 지점 🔴 — 운영자 FAQ 정책·실제 문답 확정 후 노출.
+     빈 상태 노출 금지 → 문답 확보 전까지 hidden 유지.
+     헤드라인(확정): "결제 전, 궁금한 건 여기서" -->
+<section class="band paper" hidden aria-label="자주 묻는 질문">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">FAQ</div>
+      <h2>결제 전, 궁금한 건 여기서</h2>
+    </div>
+    <!-- 실제 문답 삽입 위치 (운영자 정책 확정 후) -->
   </div>
 </section>
 
@@ -154,9 +190,9 @@
         </div>
         <div class="footer-col">
           <h4>사장님</h4>
-          <a href="enter.html">센터 입점</a>
+          <a href="enter.html">헬스장 등록</a>
           <a href="enter.html#iot">시설 원격제어</a>
-          <a href="enter.html#apply">입점 신청</a>
+          <a href="enter.html#apply">무료로 시작하기</a>
         </div>
       </nav>
     </div>

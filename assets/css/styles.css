@@ -130,7 +130,35 @@ section { scroll-margin-top: 76px; }
 /* ── 카드 그리드 ─────────────────────────────── */
 .grid { display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); }
 .grid.two { grid-template-columns: repeat(2, 1fr); }
+.grid.four { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 980px) { .grid.four { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 900px) { .grid, .grid.two { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .grid.four { grid-template-columns: 1fr; } }
+
+/* 베네핏 넘버 배지 */
+.bene-n {
+  display: inline-grid; place-items: center;
+  width: 30px; height: 30px; border-radius: 999px; margin-bottom: 16px;
+  font-size: 14px; font-weight: 800; color: var(--white);
+  background: linear-gradient(135deg, var(--rose), var(--sky));
+}
+.tag-new {
+  display: inline-block; font-size: 12px; font-weight: 800; color: var(--sky);
+  border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* ── 신뢰지표 바 (TRUST BAR) — 수치 확정 전 hidden ─── */
+.trust { border-top: 1px solid var(--line); background: var(--ink); color: var(--white); }
+.trust .wrap { display: flex; flex-wrap: wrap; gap: 12px 40px; justify-content: center; padding-top: 26px; padding-bottom: 26px; }
+.trust .stat { text-align: center; }
+.trust .stat b { display: block; font-size: clamp(22px, 3vw, 30px); font-weight: 800; letter-spacing: -0.02em; }
+.trust .stat span { font-size: 13.5px; font-weight: 700; color: var(--muted); }
+
+/* ── B2B 진입 배너 ─────────────────────────────── */
+.b2b-banner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.b2b-banner h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; letter-spacing: -0.02em; }
+.b2b-banner p { margin-top: 10px; font-size: clamp(15px, 2vw, 18px); font-weight: 600; color: var(--muted); }
 
 .card {
   background: var(--white); border: 1px solid var(--line-dark);
