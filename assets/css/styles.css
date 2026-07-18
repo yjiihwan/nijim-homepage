@@ -1,18 +1,24 @@
 /* 니짐내짐 홈페이지 — 공용 스타일
-   팔레트 근거: nijim_web_audit 실측 (Rose #FF0065 · Sky #39B4FF · Ink #16161C · Pretendard) */
+   팔레트 SSOT: assets/css/tokens.css (브랜드 토큰 v3.0, Primary #FC2066)
+   여기서는 --nj-* 토큰을 사이트 시맨틱 변수에 매핑하고 접근성 규칙(AA)을 적용한다.
+   ⚠️ 접근성: #FC2066/#39B4FF 위 흰 텍스트는 대형·볼드만. 작은 흰글자 버튼=strong(#D4004E),
+      흰 배경 핑크/블루 텍스트=strong(#D4004E)/text(#0A6FA8), 다크 위 작은 로즈=ondark(#FF5C8F). */
 
 :root {
-  --ink: #16161c;
-  --ink-2: #1e1e26;
-  --rose: #ff0065;
-  --rose-hover: #e00059;
-  --sky: #39b4ff;
-  --white: #ffffff;
-  --muted: #a7a7b4;
-  --muted-dark: #6b6b78;
+  --ink: var(--nj-ink);
+  --ink-2: var(--nj-ink-elevated);
+  --rose: var(--nj-primary);          /* 브랜드 채움·대형 라벨 [AA-lg] */
+  --rose-strong: var(--nj-primary-strong);   /* 작은 흰글자 버튼·흰 배경 핑크 텍스트 [AA] */
+  --rose-hover: var(--nj-primary-pressed);   /* 버튼 hover/눌림 */
+  --rose-ondark: var(--nj-primary-ondark);   /* 다크 위 작은 로즈 텍스트 [AA on Ink] */
+  --sky: var(--nj-secondary);         /* 기능 채움·아이콘·대형 텍스트 온 다크 */
+  --sky-text: var(--nj-secondary-text);      /* 흰 배경 위 작은 블루 텍스트 [AA] */
+  --white: var(--nj-surface);
+  --muted: var(--nj-text-ondark);     /* 다크 위 보조 텍스트 */
+  --muted-dark: var(--nj-text-secondary);    /* 라이트 위 서브카피 */
   --line: rgba(255, 255, 255, 0.12);
   --line-dark: rgba(22, 22, 28, 0.1);
-  --paper: #f6f6f8;
+  --paper: var(--nj-bg);
   --radius: 999px;
   --radius-card: 20px;
   --maxw: 1120px;
@@ -54,7 +60,7 @@ a { color: inherit; }
   font-size: 12px; font-weight: 800; color: var(--sky);
   border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px;
 }
-.nav.light .nav-badge { border-color: var(--line-dark); }
+.nav.light .nav-badge { border-color: var(--line-dark); color: var(--sky-text); } /* 흰 배경 위 블루 텍스트 AA */
 .nav-links { display: flex; align-items: center; gap: 22px; }
 .nav-links a { text-decoration: none; font-weight: 700; font-size: 15px; color: var(--white); opacity: .85; }
 .nav.light .nav-links a { color: var(--ink); }
@@ -72,7 +78,8 @@ a { color: inherit; }
   border: none; white-space: nowrap;
   transition: background .15s ease, transform .12s ease, border-color .15s ease, color .15s ease;
 }
-.btn-primary { background: var(--rose); color: var(--white); }
+/* 작은 흰글자(17px bold) 버튼 → strong(#D4004E)로 AA 확보 */
+.btn-primary { background: var(--rose-strong); color: var(--white); }
 .btn-primary:hover { background: var(--rose-hover); transform: translateY(-1px); }
 .btn-ghost { background: transparent; color: var(--white); border: 1.5px solid var(--line); }
 .btn-ghost:hover { border-color: rgba(255, 255, 255, 0.45); }
@@ -83,14 +90,14 @@ a { color: inherit; }
 .hero {
   background:
     radial-gradient(120% 120% at 15% 0%,
-      rgba(57, 180, 255, 0.12) 0%, rgba(255, 0, 101, 0.07) 42%, transparent 70%),
+      rgba(57, 180, 255, 0.12) 0%, rgba(252, 32, 102, 0.07) 42%, transparent 70%),
     var(--ink);
   color: var(--white);
 }
 .hero.owner {
   background:
     radial-gradient(120% 120% at 85% 0%,
-      rgba(57, 180, 255, 0.14) 0%, rgba(255, 0, 101, 0.07) 44%, transparent 72%),
+      rgba(57, 180, 255, 0.14) 0%, rgba(252, 32, 102, 0.07) 44%, transparent 72%),
     var(--ink);
 }
 .hero-inner { padding: clamp(56px, 9vw, 108px) 0 clamp(64px, 10vw, 120px); max-width: 900px; }
@@ -118,8 +125,10 @@ section { scroll-margin-top: 76px; }
 .band.paper { background: var(--paper); }
 .band.dark { background: var(--ink); color: var(--white); }
 .section-head { max-width: 680px; margin-bottom: 44px; }
-.kicker { font-size: 14px; font-weight: 800; color: var(--rose); letter-spacing: .02em; }
-.kicker.sky { color: var(--sky); }
+.kicker { font-size: 14px; font-weight: 800; color: var(--rose-strong); letter-spacing: .02em; } /* 라이트 배경 위 작은 핑크 텍스트 AA */
+.kicker.sky { color: var(--sky-text); } /* 라이트 기본: 흰 배경 위 블루 텍스트 AA */
+.band.dark .kicker:not(.sky) { color: var(--rose-ondark); } /* 다크 위 작은 로즈 AA */
+.band.dark .kicker.sky { color: var(--sky); } /* 다크 위 대형/기능 블루는 원색 */
 .section-head h2 {
   margin-top: 12px; font-size: clamp(28px, 4.4vw, 44px);
   font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
@@ -168,14 +177,14 @@ section { scroll-margin-top: 76px; }
 .card-ico {
   width: 46px; height: 46px; border-radius: 13px; margin-bottom: 18px;
   display: grid; place-items: center; font-size: 22px;
-  background: linear-gradient(135deg, rgba(255,0,101,.14), rgba(57,180,255,.14));
+  background: linear-gradient(135deg, rgba(252, 32, 102,.14), rgba(57,180,255,.14));
 }
 .card h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
 .card p { margin-top: 10px; font-size: 15.5px; color: var(--muted-dark); font-weight: 600; line-height: 1.6; }
 .band.dark .card p { color: var(--muted); }
 
 /* 3동사 스텝 넘버 */
-.step-n { font-size: 14px; font-weight: 800; color: var(--rose); }
+.step-n { font-size: 14px; font-weight: 800; color: var(--rose-strong); }
 
 /* ── IoT 원격제어 하이라이트 ─────────────────── */
 .iot { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
@@ -201,13 +210,13 @@ section { scroll-margin-top: 76px; }
   display: flex; flex-direction: column;
 }
 .bridge-card.accent { background: var(--ink); color: var(--white); border-color: var(--ink); }
-.bridge-card .tag { font-size: 14px; font-weight: 800; color: var(--rose); }
-.bridge-card.accent .tag { color: var(--sky); }
+.bridge-card .tag { font-size: 14px; font-weight: 800; color: var(--rose-strong); } /* 라이트 카드 AA */
+.bridge-card.accent .tag { color: var(--sky); } /* 다크 카드 위 블루 */
 .bridge-card h3 { margin-top: 12px; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
 .bridge-card p { margin-top: 12px; font-size: 16px; font-weight: 600; color: var(--muted-dark); line-height: 1.6; flex: 1; }
 .bridge-card.accent p { color: var(--muted); }
-.bridge-card a { margin-top: 22px; font-weight: 800; text-decoration: none; color: var(--rose); }
-.bridge-card.accent a { color: var(--sky); }
+.bridge-card a { margin-top: 22px; font-weight: 800; text-decoration: none; color: var(--rose-strong); } /* 라이트 카드 링크 AA */
+.bridge-card.accent a { color: var(--sky); } /* 다크 카드 링크 */
 
 /* ── 최종 CTA ─────────────────────────────── */
 .finale { text-align: center; }

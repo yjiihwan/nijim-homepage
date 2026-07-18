@@ -1,0 +1,43 @@
+/* 니짐내짐(nijim) 브랜드 컬러 토큰 v3.0 — 2026-07-18
+   출처(SSOT): design_workspace/brands/nijim/assets/nijim_tokens.css (디자인봇 확정)
+   Primary = 앱 아이콘 배경 실측 #FC2066 (핫핑크·마젠타 로즈)
+   접근성 주석: [AA] 본문 통과 / [AA-lg] 대형·볼드만 통과
+   ⚠️ 색을 바꾸려면 이 파일이 아니라 SSOT를 갱신 후 다시 복사할 것 */
+
+:root {
+  /* ── Primary: Nijim Pink ── */
+  --nj-primary:          #FC2066; /* 브랜드 메인·CTA채움·배지 [AA-lg on white] */
+  --nj-primary-strong:   #D4004E; /* 작은 흰글자 버튼·핑크 텍스트 온 화이트 [AA] */
+  --nj-primary-pressed:  #B00042; /* 눌림·강조 텍스트 [AA] */
+  --nj-primary-tint:     #FFF0F5; /* 핑크 서피스 배경 */
+  --nj-primary-tint-2:   #FFD9E5; /* 칩·태그 배경 */
+  --nj-primary-ondark:   #FF5C8F; /* 다크 위 작은 로즈 텍스트 [AA on Ink] */
+
+  /* ── Secondary: Sky Blue (기능·IoT) ── */
+  --nj-secondary:        #39B4FF; /* 기능 채움·아이콘 [AA-lg on white] */
+  --nj-secondary-deep:   #0E86C8; /* hover·보더 */
+  --nj-secondary-text:   #0A6FA8; /* 흰 배경 위 블루 텍스트 [AA] */
+  --nj-secondary-tint:   #EAF6FF; /* 블루 서피스 */
+
+  /* ── Neutrals ── */
+  --nj-ink:              #16161C; /* 다크 히어로/B2B 배경 */
+  --nj-ink-elevated:     #1F1F27; /* 다크 카드 */
+  --nj-text:             #202024; /* 본문·헤딩 [AA] */
+  --nj-text-secondary:   #6B6B73; /* 서브카피 [AA] */
+  --nj-text-ondark:      #A8A8B2; /* 다크 위 보조 텍스트 [AA on Ink] */
+  --nj-border:           #ECECEF;
+  --nj-bg:               #FAFAFA;
+  --nj-surface:          #FFFFFF;
+
+  /* ── Semantic ── */
+  --nj-success:          #00C281;
+  --nj-warning:          #F5A623;
+  --nj-danger:           #E5484D;
+
+  /* ── Gradients ── */
+  --nj-grad-cta:      linear-gradient(135deg, #FC2066 0%, #FF5C8F 100%);
+  --nj-grad-pink-deep:linear-gradient(135deg, #FC2066 0%, #B00042 100%);
+  --nj-grad-ink:      linear-gradient(180deg, #16161C 0%, #1F1F27 100%);
+  --nj-grad-sky:      linear-gradient(135deg, #39B4FF 0%, #0E86C8 100%);
+  --nj-grad-glow:     linear-gradient(120deg, #FC2066 0%, #39B4FF 100%); /* 장식 광원 전용 */
+}
