@@ -221,6 +221,9 @@
     .menu-btn{display:flex;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
     .menu-btn span{width:22px;height:2px;background:var(--text);border-radius:2px}
     .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px 0 56px;text-align:center}
+    /* WHY: .wrap{padding:0 18px}(≤560)가 .hero-grid 세로 padding을 덮어 하단 여백 0이 됨.
+       margin은 .wrap에 안 잡히므로 폰 목업↔검은 통계밴드 사이 '밝은 배경' 여백을 margin으로 확보(b2149f6 동일 패턴) */
+    .hero-visual{margin-bottom:48px}
     .hero h1{font-size:40px}
     .hero-cta{justify-content:center}
     .hero-badge{margin:0 auto}
