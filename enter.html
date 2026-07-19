@@ -173,7 +173,9 @@
     /* WHY: .wrap{padding:0 18px} (아래)가 .hero-grid 세로 padding을 덮어써 하단 여백이 0이 됨.
        margin은 .wrap에 안 잡히므로 폰 목업↔검은 통계밴드 사이 '밝은 배경' 여백을 margin으로 확보 */
     .hero-visual{margin-bottom:48px}
-    .hero h1{font-size:40px}
+    /* WHY: ≤560 .wrap{padding:0 18px}가 hero-grid 상단 padding을 덮어 헤더↔H1이 붙음.
+       margin은 .wrap에 안 잡히므로 삭제된 배지 자리만큼 상단 breathing room 복원 */
+    .hero h1{font-size:40px;margin-top:36px}
     .hero-cta{justify-content:center}
     .hero-badge{margin:0 auto;display:inline-block}
     .value-grid{grid-template-columns:1fr;gap:18px}
