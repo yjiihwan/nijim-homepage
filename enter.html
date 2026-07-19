@@ -23,7 +23,7 @@
     /* ---- shared layout spacing system (index + enter identical) ---- */
     --sec-y:118px;   /* standard content section vertical padding */
     --band-y:118px;  /* dark full-bleed band vertical padding */
-    --stats-y:56px;  /* compact stats strip */
+    --stats-y:84px;  /* stats strip vertical breathing room */
     --banner-y:90px; /* cross-sell banner */
     --head-gap:56px; /* section header -> grid gap */
     --grid-gap:28px; /* card grid gap */
@@ -91,14 +91,14 @@
   .osched small{font-size:9px;color:var(--fog)}
 
   /* ---------- STATS ---------- */
-  .stats{background:var(--ink);color:#fff}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:var(--stats-y) 0}
+  .stats{background:var(--ink);color:#fff;padding:var(--stats-y) 0}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
   .stat{text-align:center;border-right:1px solid rgba(255,255,255,.1)}
   .stat:last-child{border-right:0}
   .stat b{font-size:30px;font-weight:900;display:block;letter-spacing:-.02em;white-space:nowrap}
   .stat b.sk{color:var(--sky)}
   .stat span{font-size:14px;color:var(--fog);margin-top:5px;display:block}
-  .stat-note{text-align:center;color:#6c6c78;font-size:11.5px;padding-bottom:18px}
+  .stat-note{text-align:center;color:#6c6c78;font-size:11.5px;margin-top:24px}
 
   /* ---------- VALUE (3분할) ---------- */
   .value{padding:var(--sec-y) 0}
@@ -162,7 +162,7 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:900px){
-    :root{--sec-y:76px;--band-y:76px;--stats-y:40px;--banner-y:58px;--head-gap:40px;--grid-gap:20px;--gutter:24px}
+    :root{--sec-y:76px;--band-y:76px;--stats-y:60px;--banner-y:58px;--head-gap:40px;--grid-gap:20px;--gutter:24px}
     .nav-links{display:none}
     .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--hair);box-shadow:0 12px 24px rgba(0,0,0,.08);padding:8px 0}
     .nav-links.open a{padding:14px 22px;font-size:16px}
@@ -261,7 +261,7 @@
       <div class="stat"><b class="sk">원격제어</b><span>폰 하나로 매장 전체</span></div>
       <div class="stat"><b class="sk">무료</b><span>가입비·초기비용</span></div>
     </div>
-    <p class="stat-note">* 예시 — 운영 확정 후 실제 값으로 대체. 원격제어(IoT)는 신규 도입 예정으로, 제어 대상·조건은 도입 사양 확정 후 보강</p>
+    <p class="stat-note">* 원격제어(IoT) 기능은 신규 도입 예정 — 제어 대상·조건은 도입 사양 확정 후 보강</p>
   </div>
 </section>
 
