@@ -23,7 +23,7 @@
     /* ---- shared layout spacing system (index + enter identical) ---- */
     --sec-y:118px;   /* standard content section vertical padding */
     --band-y:118px;  /* dark full-bleed band vertical padding */
-    --stats-y:84px;  /* stats strip vertical breathing room */
+    --stats-y:56px;  /* compact stats strip (dark band internal padding) */
     --banner-y:90px; /* cross-sell banner */
     --head-gap:56px; /* section header -> grid gap */
     --grid-gap:28px; /* card grid gap */
@@ -162,14 +162,17 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:900px){
-    :root{--sec-y:76px;--band-y:76px;--stats-y:60px;--banner-y:58px;--head-gap:40px;--grid-gap:20px;--gutter:24px}
+    :root{--sec-y:76px;--band-y:76px;--stats-y:40px;--banner-y:58px;--head-gap:40px;--grid-gap:20px;--gutter:24px}
     .nav-links{display:none}
     .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--hair);box-shadow:0 12px 24px rgba(0,0,0,.08);padding:8px 0}
     .nav-links.open a{padding:14px 22px;font-size:16px}
     .nav-links.open .nav-cta{margin:8px 22px;text-align:center}
     .menu-btn{display:flex;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
     .menu-btn span{width:22px;height:2px;background:var(--text);border-radius:2px}
-    .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px 0 92px;text-align:center}
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px 0 56px;text-align:center}
+    /* WHY: .wrap{padding:0 18px} (아래)가 .hero-grid 세로 padding을 덮어써 하단 여백이 0이 됨.
+       margin은 .wrap에 안 잡히므로 폰 목업↔검은 통계밴드 사이 '밝은 배경' 여백을 margin으로 확보 */
+    .hero-visual{margin-bottom:48px}
     .hero h1{font-size:40px}
     .hero-cta{justify-content:center}
     .hero-badge{margin:0 auto;display:inline-block}
