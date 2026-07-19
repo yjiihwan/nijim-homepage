@@ -1,163 +1,382 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>니짐내짐 사장님 — 센터 전체를 폰 하나로</title>
-<!-- 사장님 페이지: 본문·히어로엔 마스터 태그라인 금지(로고락업/푸터만). 히어로에 "IoT" 단어 금지. -->
-<meta name="description" content="센터 전체를 폰 하나로. 조명부터 출입까지 원격 제어하고, 회원관리는 AI가 자동으로. 니짐내짐 헬스장 등록." />
-<meta property="og:title" content="니짐내짐 사장님 — 센터 전체를 폰 하나로" />
-<meta property="og:description" content="시설 원격제어·무인운영·회원관리까지 니짐내짐 하나로. 사장님은 본업에만 집중하세요." />
-<meta property="og:type" content="website" />
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-<link rel="stylesheet" href="assets/css/tokens.css" />
-<link rel="stylesheet" href="assets/css/styles.css" />
+<meta name="description" content="센터 전체를 폰 하나로. 조명부터 출입까지 원격 제어하고, 회원관리는 AI가 자동으로. 니짐내짐 헬스장 등록.">
+<meta property="og:title" content="니짐내짐 사장님 — 센터 전체를 폰 하나로">
+<meta property="og:description" content="시설 원격제어·무인운영·회원관리까지 니짐내짐 하나로. 사장님은 본업에만 집중하세요.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<style>
+  :root{
+    --pink:#FC2066; --pink-strong:#D4004E; --pink-pressed:#B00042;
+    --pink-tint:#FFF0F5; --pink-tint2:#FFD9E5; --pink-ondark:#FF5C8F;
+    --sky:#39B4FF; --sky-strong:#1E93DD; --sky-text:#0A6FA8; --sky-tint:#EAF6FF; --sky-tint2:#D3ECFF;
+    --ink:#16161C; --ink-card:#1F1F27;
+    --text:#202024; --slate:#6B6B73; --fog:#A8A8B2;
+    --hair:#ECECEF; --bg:#FAFAFA; --surface:#FFFFFF;
+    --success:#00C281;
+    --maxw:1180px;
+    --font:'Pretendard','Pretendard Variable',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--text);background:var(--surface);-webkit-font-smoothing:antialiased;line-height:1.5;letter-spacing:-.01em}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;border-radius:12px;cursor:pointer;border:0;transition:.15s;white-space:nowrap;font-family:var(--font)}
+  .btn-sky{background:var(--sky);color:#06344d;padding:16px 28px;font-size:17px;box-shadow:0 8px 20px rgba(57,180,255,.32)}
+  .btn-sky:hover{background:var(--sky-strong);box-shadow:0 10px 26px rgba(30,147,221,.4)}
+  .btn-ghost{background:#fff;color:var(--text);padding:16px 26px;font-size:17px;border:1.5px solid var(--hair)}
+  .btn-ghost:hover{border-color:#d8d8dd;background:#fbfbfc}
+  .eyebrow{font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--sky-text);text-transform:uppercase}
+  h2.sec{font-size:34px;font-weight:900;letter-spacing:-.02em;margin-top:10px}
+  .sec-sub{color:var(--slate);font-size:17px;margin-top:12px;max-width:640px}
+
+  /* ---------- NAV ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--hair)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{height:23px}
+  .brand span{font-size:12.5px;color:var(--slate);font-weight:600}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:15.5px;font-weight:600;color:#3a3a42}
+  .nav-links a:hover{color:var(--sky-text)}
+  .nav-cta{background:var(--sky);color:#06344d;padding:10px 20px;border-radius:10px;font-weight:800;font-size:14.5px}
+  .nav-cta:hover{background:var(--sky-strong)}
+  .menu-btn{display:none}
+
+  /* ---------- HERO ---------- */
+  .hero{background:linear-gradient(180deg,#EEF8FF 0%,#FAFAFA 100%);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:76px 0 84px}
+  .hero-badge{display:inline-block;background:var(--sky-tint2);color:var(--sky-text);font-weight:800;font-size:13.5px;padding:8px 15px;border-radius:999px}
+  .hero h1{font-size:54px;line-height:1.12;font-weight:900;letter-spacing:-.035em;margin:22px 0 0}
+  .hero h1 .sk{color:var(--sky-strong)}
+  .hero p.lead{font-size:19px;color:var(--slate);margin-top:22px;font-weight:500}
+  .hero-cta{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+  .hero-visual{display:flex;justify-content:center;position:relative}
+  .hero-visual .blob{position:absolute;width:360px;height:360px;background:radial-gradient(circle,rgba(57,180,255,.2),transparent 68%);top:20px;z-index:0}
+
+  /* ---------- PHONE ---------- */
+  .phone{position:relative;z-index:1;width:270px;background:#0f0f14;border-radius:38px;padding:11px;box-shadow:0 30px 60px rgba(10,20,30,.24);flex:none}
+  .screen{background:#fff;border-radius:28px;overflow:hidden;position:relative;aspect-ratio:9/19.2}
+  .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:96px;height:22px;background:#0f0f14;border-radius:0 0 14px 14px;z-index:3}
+  .app{position:absolute;inset:0;font-size:11px;display:flex;flex-direction:column}
+  /* owner control screen */
+  .octl{flex:1;padding:32px 13px 12px;background:#12121a;color:#fff;display:flex;flex-direction:column}
+  .octl-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
+  .octl-head b{font-size:12.5px;font-weight:900}
+  .octl-head .live{font-size:9px;font-weight:800;color:#0f0f14;background:var(--success);padding:2px 7px;border-radius:999px}
+  .otog{display:flex;align-items:center;justify-content:space-between;background:#1e1e28;border-radius:12px;padding:11px 13px;margin-bottom:9px}
+  .otog b{font-size:11.5px;font-weight:700}
+  .sw{width:38px;height:22px;border-radius:999px;background:#3a3a46;position:relative;flex:none}
+  .sw.on{background:var(--sky)}
+  .sw::after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;top:3px;left:3px;transition:.2s}
+  .sw.on::after{left:19px}
+  .osched{margin-top:auto;background:#1e1e28;border-radius:12px;padding:11px 13px;display:flex;align-items:center;gap:9px}
+  .osched .ic{width:26px;height:26px;border-radius:8px;background:rgba(57,180,255,.16);display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+  .osched b{font-size:10.5px;font-weight:800;display:block}
+  .osched small{font-size:9px;color:var(--fog)}
+
+  /* ---------- STATS ---------- */
+  .stats{background:var(--ink);color:#fff}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:34px 0}
+  .stat{text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+  .stat:last-child{border-right:0}
+  .stat b{font-size:30px;font-weight:900;display:block;letter-spacing:-.02em;white-space:nowrap}
+  .stat b.sk{color:var(--sky)}
+  .stat span{font-size:14px;color:var(--fog);margin-top:5px;display:block}
+  .stat-note{text-align:center;color:#6c6c78;font-size:11.5px;padding-bottom:18px}
+
+  /* ---------- VALUE (3분할) ---------- */
+  .value{padding:88px 0}
+  .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:46px;align-items:start}
+  .vcard{background:#fff;border:1px solid var(--hair);border-radius:20px;padding:30px 28px;transition:.18s}
+  .vcard:hover{box-shadow:0 16px 40px rgba(10,20,30,.09);transform:translateY(-3px)}
+  .vico{width:52px;height:52px;border-radius:14px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px}
+  .vcard .vn{color:var(--sky-text);font-weight:900;font-size:14px}
+  .vcard h3{font-size:19px;font-weight:900;margin:6px 0 10px;line-height:1.3}
+  .vcard p{color:var(--slate);font-size:15px;line-height:1.6}
+
+  /* ---------- FEATURES (cascade photo cards) ---------- */
+  .feat{padding:84px 0;background:var(--bg)}
+  .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:46px}
+  .bcard{background:#fff;border:1px solid var(--hair);border-radius:20px;overflow:hidden;display:flex;transition:.18s}
+  .bcard:hover{box-shadow:0 16px 40px rgba(10,20,30,.09);transform:translateY(-3px)}
+  .bcard.hl{border-color:var(--sky);box-shadow:0 10px 30px rgba(57,180,255,.14)}
+  .bcard .ph{width:172px;flex:none;overflow:hidden;position:relative}
+  .bcard .ph img{width:100%;height:100%;object-fit:cover}
+  .bcard .bx{padding:24px 26px}
+  .bcard .bx .n{color:var(--sky-text);font-weight:900;font-size:14px}
+  .bcard .bx h3{font-size:19px;font-weight:900;margin:6px 0 9px;line-height:1.3}
+  .bcard .bx p{color:var(--slate);font-size:14.5px;line-height:1.55}
+  .newtag{display:inline-block;background:var(--sky);color:#06344d;font-size:10.5px;font-weight:900;letter-spacing:.04em;padding:3px 9px;border-radius:999px;margin-left:7px;vertical-align:middle}
+
+  /* ---------- SHOWCASE BAND ---------- */
+  .show{padding:96px 0;background:var(--ink);color:#fff;overflow:hidden}
+  .show-grid{display:grid;grid-template-columns:1fr .8fr;gap:48px;align-items:center}
+  .show .eyebrow{color:var(--sky)}
+  .show h2{font-size:36px;font-weight:900;line-height:1.2;margin:14px 0 0;letter-spacing:-.02em}
+  .show h2 .sky{color:var(--sky)}
+  .show p{color:var(--fog);font-size:17px;margin-top:18px;line-height:1.6}
+  .show-feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+  .ofeat{background:var(--ink-card);border:1px solid #2a2a34;border-radius:14px;padding:18px}
+  .ofeat .bar{width:26px;height:3px;border-radius:2px;margin-bottom:12px}
+  .ofeat b{font-size:15px;font-weight:800;display:block}
+  .ofeat small{color:var(--fog);font-size:12.5px;line-height:1.5;display:block;margin-top:6px}
+  .show-cta{margin-top:34px}
+  .show-visual{display:flex;justify-content:center}
+
+  /* ---------- CUSTOMER BANNER ---------- */
+  .cbanner{padding:70px 0;background:var(--pink-tint)}
+  .cbanner .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .cbanner .ct .eb{color:var(--pink-strong);font-weight:800;font-size:13px;letter-spacing:.1em}
+  .cbanner .ct h3{font-size:26px;font-weight:900;margin:8px 0 6px;letter-spacing:-.02em}
+  .cbanner .ct p{color:var(--slate);font-size:15.5px}
+  .btn-pink{background:var(--pink);color:#fff;padding:16px 28px;font-size:17px;box-shadow:0 8px 20px rgba(252,32,102,.28)}
+  .btn-pink:hover{background:var(--pink-strong)}
+
+  /* ---------- FINAL CTA ---------- */
+  .final{padding:96px 0;text-align:center;background:#fff}
+  .final h2{font-size:40px;font-weight:900;letter-spacing:-.03em;line-height:1.15}
+  .final p{color:var(--slate);font-size:17px;margin-top:16px}
+  .final .fcta{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--fog);padding:54px 0 46px}
+  footer .fbrand img{height:26px;margin-bottom:16px}
+  footer p{font-size:13.5px;line-height:1.7}
+  footer .cr{font-size:12px;color:#5b5b66;margin-top:16px}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .menu-btn{display:flex;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
+    .menu-btn span{width:22px;height:2px;background:var(--text);border-radius:2px}
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px 0 56px;text-align:center}
+    .hero h1{font-size:40px}
+    .hero-cta{justify-content:center}
+    .hero-badge{margin:0 auto;display:inline-block}
+    .value-grid{grid-template-columns:1fr;gap:18px}
+    .feat-grid{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:1fr 1fr;gap:26px 0}
+    .stat:nth-child(2){border-right:0}
+    .stat{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+    .show-grid{grid-template-columns:1fr;gap:40px;text-align:center}
+    .show-feats{text-align:left}
+    .show-cta,.show .eyebrow{display:flex;justify-content:center}
+    .show .eyebrow{display:inline-block}
+    h2.sec,.final h2,.show h2{font-size:28px}
+    .sec-sub{margin-left:auto;margin-right:auto}
+    .cbanner .wrap{flex-direction:column;text-align:center}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px}
+    .hero h1{font-size:32px}
+    .bcard{flex-direction:column}
+    .bcard .ph{width:100%;height:180px}
+    .stat b{font-size:25px}
+    .final h2{font-size:27px}
+  }
+</style>
 </head>
 <body>
 
-<!-- ── 네비게이션 ─────────────────────────────── -->
-<nav class="nav">
-  <a class="nav-logo" href="index.html" aria-label="니짐내짐 홈">
-    <img src="assets/img/nijim-wordmark-white.svg" alt="니짐내짐" />
-    <span class="nav-badge">사장님</span>
-  </a>
-  <div class="nav-links">
-    <a class="hide-sm" href="#iot">시설 원격제어</a>
-    <a class="hide-sm" href="index.html">회원용 홈</a>
-    <a class="btn btn-primary" href="#apply">무료로 시작하기</a>
-  </div>
-</nav>
-
-<!-- ── 히어로 (사장님) · SSOT §3-1 ───────────────────
-     H1 "본업에만" 확정(범용). PT·필라테스 비중 높은 세그먼트엔 "회원에만" 변형 허용(운영 확정 대기). -->
-<header class="hero owner">
-  <div class="wrap hero-inner">
-    <span class="eyebrow">FOR 센터 사장님</span>
-    <h1>
-      센터 전체를 폰 하나로,<br />
-      사장님은 <span class="accent">본업에만</span> 집중
-    </h1>
-    <p class="hero-sub">
-      <b>조명부터 출입까지 원격으로 제어하고, 회원관리는 AI가 자동으로.</b> 자리를 비워도 매장은 알아서 돌아갑니다.
-    </p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#apply">무료로 시작하기</a>
-      <a class="btn btn-ghost" href="#iot">기능 살펴보기</a>
-    </div>
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img src="media/nijim_logo_full_black.svg" alt="니짐내짐">
+      <span>헬스장 찾을 땐, 니짐내짐</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#value">사장님 혜택</a>
+      <a href="#feat">기능 소개</a>
+      <a href="index.html">고객 페이지</a>
+      <a class="nav-cta" href="#hero">무료로 시작하기</a>
+    </nav>
+    <button class="menu-btn" aria-label="메뉴"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<!-- ── 핵심 가치제안 3줄 · SSOT §3-2 (소구 순서 고정: 원격제어→무인운영→회원모집) ── -->
-<section class="band">
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid" id="hero">
+    <div class="hero-copy">
+      <span class="hero-badge">매장은 폰 안에, 사장님은 어디에나</span>
+      <h1>센터 전체를 폰 하나로,<br><span class="sk">사장님은 본업에만 집중</span></h1>
+      <p class="lead">조명부터 출입까지 원격으로 제어하고, 회원관리는 AI가 자동으로.<br>자리를 비워도 매장은 알아서 돌아갑니다.</p>
+      <div class="hero-cta">
+        <a class="btn btn-sky" href="#hero">무료로 시작하기</a>
+        <a class="btn btn-ghost" href="#feat">기능 둘러보기</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="blob"></div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="app">
+            <div class="octl">
+              <div class="octl-head"><b>파워핏 역삼 · 원격 제어</b><span class="live">LIVE</span></div>
+              <div class="otog"><b>🚪 출입문</b><div class="sw on"></div></div>
+              <div class="otog"><b>💡 조명</b><div class="sw on"></div></div>
+              <div class="otog"><b>❄️ 에어컨</b><div class="sw"></div></div>
+              <div class="otog"><b>🌀 환풍기</b><div class="sw on"></div></div>
+              <div class="otog"><b>🪟 블라인드</b><div class="sw"></div></div>
+              <div class="osched">
+                <div class="ic">⏰</div>
+                <div><b>영업시간 자동 스케줄</b><small>06:00 자동 ON · 24:00 자동 OFF</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
   <div class="wrap">
-    <div class="grid">
-      <article class="card reveal" data-delay="0">
-        <div class="card-ico" aria-hidden="true">📱</div>
+    <div class="stats-grid">
+      <div class="stat"><b class="sk">24시간</b><span>무인 운영</span></div>
+      <div class="stat"><b class="sk">0원</b><span>키오스크 없이 시작</span></div>
+      <div class="stat"><b class="sk">원격제어</b><span>폰 하나로 매장 전체</span></div>
+      <div class="stat"><b class="sk">무료</b><span>가입비·초기비용</span></div>
+    </div>
+    <p class="stat-note">* 원격제어(IoT) 기능은 신규 도입 예정 — 제어 대상·조건은 도입 사양 확정 후 보강</p>
+  </div>
+</section>
+
+<!-- VALUE 3분할 -->
+<section class="value" id="value">
+  <div class="wrap">
+    <span class="eyebrow">Why nijim for owners</span>
+    <h2 class="sec">사장님이 자리를 비워도, 매장은 돌아갑니다</h2>
+    <p class="sec-sub">원격제어부터 무인운영, 회원모집까지. 센터 운영에 필요한 걸 폰 하나로 끝내세요.</p>
+    <div class="value-grid">
+      <div class="vcard">
+        <div class="vico">📱</div>
+        <div class="vn">01</div>
         <h3>폰 하나로 매장 전체를 원격 제어</h3>
         <p>조명·에어컨·블라인드·환풍기까지, 영업시간에 맞춰 자동으로 켜지고 꺼집니다.</p>
-      </article>
-      <article class="card reveal" data-delay="120">
-        <div class="card-ico" aria-hidden="true">🤖</div>
+      </div>
+      <div class="vcard">
+        <div class="vico">🤖</div>
+        <div class="vn">02</div>
         <h3>사람 없이 24시간 무인 운영</h3>
         <p>회원등록·출입·전자계약까지 AI가 자동 처리. 비싼 키오스크도, 상주 인력도 필요 없습니다.</p>
-      </article>
-      <article class="card reveal" data-delay="240">
-        <div class="card-ico" aria-hidden="true">📣</div>
+      </div>
+      <div class="vcard">
+        <div class="vico">📈</div>
+        <div class="vn">03</div>
         <h3>손님까지 데려오는 헬스장 시스템</h3>
         <p>입점하면 내 주변 헬스장을 찾는 니짐내짐 회원에게 우리 센터가 바로 노출됩니다.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ── 기능 캐스케이드 ① 시설 전체 원격제어·자동화 · SSOT §3-3① (핵심·NEW) ── -->
-<section id="iot" class="band dark">
-  <div class="wrap">
-    <div class="iot">
-      <div class="reveal">
-        <div class="kicker sky">기능 ① 시설 원격제어 · 자동화<span class="tag-new">NEW</span></div>
-        <h2>시설 전체를<br /><span class="accent">폰으로 원격 제어</span></h2>
-        <p>조명·에어컨·블라인드·환풍기까지 센터 시설 전체를 폰으로 원격 제어. 영업시간에 맞춰 자동으로 켜지고 꺼집니다. 사장님이 매장에 없어도 센터는 알아서 돌아갑니다.</p>
-      </div>
-      <div class="chips reveal" data-delay="120">
-        <div class="chip grid-item"><span class="dot"></span>조명</div>
-        <div class="chip grid-item"><span class="dot"></span>에어컨</div>
-        <div class="chip grid-item"><span class="dot"></span>블라인드</div>
-        <div class="chip grid-item"><span class="dot"></span>환풍기</div>
-        <div class="chip grid-item"><span class="dot"></span>영업시간 자동 스케줄</div>
-        <div class="chip grid-item"><span class="dot"></span>센터 시설 전체</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── 기능 캐스케이드 ②③④ · SSOT §3-3 ─────────────── -->
-<section class="band">
+<!-- FEATURES (cascade) -->
+<section class="feat" id="feat">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="kicker">기능 더 보기</div>
-      <h2>사람 없이도 돌아가는 센터,<br />앱 하나로 완성</h2>
-      <p>비싼 키오스크도, 여러 프로그램도 필요 없습니다. 폰 하나로 운영의 처음부터 끝까지.</p>
-    </div>
-    <div class="grid">
-      <article class="card reveal" data-delay="0">
-        <div class="card-ico" aria-hidden="true">🤖</div>
-        <h3>사람 없이도 24시간 무인운영</h3>
-        <p>멤버십 발급·출입·전자계약까지 AI가 처리. 비싼 키오스크 없이 폰만 있으면 인건비·관리 부담이 확 줄어요.</p>
-      </article>
-      <article class="card reveal" data-delay="120">
-        <div class="card-ico" aria-hidden="true">📣</div>
-        <h3>니짐내짐 회원에게 매장 노출</h3>
-        <p>입점하면 내 주변 헬스장을 찾는 니짐내짐 이용자에게 우리 센터가 바로 노출. 신규 회원이 앱에서 알아서 등록해요.</p>
-      </article>
-      <article class="card reveal" data-delay="240">
-        <div class="card-ico" aria-hidden="true">📊</div>
-        <h3>회원관리도 앱 하나로</h3>
-        <p>회원 현황·구독·결제 관리를 한 화면에서. 언제 어디서나 센터 운영 상황을 확인하세요.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ── 등록 CTA ─────────────────────────────── -->
-<section id="apply" class="band dark">
-  <div class="wrap finale reveal">
-    <h2>우리 센터,<br />니짐내짐으로 자동화하세요</h2>
-    <p>등록하면 담당자가 시설 연동부터 오픈까지 함께합니다.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#apply">무료로 시작하기</a>
-      <a class="btn btn-ghost" href="index.html">회원용 홈 보기</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── 푸터 ─────────────────────────────── -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-top">
-      <div>
-        <img src="assets/img/nijim-wordmark-white.svg" alt="니짐내짐" />
-        <div class="tagline">헬스장 찾을 땐, 니짐내짐</div>
+    <span class="eyebrow">Features</span>
+    <h2 class="sec">센터 운영, 이 네 가지면 충분합니다</h2>
+    <p class="sec-sub">원격제어를 시작으로 무인운영·회원모집·회원관리까지 하나의 앱에서.</p>
+    <div class="feat-grid">
+      <div class="bcard hl">
+        <div class="ph"><img src="media/gym1_thumb.jpg" alt="시설 원격제어"></div>
+        <div class="bx"><div class="n">01</div><h3>시설 전체 원격제어·자동화<span class="newtag">NEW</span></h3><p>조명·에어컨·블라인드·환풍기까지 센터 시설 전체를 폰으로 원격 제어. 영업시간에 맞춰 자동으로 켜지고 꺼집니다. 사장님이 매장에 없어도 센터는 알아서 돌아갑니다.</p></div>
       </div>
-      <nav class="footer-nav">
-        <div class="footer-col">
-          <h4>사장님</h4>
-          <a href="#iot">시설 원격제어</a>
-          <a href="#apply">무료로 시작하기</a>
+      <div class="bcard">
+        <div class="ph"><img src="media/case.jpg" alt="무인 운영"></div>
+        <div class="bx"><div class="n">02</div><h3>사람 없이도 24시간 무인운영</h3><p>멤버십 발급·출입·전자계약까지 AI가 처리. 비싼 키오스크 없이 폰만 있으면 인건비·관리 부담이 확 줄어요.</p></div>
+      </div>
+      <div class="bcard">
+        <div class="ph"><img src="media/gym2_thumb.jpg" alt="매장 노출"></div>
+        <div class="bx"><div class="n">03</div><h3>니짐내짐 회원에게 매장 노출</h3><p>입점하면 내 주변 헬스장을 찾는 니짐내짐 이용자에게 우리 센터가 바로 노출. 신규 회원이 앱에서 알아서 등록해요.</p></div>
+      </div>
+      <div class="bcard">
+        <div class="ph"><img src="media/pilates1_thumb.jpg" alt="회원관리"></div>
+        <div class="bx"><div class="n">04</div><h3>회원관리도 앱 하나로</h3><p>회원 현황·구독·결제 관리를 한 화면에서. 언제 어디서나 센터 운영 상황을 확인하세요.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE BAND -->
+<section class="show">
+  <div class="wrap show-grid">
+    <div>
+      <span class="eyebrow">Remote control</span>
+      <h2>매장에 없어도<br><span class="sky">폰으로 다 됩니다</span></h2>
+      <p>출근길에 조명·에어컨을 미리 켜고, 마감 후엔 원격으로 소등. 영업시간 스케줄만 걸어두면 나머지는 니짐내짐이 알아서 켜고 끕니다.</p>
+      <div class="show-feats">
+        <div class="ofeat"><div class="bar" style="background:var(--sky)"></div><b>원격 제어</b><small>조명·출입·기기를 어디서나 폰으로.</small></div>
+        <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>자동 스케줄</b><small>영업시간에 맞춰 자동 ON/OFF.</small></div>
+        <div class="ofeat"><div class="bar" style="background:var(--pink-ondark)"></div><b>무인 관리</b><small>회원관리·정산은 앱이 자동으로.</small></div>
+        <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>비용 절감</b><small>상주 인력·전단 없이 매장 운영.</small></div>
+      </div>
+      <div class="show-cta">
+        <a class="btn btn-sky" href="#hero">무료로 시작하기</a>
+      </div>
+    </div>
+    <div class="show-visual">
+      <div class="phone"><div class="notch"></div><div class="screen"><div class="app">
+        <div class="octl">
+          <div class="octl-head"><b>파워핏 역삼 · 원격 제어</b><span class="live">LIVE</span></div>
+          <div class="otog"><b>🚪 출입문</b><div class="sw on"></div></div>
+          <div class="otog"><b>💡 조명</b><div class="sw on"></div></div>
+          <div class="otog"><b>❄️ 에어컨</b><div class="sw on"></div></div>
+          <div class="otog"><b>🌀 환풍기</b><div class="sw"></div></div>
+          <div class="otog"><b>🪟 블라인드</b><div class="sw on"></div></div>
+          <div class="osched">
+            <div class="ic">⏰</div>
+            <div><b>영업시간 자동 스케줄</b><small>06:00 자동 ON · 24:00 자동 OFF</small></div>
+          </div>
         </div>
-        <div class="footer-col">
-          <h4>회원</h4>
-          <a href="index.html">회원용 홈</a>
-          <a href="index.html#how">이용 방법</a>
-          <a href="index.html#download">앱 다운로드</a>
-        </div>
-      </nav>
+      </div></div></div>
     </div>
-    <div class="footer-bottom">© 니짐내짐 · nijim. All rights reserved.</div>
+  </div>
+</section>
+
+<!-- CUSTOMER BANNER -->
+<section class="cbanner">
+  <div class="wrap">
+    <div class="ct">
+      <div class="eb">FOR MEMBERS</div>
+      <h3>헬스장을 찾는 회원이세요?</h3>
+      <p>내 주변 헬스장·PT·필라테스를 최저가로 비교하고 바로 구독하세요.</p>
+    </div>
+    <a class="btn btn-pink" href="index.html">내 주변 헬스장 찾기</a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>매장 운영, 오늘부터 폰 하나로</h2>
+    <p>가입비 없이 무료로 시작하세요. 도입 상담은 니짐내짐이 도와드립니다.</p>
+    <div class="fcta">
+      <a class="btn btn-sky" href="#hero">무료로 시작하기</a>
+      <a class="btn btn-ghost" href="#feat">기능 둘러보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="media/nijim_logo_full_white.svg" alt="니짐내짐"></div>
+    <p>헬스장 찾을 땐, 니짐내짐 · (주)인디펜던트</p>
+    <p class="cr">© 2026 nijim. 이용약관 · 개인정보처리방침</p>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
 </body>
 </html>
