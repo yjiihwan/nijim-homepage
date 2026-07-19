@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>니짐내짐 — 내 주변 헬스장, 최저가로 바로 시작</title>
+<title>자주 묻는 질문 — 니짐내짐</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 <style>
   :root{
@@ -255,224 +255,51 @@
 <!-- NAV -->
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top">
+    <a class="brand" href="index.html#top">
       <img src="media/nijim_logo_full_black.svg" alt="니짐내짐">
       <span>헬스장 찾을 땐, 니짐내짐</span>
     </a>
     <nav class="nav-links">
-      <a href="#how">둘러보기</a>
-      <a href="#how">이용방법</a>
+      <a href="index.html#how">둘러보기</a>
+      <a href="index.html#how">이용방법</a>
       <a href="faq.html">자주 묻는 질문</a>
       <a href="enter.html">헬스장 등록</a>
-      <a class="nav-cta" href="#hero">앱 다운로드</a>
+      <a class="nav-cta" href="index.html#hero">앱 다운로드</a>
     </nav>
     <button class="menu-btn" aria-label="메뉴"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="wrap hero-grid" id="hero">
-    <div class="hero-copy">
-      <h1>내 주변 헬스장,<br><span class="pk">최저가로 바로 시작</span></h1>
-      <p class="lead">찾고 · 비교하고 · 구독하고 —<br>내 주변 검색부터 월 구독까지, 앱 하나로.</p>
-      <div class="hero-cta">
-        <a class="btn btn-pink" href="#hero">내 주변 헬스장 찾기</a>
-        <a class="btn btn-ghost" href="#hero">앱 다운로드</a>
+<!-- FAQ PAGE -->
+<section class="final" style="padding-top:calc(var(--sec-y) - 8px)">
+  <div class="wrap" style="margin:0 auto">
+    <!-- FAQ: 아래 문답은 UI 렌더 확인용 더미(예시) 데이터. 운영 FAQ 정책 확정 후 실제 문답으로 교체 -->
+    <div class="faq" id="faq">
+      <div class="faq-head">
+        <b>결제 전, 궁금한 건 여기서</b>
+        <small>자주 묻는 질문을 모았어요</small>
       </div>
-    </div>
-    <div class="hero-visual">
-      <div class="blob"></div>
-      <div class="phone">
-        <div class="notch"></div>
-        <div class="screen">
-          <div class="app">
-            <div class="app-top"><span class="app-loc">내 주변 헬스장</span><span class="app-search">📍 강남구 역삼동</span></div>
-            <div class="map">
-              <span class="pin" style="top:22%;left:16%">6.6만</span>
-              <span class="pin" style="top:16%;right:14%">5.9만</span>
-              <span class="pin" style="top:44%;left:40%">7.2만</span>
-              <span class="dot" style="top:38%;left:47%"></span>
-            </div>
-            <div class="sheet">
-              <h5>내 주변 인기 헬스장 <span>전체보기</span></h5>
-              <div class="gcard">
-                <div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div>
-                <div class="ginfo"><b>파워핏 역삼</b><small>★ 4.9 · 도보 5분</small></div>
-                <div class="gprice"><span class="off">-30%</span><b>월 6.6만</b></div>
-              </div>
-              <div class="gcard t2">
-                <div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div>
-                <div class="ginfo"><b>스마트짐 강남</b><small>★ 4.8 · 도보 8분</small></div>
-                <div class="gprice"><span class="off">-25%</span><b>월 5.9만</b></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats">
-  <div class="wrap">
-    <div class="stats-grid">
-      <div class="stat"><b>3,200곳</b><span>입점 헬스장</span></div>
-      <div class="stat"><b>12만+</b><span>누적 가입자</span></div>
-      <div class="stat"><b>월 4.2만원</b><span>평균 절약액</span></div>
-      <div class="stat"><b>4.8★</b><span>앱 평점</span></div>
-    </div>
-    <p class="stat-note">* 수치는 예시 — 운영 확정 후 실제 값으로 대체</p>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="steps" id="how">
-  <div class="wrap">
-    <span class="eyebrow">How it works</span>
-    <h2 class="sec">검색부터 구독까지, 앱 하나로</h2>
-    <p class="sec-sub">복잡한 상담도, 종이 계약도 없이. 세 단계면 오늘 바로 운동을 시작해요.</p>
-    <div class="steps-grid">
-      <!-- step 1: search/list -->
-      <div class="step">
-        <div class="phwrap"><div class="phone sm"><div class="notch"></div><div class="screen"><div class="app">
-          <div class="app-top"><span class="app-search">🔍 강남 헬스장</span></div>
-          <div class="listwrap">
-            <div class="lrow"><div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div><div class="ginfo"><b>파워핏 역삼</b><small>★ 4.9 · 도보 5분</small></div><div class="gprice"><span class="off">-30%</span></div></div>
-            <div class="lrow"><div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div><div class="ginfo"><b>스마트짐 강남</b><small>★ 4.8 · 도보 8분</small></div><div class="gprice"><span class="off">-25%</span></div></div>
-            <div class="lrow"><div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div><div class="ginfo"><b>필라테스 논현</b><small>★ 4.9 · 도보 3분</small></div><div class="gprice"><span class="off">-20%</span></div></div>
-            <div class="lrow"><div class="gthumb"><svg viewBox="0 0 24 24"><path d="M20 8h-1V6a2 2 0 0 0-2-2h-2v2h2v2h-2v2h-2V6h-2v4H7V8H5V6h2V4H5a2 2 0 0 0-2 2v2H2v8h1v2a2 2 0 0 0 2 2h2v-2H5v-2h2v-2h2v4h2v-4h2v4h2v-4h2v2h-2v2h2a2 2 0 0 0 2-2v-2h1V8z"/></svg></div><div class="ginfo"><b>PT스튜디오 삼성</b><small>★ 4.7 · 도보 6분</small></div><div class="gprice"><span class="off">-15%</span></div></div>
-          </div>
-        </div></div></div></div>
-        <div class="snum">01</div><h3>검색</h3>
-        <p>내 주변 헬스장·PT·필라테스를<br>지도에서 한눈에.</p>
-      </div>
-      <!-- step 2: compare -->
-      <div class="step">
-        <div class="phwrap"><div class="phone sm"><div class="notch"></div><div class="screen"><div class="app">
-          <div class="cmp">
-            <h5>가격 비교 · 파워핏 역삼</h5>
-            <div class="crow"><span>현장 등록가</span><span class="cp">88,000원</span></div>
-            <div class="crow"><span>타 플랫폼</span><span class="cp">74,000원</span></div>
-            <div class="crow best"><span>니짐 최저가</span><span class="cp">62,000원</span></div>
-            <div class="cbtn">이 가격으로 구독하기</div>
-            <div class="cnote">월 구독 · 약정 없음</div>
-          </div>
-        </div></div></div></div>
-        <div class="snum">02</div><h3>비교·구독</h3>
-        <p>최저가·쿠폰 비교하고<br>월 단위로 바로 구독.</p>
-      </div>
-      <!-- step 3: membership -->
-      <div class="step">
-        <div class="phwrap"><div class="phone sm"><div class="notch"></div><div class="screen"><div class="app">
-          <div class="mbg">
-            <div class="mt">모바일 회원증</div>
-            <div class="mn">파워핏 역삼</div>
-            <div class="qr"></div>
-            <div class="mid">이용중 · 2026.08.01~</div>
-          </div>
-        </div></div></div></div>
-        <div class="snum">03</div><h3>바로 이용</h3>
-        <p>종이계약도 상담 전화도 없이<br>앱에서 결제, 오늘 바로 운동 시작.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY (photo cards) -->
-<section class="why">
-  <div class="wrap">
-    <span class="eyebrow">Why nijim</span>
-    <h2 class="sec">왜 다들 니짐내짐으로 갈아탈까</h2>
-    <p class="sec-sub">발품·전화·1년 약정 없이. 검색부터 결제까지 앱 하나로 끝내는 이유.</p>
-    <div class="why-grid">
-      <div class="bcard">
-        <div class="ph"><img src="media/gym1_thumb.jpg" alt="헬스장 내부"></div>
-        <div class="bx"><div class="n">01</div><h3>내 주변부터 한눈에</h3><p>근처 헬스장·PT·필라테스를 지도에서 한눈에 비교. 전화도 방문도 필요 없어요.</p></div>
-      </div>
-      <div class="bcard">
-        <div class="ph"><img src="media/woman1_thumb.jpg" alt="앱으로 최저가 확인"></div>
-        <div class="bx"><div class="n">02</div><h3>앱에서만 되는 최저가</h3><p>니짐내짐 전용 할인가에 실시간 쿠폰까지. 발품 팔 필요 없이 늘 업계 최저가로.</p></div>
-      </div>
-      <div class="bcard">
-        <div class="ph"><img src="media/pilates1_thumb.jpg" alt="필라테스"></div>
-        <div class="bx"><div class="n">03</div><h3>월 구독이라 부담 제로</h3><p>1년 약정에 묶이지 않아요. 월 단위로 가볍게 시작하고, 안 맞으면 언제든 정리.</p></div>
-      </div>
-      <div class="bcard">
-        <div class="ph"><img src="media/gym2_thumb.jpg" alt="운동하는 모습"></div>
-        <div class="bx"><div class="n">04</div><h3>가입은 터치 한 번</h3><p>종이계약서도, 긴 상담 전화도 없어요. 앱에서 결제하면 오늘 바로 운동 시작.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section class="reviews">
-  <div class="wrap">
-    <span class="eyebrow">Reviews</span>
-    <h2 class="sec">이미 많은 분들이 니짐내짐으로 갈아탔어요</h2>
-    <p class="sec-sub">실제 이용 후기와 입점 헬스장. (후기·로고 확보 후 노출 — 미확보 시 섹션 보류)</p>
-    <div class="rev-grid">
-      <div class="rcard">
-        <div class="rhead"><img src="media/man1_av.jpg" alt=""><div class="who"><b>김서연 · 니짐 회원</b><span class="st">★★★★★</span></div></div>
-        <p>“발품 안 팔고 앱에서 최저가로 바로 등록했어요.”</p>
-      </div>
-      <div class="rcard">
-        <div class="rhead"><img src="media/woman1_av.jpg" alt=""><div class="who"><b>박준호 · 니짐 회원</b><span class="st">★★★★★</span></div></div>
-        <p>“1년 약정 부담 없이 월 단위로 편하게 다녀요.”</p>
-      </div>
-      <div class="rcard">
-        <div class="rhead"><img src="media/woman2_av.jpg" alt=""><div class="who"><b>이지은 · 니짐 회원</b><span class="st">★★★★★</span></div></div>
-        <p>“종이계약도 상담 전화도 없이 앱에서 결제하고 바로 시작했어요.”</p>
-      </div>
-    </div>
-    <div class="logos">
-      <span class="lg">입점 헬스장 로고</span><span class="lg">LOGO</span><span class="lg">LOGO</span><span class="lg">LOGO</span><span class="lg">LOGO</span>
-    </div>
-  </div>
-</section>
-
-<!-- OWNER BAND -->
-<section class="owner" id="owner">
-  <div class="wrap owner-grid">
-    <div>
-      <span class="eyebrow">For owners</span>
-      <h2>헬스장 사장님이세요?<br>매장은 <span class="sky">폰 안에</span>, 사장님은 어디에나.</h2>
-      <p>출입·조명·에어컨까지 폰으로 원격 관리하고, 새 회원은 니짐내짐이 데려옵니다. 사장님은 본업에만 집중하세요.</p>
-      <div class="owner-feats">
-        <div class="ofeat"><div class="bar" style="background:var(--pink-ondark)"></div><b>원격 운영</b><small>출입·기기를 폰으로 원격 제어.</small></div>
-        <div class="ofeat"><div class="bar" style="background:var(--sky)"></div><b>무인 관리</b><small>회원관리·정산은 앱이 자동으로.</small></div>
-        <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>회원 모집</b><small>내 주변 검색 회원에게 매장 노출.</small></div>
-        <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>비용 절감</b><small>상주 인력·전단 없이 매장 운영.</small></div>
-      </div>
-      <div class="owner-cta">
-        <a class="btn btn-sky" href="enter.html">헬스장 등록하기</a>
-        <a class="btn btn-ghost" style="background:transparent;color:#fff;border-color:#3a3a46" href="enter.html">사장님 서비스 보기</a>
-      </div>
-    </div>
-    <div class="owner-visual">
-      <div class="phone"><div class="notch"></div><div class="screen"><div class="app">
-        <div class="octl">
-          <h5>파워핏 역삼 · 원격 제어</h5>
-          <div class="otog"><b>🚪 출입문</b><div class="sw on"></div></div>
-          <div class="otog"><b>💡 조명</b><div class="sw on"></div></div>
-          <div class="otog"><b>❄️ 에어컨</b><div class="sw"></div></div>
-          <div class="otog"><b>🌀 환풍기</b><div class="sw on"></div></div>
-          <div class="otog"><b>🪟 블라인드</b><div class="sw"></div></div>
-        </div>
-      </div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final">
-  <div class="wrap">
-    <h2>내 주변 헬스장, 지금 바로 찾아보세요</h2>
-    <div class="fcta">
-      <a class="btn btn-pink" href="#hero">내 주변 헬스장 찾기</a>
-      <a class="btn btn-ghost" href="#hero">앱 다운로드</a>
+      <details class="faq-item" open>
+        <summary>구독은 어떻게 시작하나요?</summary>
+        <div class="fa">앱에서 내 주변 헬스장을 검색하고 원하는 곳을 고른 뒤, 요금제를 선택해 바로 결제하면 됩니다. 상담 전화나 방문 없이 오늘 바로 이용을 시작할 수 있어요.</div>
+      </details>
+      <details class="faq-item">
+        <summary>약정이 있나요? 중간에 해지할 수 있나요?</summary>
+        <div class="fa">1년 약정 없이 월 단위로 이용해요. 다음 결제일 전에 앱에서 해지하면 추가 비용 없이 정리됩니다.</div>
+      </details>
+      <details class="faq-item">
+        <summary>실제로 현장 등록보다 저렴한가요?</summary>
+        <div class="fa">니짐내짐 전용 할인가와 실시간 쿠폰이 적용돼, 대부분 현장 등록가보다 저렴하게 이용하실 수 있어요. 결제 전 화면에서 현장가·타 플랫폼가와 비교해 확인할 수 있습니다.</div>
+      </details>
+      <details class="faq-item">
+        <summary>헬스장 입장은 어떻게 하나요?</summary>
+        <div class="fa">결제하면 앱에 모바일 회원증(QR)이 발급돼요. 헬스장 출입구에서 QR을 인식시키면 바로 입장할 수 있습니다.</div>
+      </details>
+      <details class="faq-item">
+        <summary>환불 규정은 어떻게 되나요?</summary>
+        <div class="fa">이용 시작 전이라면 전액 환불돼요. 이용 중 해지 시에는 남은 기간에 대해 관련 규정에 따라 처리됩니다.</div>
+      </details>
+      <p class="faq-note">* 예시 문답 — 운영 FAQ 정책 확정 후 실제 내용으로 교체</p>
     </div>
   </div>
 </section>
