@@ -62,7 +62,7 @@
   .hero{background:linear-gradient(180deg,#EEF8FF 0%,#FAFAFA 100%);overflow:hidden}
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:100px 0 112px}
   .hero-badge{display:inline-block;background:var(--sky-tint2);color:var(--sky-text);font-weight:800;font-size:13.5px;padding:8px 15px;border-radius:999px}
-  .hero h1{font-size:54px;line-height:1.12;font-weight:900;letter-spacing:-.035em;margin:0}
+  .hero h1{font-size:54px;line-height:1.12;font-weight:900;letter-spacing:-.035em;margin:0;word-break:keep-all}
   .hero h1 .sk{color:var(--sky-strong)}
   .hero p.lead{font-size:19px;color:var(--slate);margin-top:22px;font-weight:500}
   .hero-cta{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
@@ -228,8 +228,8 @@
 <section class="hero" id="top">
   <div class="wrap hero-grid" id="hero">
     <div class="hero-copy">
-      <h1>센터 전체를 폰 하나로,<br><span class="sk">사장님은 본업에만 집중</span></h1>
-      <p class="lead">조명부터 출입까지 원격으로 제어하고, 회원관리는 AI가 자동으로.<br>자리를 비워도 매장은 알아서 돌아갑니다.</p>
+      <h1>센터 운영 폰 하나로 끝!<br><span class="sk">사장님은 본업에만 집중하세요</span></h1>
+      <p class="lead">조명 에어컨 출입 등 시설 IoT 원격자동제어, 회원관리는 AI가 자동으로, 센터주변에 광고도 알아서 척척!<br>내가 없어도 매장이 알아서 돌아가는 매직!</p>
       <div class="hero-cta">
         <a class="btn btn-sky" href="#hero">무료로 시작하기</a>
         <a class="btn btn-ghost" href="#feat">기능 둘러보기</a>
@@ -264,12 +264,11 @@
 <section class="stats">
   <div class="wrap">
     <div class="stats-grid">
-      <div class="stat"><b class="sk">24시간</b><span>무인 운영</span></div>
-      <div class="stat"><b class="sk">0원</b><span>키오스크 없이 시작</span></div>
-      <div class="stat"><b class="sk">원격제어</b><span>폰 하나로 매장 전체</span></div>
-      <div class="stat"><b class="sk">무료</b><span>가입비·초기비용</span></div>
+      <div class="stat"><b class="sk">24시무인운영</b><span>IoT·AI로 완전자동화</span></div>
+      <div class="stat"><b class="sk">0원</b><span>입점비·초기비용 제로</span></div>
+      <div class="stat"><b class="sk">신규자동유입</b><span>입점시 내센터 주변에 자동광고</span></div>
+      <div class="stat"><b class="sk">폰 하나로</b><span>회원·결제·시설 관리 끝</span></div>
     </div>
-    <p class="stat-note">* 원격제어(IoT) 기능은 신규 도입 예정 — 제어 대상·조건은 도입 사양 확정 후 보강</p>
   </div>
 </section>
 
