@@ -155,6 +155,9 @@
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:900px){
     .nav-links{display:none}
+    .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--hair);box-shadow:0 12px 24px rgba(0,0,0,.08);padding:8px 0}
+    .nav-links.open a{padding:14px 22px;font-size:16px}
+    .nav-links.open .nav-cta{margin:8px 22px;text-align:center}
     .menu-btn{display:flex;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
     .menu-btn span{width:22px;height:2px;background:var(--text);border-radius:2px}
     .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px 0 56px;text-align:center}
@@ -378,5 +381,23 @@
   </div>
 </footer>
 
+<script>
+  (function(){
+    var btn=document.querySelector('.menu-btn');
+    var nav=document.querySelector('.nav-links');
+    if(!btn||!nav)return;
+    btn.setAttribute('aria-expanded','false');
+    function close(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+    document.addEventListener('click',function(e){
+      if(nav.classList.contains('open')&&!nav.contains(e.target)&&!btn.contains(e.target))close();
+    });
+  })();
+</script>
 </body>
 </html>
