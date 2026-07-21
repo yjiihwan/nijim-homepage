@@ -122,6 +122,21 @@
   .octl h5{font-size:12.5px;font-weight:900;margin-bottom:12px}
   .otog{display:flex;align-items:center;justify-content:space-between;background:#1e1e28;border-radius:12px;padding:11px 13px;margin-bottom:9px}
   .otog b{font-size:11.5px;font-weight:700}
+  .octl-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
+  .octl-head b{font-size:12.5px;font-weight:900}
+  .octl-head .live{font-size:9px;font-weight:800;color:#0f0f14;background:#3ddc84;padding:2px 7px;border-radius:999px}
+  /* AI 자동 제어 카드 — enter.html 히어로 목업과 동일 */
+  .oai{background:linear-gradient(135deg,rgba(57,180,255,.18),rgba(57,180,255,.05));border:1px solid rgba(57,180,255,.35);border-radius:12px;padding:11px 13px;margin-bottom:9px}
+  .oai-head{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+  .ai-badge{background:var(--sky);color:#fff;font-size:8.5px;font-weight:900;padding:2px 6px;border-radius:6px;letter-spacing:.05em}
+  .oai-head b{font-size:11px;font-weight:800}
+  .ai-dot{width:6px;height:6px;border-radius:50%;background:#3ddc84;margin-left:auto;box-shadow:0 0 0 3px rgba(61,220,132,.22);animation:aipulse 1.8s ease-out infinite}
+  @keyframes aipulse{50%{box-shadow:0 0 0 7px rgba(61,220,132,.04)}}
+  .oai small{font-size:9px;color:#9a9aa8;display:block;line-height:1.7}
+  .osched{background:#1e1e28;border-radius:12px;padding:11px 13px;display:flex;align-items:center;gap:9px}
+  .osched .ic{width:26px;height:26px;border-radius:8px;background:rgba(57,180,255,.16);display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+  .osched b{font-size:10.5px;font-weight:800;display:block}
+  .osched small{font-size:9px;color:#9a9aa8}
   .sw{width:38px;height:22px;border-radius:999px;background:#3a3a46;position:relative;flex:none}
   .sw.on{background:var(--sky)}
   .sw::after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;top:3px;left:3px;transition:.2s}
@@ -457,12 +472,22 @@
     <div class="owner-visual">
       <div class="phone"><div class="notch"></div><div class="screen"><div class="app">
         <div class="octl">
-          <h5>파워핏 역삼 · 원격 제어</h5>
+          <div class="octl-head"><b>파워핏 역삼 · 원격 제어</b><span class="live">LIVE</span></div>
           <div class="otog"><b>🚪 출입문</b><div class="sw on"></div></div>
           <div class="otog"><b>💡 조명</b><div class="sw on"></div></div>
           <div class="otog"><b>❄️ 에어컨</b><div class="sw"></div></div>
           <div class="otog"><b>🌀 환풍기</b><div class="sw on"></div></div>
           <div class="otog"><b>🪟 블라인드</b><div class="sw"></div></div>
+          <div class="oai">
+            <div class="oai-head"><span class="ai-badge">AI</span><b>AI 자동 제어 중</b><span class="ai-dot"></span></div>
+            <small>✓ 18시 피크 예측 → 에어컨 미리 ON</small>
+            <small>✓ 마지막 퇴실 감지 → 조명·환풍기 OFF</small>
+            <small>✓ 만료 임박 회원 3명 → 재등록 알림 발송</small>
+          </div>
+          <div class="osched">
+            <div class="ic">⏰</div>
+            <div><b>영업시간 자동 스케줄</b><small>06:00 자동 ON · 24:00 자동 OFF</small></div>
+          </div>
         </div>
       </div></div></div>
     </div>
