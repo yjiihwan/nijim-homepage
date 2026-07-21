@@ -134,7 +134,8 @@
   .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:var(--stats-y) 0}
   .stat{text-align:center;border-right:1px solid rgba(255,255,255,.1)}
   .stat:last-child{border-right:0}
-  .stat b{font-size:30px;font-weight:900;display:block;letter-spacing:-.02em}
+  .stat b{font-size:30px;font-weight:900;display:block;letter-spacing:-.02em;white-space:nowrap}
+  .sk{color:var(--pink)}
   .stat span{font-size:14px;color:var(--fog);margin-top:5px;display:block}
   .stat-note{text-align:center;color:#6c6c78;font-size:11.5px;padding-bottom:18px}
 
@@ -321,12 +322,11 @@
 <section class="stats">
   <div class="wrap">
     <div class="stats-grid">
-      <div class="stat"><b>3,200곳</b><span>입점 헬스장</span></div>
-      <div class="stat"><b>12만+</b><span>누적 가입자</span></div>
-      <div class="stat"><b>월 4.2만원</b><span>평균 절약액</span></div>
-      <div class="stat"><b>4.8★</b><span>앱 평점</span></div>
+      <div class="stat"><b class="sk">내 주변 한눈에</b><span>지도로 헬스장·PT·필라테스 비교</span></div>
+      <div class="stat"><b class="sk">앱 전용 최저가</b><span>발품 없이 실시간 할인·쿠폰</span></div>
+      <div class="stat"><b class="sk">약정 없는 월 구독</b><span>가볍게 시작, 언제든 정리</span></div>
+      <div class="stat"><b class="sk">터치 한 번 가입</b><span>상담·종이계약 없이 오늘 바로</span></div>
     </div>
-    <p class="stat-note">* 수치는 예시 — 운영 확정 후 실제 값으로 대체</p>
   </div>
 </section>
 
