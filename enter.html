@@ -89,6 +89,14 @@
   .osched .ic{width:26px;height:26px;border-radius:8px;background:rgba(57,180,255,.16);display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
   .osched b{font-size:10.5px;font-weight:800;display:block}
   .osched small{font-size:9px;color:var(--fog)}
+  /* AI 자동 제어 카드 — AI가 실시간으로 판단·제어 중임을 목업에서 직관적으로 전달 */
+  .oai{background:linear-gradient(135deg,rgba(57,180,255,.18),rgba(57,180,255,.05));border:1px solid rgba(57,180,255,.35);border-radius:12px;padding:11px 13px;margin-bottom:9px}
+  .oai-head{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+  .ai-badge{background:var(--sky);color:#fff;font-size:8.5px;font-weight:900;padding:2px 6px;border-radius:6px;letter-spacing:.05em}
+  .oai-head b{font-size:11px;font-weight:800}
+  .ai-dot{width:6px;height:6px;border-radius:50%;background:#3ddc84;margin-left:auto;box-shadow:0 0 0 3px rgba(61,220,132,.22);animation:aipulse 1.8s ease-out infinite}
+  @keyframes aipulse{50%{box-shadow:0 0 0 7px rgba(61,220,132,.04)}}
+  .oai small{font-size:9px;color:var(--fog);display:block;line-height:1.7}
 
   /* ---------- STATS ---------- */
   .stats{background:var(--ink);color:#fff;padding:var(--stats-y) 0}
@@ -248,6 +256,11 @@
               <div class="otog"><b>❄️ 에어컨</b><div class="sw"></div></div>
               <div class="otog"><b>🌀 환풍기</b><div class="sw on"></div></div>
               <div class="otog"><b>🪟 블라인드</b><div class="sw"></div></div>
+              <div class="oai">
+                <div class="oai-head"><span class="ai-badge">AI</span><b>AI 자동 제어 중</b><span class="ai-dot"></span></div>
+                <small>✓ 18시 피크 예측 → 에어컨 미리 ON</small>
+                <small>✓ 마지막 퇴실 감지 → 조명·환풍기 OFF</small>
+              </div>
               <div class="osched">
                 <div class="ic">⏰</div>
                 <div><b>영업시간 자동 스케줄</b><small>06:00 자동 ON · 24:00 자동 OFF</small></div>
