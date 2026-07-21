@@ -47,7 +47,7 @@
   .brand img{height:23px}
   .brand span{font-size:12.5px;color:var(--slate);font-weight:600}
   .nav-links{display:flex;gap:30px;align-items:center}
-  .nav-links a{font-size:15.5px;font-weight:600;color:#3a3a42}
+  .nav-links a{font-size:15.5px;font-weight:600;color:#3a3a42;white-space:nowrap}
   .nav-links a:hover{color:var(--pink-strong)}
   .nav-links .nav-cta{background:var(--pink);color:#fff;padding:10px 20px;border-radius:10px;font-weight:800;font-size:14.5px}
   .nav-cta:hover{background:var(--pink-strong)}
@@ -55,9 +55,9 @@
 
   /* ---------- HERO ---------- */
   .hero{background:linear-gradient(180deg,#FFF6F9 0%,#FAFAFA 100%);overflow:hidden}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:100px 0 112px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:100px var(--gutter) 112px}  /* 가로는 wrap 거터 유지(0이면 중간폭에서 좌우가 붙음) */
   .hero-badge{display:inline-block;background:var(--pink-tint2);color:var(--pink-pressed);font-weight:800;font-size:13.5px;padding:8px 15px;border-radius:999px}
-  .hero h1{font-size:56px;line-height:1.1;font-weight:900;letter-spacing:-.035em;margin:22px 0 0}
+  .hero h1{font-size:clamp(38px,4.8vw,56px);line-height:1.1;font-weight:900;letter-spacing:-.035em;margin:22px 0 0;word-break:keep-all}
   .hero h1 .pk{color:var(--pink)}
   .hero p.lead{font-size:19px;color:var(--slate);margin-top:22px;font-weight:500}
   .hero-cta{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
@@ -149,7 +149,7 @@
   .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:var(--stats-y) 0}
   .stat{text-align:center;border-right:1px solid rgba(255,255,255,.1)}
   .stat:last-child{border-right:0}
-  .stat b{font-size:30px;font-weight:900;display:block;letter-spacing:-.02em;white-space:nowrap}
+  .stat b{font-size:clamp(20px,2.3vw,30px);font-weight:900;display:block;letter-spacing:-.02em;white-space:nowrap}
   .sk{color:var(--pink)}
   .stat span{font-size:14px;color:var(--fog);margin-top:5px;display:block}
   .stat-note{text-align:center;color:#6c6c78;font-size:11.5px;padding-bottom:18px}
@@ -228,6 +228,14 @@
   footer .cr{font-size:12px;color:#5b5b66;margin-top:16px}
 
   /* ---------- RESPONSIVE ---------- */
+  /* 태블릿·중간폭(901~1240): 네비 압축(태그라인 숨김)·히어로 간격 축소 — 좌측 밀림/글자 꺾임 방지 */
+  @media(max-width:1240px) and (min-width:901px){
+    .brand span{display:none}
+    .nav-links{gap:16px}
+    .nav-links a{font-size:14px}
+    .nav-links .nav-cta{padding:9px 14px;font-size:13.5px}
+    .hero-grid{gap:32px}
+  }
   @media(max-width:900px){
     :root{--sec-y:76px;--band-y:76px;--stats-y:40px;--banner-y:58px;--head-gap:40px;--grid-gap:20px;--gutter:24px}
     .nav-links{display:none}
@@ -236,7 +244,7 @@
     .nav-links.open .nav-cta{margin:8px 22px;text-align:center}
     .menu-btn{display:flex;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
     .menu-btn span{width:22px;height:2px;background:var(--text);border-radius:2px}
-    .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px 0 56px;text-align:center}
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px var(--gutter) 56px;text-align:center}
     /* WHY: .wrap{padding:0 18px}(≤560)가 .hero-grid 세로 padding을 덮어 하단 여백 0이 됨.
        margin은 .wrap에 안 잡히므로 폰 목업↔검은 통계밴드 사이 '밝은 배경' 여백을 margin으로 확보(b2149f6 동일 패턴) */
     .hero-visual{margin-bottom:48px}
@@ -262,7 +270,7 @@
     .bcard{flex-direction:column}
     .bcard .ph{width:100%;height:180px}
     .faq{flex-direction:column;gap:16px;align-items:flex-start}
-    .stat b{font-size:25px}
+    .stat b{font-size:19px}
   }
 </style>
 </head>
