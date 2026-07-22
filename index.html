@@ -73,6 +73,12 @@
   .phone.sm .notch{width:74px;height:17px}
   .app{position:absolute;inset:0;font-size:11px;display:flex;flex-direction:column}
   .app-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+  /* step2: 전체 상세페이지 스크린샷을 크롭 없이 프레임 안에서 스크롤로 전부 노출 */
+  .phone.scroll .screen{overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .phone.scroll .screen::-webkit-scrollbar{display:none}
+  .phone.scroll .app-shot{position:static;width:100%;height:auto;object-fit:fill}
+  .phwrap.scroll-hint{position:relative}
+  .phwrap.scroll-hint::after{content:"스크롤 ↓";position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(15,15,20,.72);color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:999px;pointer-events:none;z-index:4}
   .app-top{padding:34px 14px 10px;display:flex;align-items:center;gap:8px}
   .app-search{flex:1;background:#f1f1f4;border-radius:9px;padding:8px 11px;font-size:11px;color:#8a8f98;font-weight:600}
   .app-loc{font-size:12px;font-weight:800}
@@ -370,7 +376,7 @@
       </div>
       <!-- step 2: compare -->
       <div class="step">
-        <div class="phwrap"><div class="phone sm"><div class="notch"></div><div class="screen"><img class="app-shot" src="media/step2_subscribe.jpg" alt="니짐내짐 앱 – 구독짐 강남역점 상세·가격 비교"></div></div></div>
+        <div class="phwrap scroll-hint"><div class="phone sm scroll"><div class="notch"></div><div class="screen"><img class="app-shot" src="media/step2_subscribe.jpg" alt="니짐내짐 앱 – 구독짐 강남역점 상세·가격 비교"></div></div></div>
         <div class="snum">02</div><h3>비교·구독</h3>
         <p>최저가·쿠폰 비교하고<br>월 단위로 바로 구독.</p>
       </div>
