@@ -190,8 +190,13 @@
   .rhead .who b{font-size:14.5px;font-weight:800;display:block}
   .rhead .who .st{color:var(--pink);font-size:13px;letter-spacing:1px}
   .rcard p{font-size:15.5px;font-weight:600;line-height:1.6;color:#33333a}
-  .logos{display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-top:var(--head-gap);justify-content:center;opacity:.75}
-  .logos .lg{font-size:13px;font-weight:800;color:#9a9aa2;letter-spacing:.05em;border:1px dashed #d4d4da;padding:9px 20px;border-radius:8px}
+  /* WHY: 로고 PNG는 투명 패딩 내장 + 색상 소스에서 통일 완료 → filter·opacity 재적용 금지(이중 적용으로 흐려짐).
+     가로세로비가 1.6~4.8로 제각각이라 height만 고정하면 가로 워드마크(2X·N·GYM)가 400px대로 비대해져
+     5종 합계가 콘텐츠 폭 1116px을 넘고 N·GYM이 잘린다. 그래서 height+max-width 이중 상한 + object-fit:contain으로
+     시각 크기를 정규화 → 1440/900 한 줄, 390은 3+2 자동 랩(flex라 각 행이 개별 중앙정렬됨). */
+  .logos{display:flex;gap:26px 44px;align-items:center;justify-content:center;
+    flex-wrap:wrap;margin-top:var(--head-gap)}
+  .logos img{height:64px;width:auto;max-width:180px;object-fit:contain;flex:0 0 auto}
 
   /* ---------- OWNER BAND ---------- */
   .owner{padding:var(--band-y) 0;background:var(--ink);color:#fff;overflow:hidden}
@@ -260,6 +265,8 @@
     .steps-grid{grid-template-columns:1fr;gap:52px}
     .why-grid{grid-template-columns:1fr}
     .rev-grid{grid-template-columns:1fr}
+    .logos{gap:22px 36px}
+    .logos img{height:52px;max-width:150px}
     .stats-grid{grid-template-columns:1fr 1fr;gap:26px 0}
     .stat:nth-child(2){border-right:0}
     .stat{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}
@@ -278,6 +285,9 @@
     /* 모바일 크롭에서 인물 상단(폰 든 손)이 잘려 크롭 기준점을 위로 — 프레임·PC/태블릿 무변경 */
     .bcard .ph img[src$="feat_map.jpg"]{object-position:50% 15%}
     .faq{flex-direction:column;gap:16px;align-items:flex-start}
+    /* 폰 폭(≈354px)에선 5종 한 줄이 불가 → 3+2 랩. flex라 두 행 모두 개별 중앙정렬된다 */
+    .logos{gap:18px 24px}
+    .logos img{height:38px;max-width:108px}
     .stat b{font-size:19px}
   }
 </style>
@@ -438,7 +448,11 @@
       </div>
     </div>
     <div class="logos">
-      <span class="lg">입점 헬스장 로고</span><span class="lg">LOGO</span><span class="lg">LOGO</span><span class="lg">LOGO</span><span class="lg">LOGO</span>
+      <img src="assets/img/partners/logo_01_healthboy.png" alt="HEALTH BOY GYM">
+      <img src="assets/img/partners/logo_02_2x.png" alt="2X FITNESS">
+      <img src="assets/img/partners/logo_03_mk.png" alt="MK FITNESS">
+      <img src="assets/img/partners/logo_04_buildup.png" alt="BUILD UP FITNESS">
+      <img src="assets/img/partners/logo_05_ngym.png" alt="N·GYM">
     </div>
   </div>
 </section>
