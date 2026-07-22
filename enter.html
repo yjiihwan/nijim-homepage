@@ -64,7 +64,10 @@
   .hero-badge{display:inline-block;background:var(--sky-tint2);color:var(--sky-text);font-weight:800;font-size:13.5px;padding:8px 15px;border-radius:999px}
   .hero h1{font-size:clamp(38px,4.6vw,54px);line-height:1.12;font-weight:900;letter-spacing:-.035em;margin:0;word-break:keep-all}
   .hero h1 .sk{color:var(--sky-strong)}
-  .hero p.lead{font-size:19px;color:var(--slate);margin-top:22px;font-weight:500}
+  /* WHY: PC에서 의미 단위(IoT 제어 / AI 회원관리 / 광고)가 줄 끝에 어정쩡히 걸리지 않도록
+     어절 보존 + 리드 폭 제한. <br>은 의미 단위 경계에만 둔다. */
+  .hero p.lead{font-size:19px;color:var(--slate);margin-top:22px;font-weight:500;word-break:keep-all;max-width:34em;line-height:1.62}
+  .hero p.lead .mbr{display:none}
   .hero-cta{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
   .hero-visual{display:flex;justify-content:center;position:relative}
   .hero-visual .blob{position:absolute;width:360px;height:360px;background:radial-gradient(circle,rgba(57,180,255,.2),transparent 68%);top:20px;z-index:0}
@@ -192,6 +195,9 @@
     /* WHY: ≤560 .wrap{padding:0 18px}가 hero-grid 상단 padding을 덮어 헤더↔H1이 붙음.
        margin은 .wrap에 안 잡히므로 삭제된 배지 자리만큼 상단 breathing room 복원 */
     .hero h1{font-size:40px;margin-top:36px}
+    /* WHY: 좁은 폭에서 리드 2번째 줄이 "…광고도 / 알아서 척척!"으로 고아 어절이 생김 */
+    .hero p.lead{max-width:none}
+    .hero p.lead .mbr{display:inline}
     .hero-cta{justify-content:center}
     .hero-badge{margin:0 auto;display:inline-block}
     .value-grid{grid-template-columns:1fr;gap:18px}
@@ -247,7 +253,7 @@
   <div class="wrap hero-grid" id="hero">
     <div class="hero-copy">
       <h1>센터 운영 폰 하나로 끝!<br><span class="sk">사장님은 본업에만 집중하세요</span></h1>
-      <p class="lead">조명 에어컨 출입 등 시설 IoT 원격자동제어, 회원관리는 AI가 자동으로, 센터주변에 광고도 알아서 척척!<br>내가 없어도 매장이 알아서 돌아가는 매직!</p>
+      <p class="lead">조명 에어컨 출입 등 시설 IoT 원격자동제어,<br>회원관리는 AI가 자동으로, <br class="mbr">센터 주변에 광고도 알아서 척척!<br>내가 없어도 매장이 알아서 돌아가는 매직!</p>
       <div class="hero-cta">
         <a class="btn btn-sky" href="#hero">무료로 시작하기</a>
         <a class="btn btn-ghost" href="#feat">기능 둘러보기</a>
@@ -378,6 +384,12 @@
           <div class="otog"><b>❄️ 에어컨</b><div class="sw on"></div></div>
           <div class="otog"><b>🌀 환풍기</b><div class="sw"></div></div>
           <div class="otog"><b>🪟 블라인드</b><div class="sw on"></div></div>
+          <div class="oai">
+            <div class="oai-head"><span class="ai-badge">AI</span><b>AI 자동 제어 중</b><span class="ai-dot"></span></div>
+            <small>✓ 18시 피크 예측 → 에어컨 미리 ON</small>
+            <small>✓ 마지막 퇴실 감지 → 조명·환풍기 OFF</small>
+            <small>✓ 만료 임박 회원 3명 → 재등록 알림 발송</small>
+          </div>
           <div class="osched">
             <div class="ic">⏰</div>
             <div><b>영업시간 자동 스케줄</b><small>06:00 자동 ON · 24:00 자동 OFF</small></div>
