@@ -59,6 +59,19 @@
   .nav-cta:hover{background:var(--sky-strong)}
   .menu-btn{display:none}
 
+  /* ---------- NAV DROPDOWN (입점 하위메뉴) ---------- */
+  .nav-drop{position:relative;display:flex;align-items:center}
+  .nav-drop>.nav-drop-top{display:inline-flex;align-items:center;gap:6px}
+  .nav-caret{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;transition:transform .15s ease}
+  /* WHY: 링크와 패널 사이 빈 틈에서 hover 가 끊기지 않도록 투명 브리지 */
+  .nav-drop::after{content:'';position:absolute;top:100%;left:0;right:0;height:18px}
+  .nav-drop-menu{position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:212px;background:#fff;border:1px solid var(--hair);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.10);padding:8px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;transition:opacity .16s ease,transform .16s ease}
+  .nav-drop:hover .nav-drop-menu,.nav-drop:focus-within .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .nav-drop-menu a{display:block;padding:10px 12px;border-radius:8px;font-size:14.5px;font-weight:600;color:#3a3a42}
+  .nav-drop-menu a:hover{background:var(--sky-tint);color:var(--sky-text)}
+  .nav-links a.is-active{color:var(--sky-text)}
+  .nav-drop-menu a.is-active{background:var(--sky-tint);color:var(--sky-text)}
+
   /* ---------- HERO ---------- */
   .hero{background:linear-gradient(180deg,#EEF8FF 0%,#FAFAFA 100%);overflow:hidden}
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:100px var(--gutter) 112px}  /* 가로는 wrap 거터 유지(0이면 중간폭에서 좌우가 붙음) */
@@ -187,6 +200,13 @@
     .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--hair);box-shadow:0 12px 24px rgba(0,0,0,.08);padding:8px 0}
     .nav-links.open a{padding:14px 22px;font-size:16px}
     .nav-links.open .nav-cta{margin:8px 22px;text-align:center}
+    .nav-links.open .nav-drop{display:block;position:static}
+    .nav-links.open .nav-drop::after{display:none}
+    .nav-links.open .nav-drop-top{display:flex;justify-content:space-between;align-items:center}
+    .nav-links.open .nav-drop-menu{position:static;transform:none;opacity:1;visibility:visible;display:none;min-width:0;background:var(--sky-tint);border:0;border-radius:0;box-shadow:none;padding:0}
+    .nav-links.open .nav-drop.open .nav-drop-menu{display:flex}
+    .nav-links.open .nav-drop.open .nav-caret{transform:rotate(180deg)}
+    .nav-links.open .nav-drop-menu a{padding:13px 22px 13px 34px;font-size:15px;border-radius:0}
     .menu-btn{display:flex;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
     .menu-btn span{width:22px;height:2px;background:var(--text);border-radius:2px}
     .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px var(--gutter) 56px;text-align:center}
@@ -313,7 +333,17 @@
       <a href="index.html">서비스소개</a>
       <a href="faq.html">자주묻는질문</a>
       <a href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">고객센터</a>
-      <a href="enter.html">내센터입점하기</a>
+      <div class="nav-drop">
+        <a class="nav-drop-top is-active" href="enter.html" aria-haspopup="true" aria-expanded="false">내센터입점하기<span class="nav-caret" aria-hidden="true"></span></a>
+        <div class="nav-drop-menu">
+        <a href="enter.html">전체 서비스</a>
+        <a href="enter-ad.html">온라인광고 · 회원모집</a>
+        <a href="enter-members.html">회원관리</a>
+        <a href="enter-unmanned.html">24시 무인운영</a>
+        <a href="enter-subscription.html">월 정기결제 구독멤버십</a>
+        <a href="enter-remote.html" class="is-active" aria-current="page">시설 원격제어 · IoT</a>
+        </div>
+      </div>
       <!-- TODO: 센터관리자메뉴 외부 URL 교체 -->
       <a class="nav-todo" href="#" onclick="return false;">센터관리자메뉴</a>
       <a class="nav-cta" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">무료로 시작하기</a>
@@ -537,16 +567,31 @@
     var btn=document.querySelector('.menu-btn');
     var nav=document.querySelector('.nav-links');
     if(!btn||!nav)return;
+    var drop=nav.querySelector('.nav-drop');
+    var dropTop=drop?drop.querySelector('.nav-drop-top'):null;
+    var mqMobile=window.matchMedia('(max-width:900px)');
     btn.setAttribute('aria-expanded','false');
-    function close(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+    function closeDrop(){if(drop){drop.classList.remove('open');if(dropTop)dropTop.setAttribute('aria-expanded','false');}}
+    function close(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');closeDrop();}
     btn.addEventListener('click',function(e){
       e.stopPropagation();
       var open=nav.classList.toggle('open');
+      if(!open)closeDrop();
       btn.setAttribute('aria-expanded',open?'true':'false');
     });
-    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+    if(dropTop){
+      /* WHY: 모바일은 상위항목=아코디언 토글(하위 '전체 서비스'로 enter.html 진입), PC는 클릭 시 enter.html 이동 */
+      dropTop.addEventListener('click',function(e){
+        if(!mqMobile.matches)return;
+        e.preventDefault();e.stopPropagation();
+        var o=drop.classList.toggle('open');
+        dropTop.setAttribute('aria-expanded',o?'true':'false');
+      });
+    }
+    nav.querySelectorAll('a').forEach(function(a){if(a===dropTop)return;a.addEventListener('click',close);});
     document.addEventListener('click',function(e){
       if(nav.classList.contains('open')&&!nav.contains(e.target)&&!btn.contains(e.target))close();
+      if(drop&&drop.classList.contains('open')&&!drop.contains(e.target))closeDrop();
     });
   })();
 </script>
