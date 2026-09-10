@@ -1,5 +1,6 @@
 /* 니짐내짐 — "시작하기" CTA 클릭 시 회원가입 안내 모달 (사장님 랜딩 5페이지 공용)
-   WHY: href 는 원본 그대로 두고 JS 로만 가로챈다 (progressive enhancement) */
+   WHY: href 는 원본 그대로 두고 JS 로만 가로챈다 (progressive enhancement)
+   WHY: 버튼은 모양을 재현하지 않고 페이지의 .btn/.btn-sky/.btn-ghost 를 그대로 쓴다 */
 (function () {
   'use strict';
 
@@ -32,7 +33,7 @@
     icon.className = 'sgm-icon';
     icon.setAttribute('aria-hidden', 'true');
     icon.innerHTML =
-      '<svg viewBox="0 0 24 24" fill="none" stroke="#1E93DD" stroke-width="2.2" ' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="var(--sky-strong, #1E93DD)" stroke-width="2.2" ' +
       'stroke-linecap="round" stroke-linejoin="round">' +
       '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>' +
       '<circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>';
@@ -52,12 +53,12 @@
 
     confirmBtn = document.createElement('button');
     confirmBtn.type = 'button';
-    confirmBtn.className = 'sgm-btn sgm-confirm';
+    confirmBtn.className = 'btn btn-sky sgm-confirm';
     confirmBtn.textContent = '확인';
 
     cancelBtn = document.createElement('button');
     cancelBtn.type = 'button';
-    cancelBtn.className = 'sgm-btn sgm-cancel';
+    cancelBtn.className = 'btn btn-ghost sgm-cancel';
     cancelBtn.textContent = '취소';
 
     actions.appendChild(confirmBtn);
