@@ -85,8 +85,12 @@
 
     cancelBtn.addEventListener('click', function () { close(); });
 
+    // WHY: mousedown 기본동작이 핸들러 실행 뒤 포커스를 오버레이(→body)로 옮겨
+    // 트리거 앵커로의 포커스 복귀를 덮어쓴다. preventDefault 로 막고 닫는다.
     overlay.addEventListener('mousedown', function (e) {
-      if (e.target === overlay) close();
+      if (e.target !== overlay) return;
+      e.preventDefault();
+      close();
     });
 
     document.addEventListener('keydown', function (e) {
