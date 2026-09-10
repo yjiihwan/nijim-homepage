@@ -5,6 +5,8 @@
   'use strict';
 
   var TARGET_SELECTOR = 'a[href*="authentication/signin/basic"]';
+  // WHY: 헤더 '센터관리자메뉴' 는 기존 회원의 로그인 진입 경로라 안내 없이 바로 보낸다
+  var SKIP_SELECTOR = '[data-signup-modal="skip"]';
   var TITLE = '간단한 회원가입 후 이용하실 수 있어요';
   var DESC = '가입비 없이 무료입니다. 회원가입을 마치면 바로 이용하실 수 있습니다.';
 
@@ -149,6 +151,7 @@
   function onClick(e) {
     var a = e.target.closest ? e.target.closest(TARGET_SELECTOR) : null;
     if (!a) return;
+    if (a.matches(SKIP_SELECTOR)) return;
     if (e.defaultPrevented) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     e.preventDefault();
