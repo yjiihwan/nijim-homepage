@@ -292,6 +292,8 @@
   .ocard h3{font-size:17px;font-weight:900;line-height:1.35;word-break:keep-all}
   .ocard p{color:var(--slate);font-size:14.5px;line-height:1.55;margin-top:6px;word-break:keep-all}
   .ocard .go{color:var(--sky-text);font-weight:800;font-size:13.5px;margin-top:10px;display:inline-block}
+  /* WHY: 다른 기능이 5개(홀수)라 마지막 카드가 왼쪽에 혼자 남는다 */
+  .others-grid .ocard:nth-child(odd):last-child{grid-column:1/-1}
   .hub{text-align:center;margin-top:32px}
   .hub a{color:var(--sky-text);font-weight:800;font-size:15px;border-bottom:1.5px solid var(--sky-tint2);padding-bottom:2px}
 
@@ -406,6 +408,7 @@
         <a href="enter-unmanned.html">24시 무인운영</a>
         <a href="enter-subscription.html">월 정기결제 구독멤버십</a>
         <a href="enter-remote.html">시설 원격제어 · IoT</a>
+        <a href="enter-link.html">링크 결제</a>
         </div>
       </div>
       <a href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener" data-signup-modal="skip">센터관리자메뉴</a>
@@ -688,6 +691,10 @@
       <a class="ocard" href="enter-remote.html">
         <div class="oi">📱</div>
         <div class="ob"><h3>시설 원격제어 · IoT</h3><p>조명·에어컨·출입문까지 폰으로 원격 제어하고 영업시간에 맞춰 자동으로.</p><span class="go">자세히 보기 →</span></div>
+      </a>
+      <a class="ocard" href="enter-link.html">
+        <div class="oi">🔗</div>
+        <div class="ob"><h3>링크 결제</h3><p>문자·카톡으로 판매페이지 링크만 보내면 고객이 결제하고 등록까지 끝냅니다.</p><span class="go">자세히 보기 →</span></div>
       </a>
     </div>
     <p class="hub"><a href="enter.html">사장님 서비스 전체 보기 →</a></p>

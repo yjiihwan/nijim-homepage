@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>니짐내짐 사장님 — 사람 없이 24시간 무인운영</title>
-<meta name="description" content="멤버십 발급·출입·전자계약까지 AI가 자동 처리. 비싼 키오스크도 상주 인력도 없이 24시간 운영하세요. 입점비·초기비용 0원.">
-<meta property="og:title" content="24시 무인운영 | 니짐내짐 사장님">
-<meta property="og:description" content="키오스크 없이 폰 하나로. 멤버십 발급·QR 출입·전자계약을 AI가 자동 처리합니다.">
+<title>니짐내짐 사장님 — 링크 하나만 보내면 결제부터 등록까지</title>
+<meta name="description" content="문자·카톡으로 판매페이지 링크만 보내면 고객이 카드로 결제하고 멤버십 발급·회원 등록까지 자동으로. 결제 중개수수료 0%.">
+<meta property="og:title" content="링크 결제 | 니짐내짐 사장님">
+<meta property="og:description" content="링크 하나만 보내세요. 결제부터 등록까지 고객이 알아서 끝냅니다.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
@@ -118,7 +118,7 @@
 
   /* ---------- STATS ---------- */
   .stats{background:var(--ink);color:#fff;padding:var(--stats-y) 0}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stats-grid{display:grid;grid-template-columns:repeat(5,1fr)}
   .stat{text-align:center;border-right:1px solid rgba(255,255,255,.1)}
   .stat:last-child{border-right:0}
   .stat b{font-size:clamp(20px,2.3vw,30px);font-weight:900;display:block;letter-spacing:-.02em;white-space:nowrap}
@@ -194,6 +194,8 @@
     .nav-links a{font-size:14px}
     .nav-links .nav-cta{padding:9px 14px;font-size:13.5px}
     .hero-grid{gap:32px}
+    /* WHY: 통계 5열에서 중간폭(≤960)일 때 긴 설명이 2줄로 꺾임 — 네비와 동일하게 폰트만 축소 */
+    .stat span{font-size:13px}
   }
   @media(max-width:900px){
     :root{--sec-y:76px;--band-y:76px;--stats-y:40px;--banner-y:58px;--head-gap:40px;--grid-gap:20px;--gutter:24px}
@@ -219,13 +221,13 @@
     .hero h1{font-size:40px;margin-top:36px}
     /* WHY: 좁은 폭에서 리드 2번째 줄이 "…광고도 / 알아서 척척!"으로 고아 어절이 생김 */
     .hero p.lead{max-width:none}
-    .hero p.lead .mbr{display:inline}
     .hero-cta{justify-content:center}
     .hero-badge{margin:0 auto;display:inline-block}
     .value-grid{grid-template-columns:1fr;gap:18px}
     .feat-grid{grid-template-columns:1fr}
     .stats-grid{grid-template-columns:1fr 1fr;gap:26px 0}
-    .stat:nth-child(2){border-right:0}
+    .stat:nth-child(even){border-right:0}
+    .stat:nth-child(odd):last-child{grid-column:1/-1;border-right:0}
     .stat{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}
     .show-grid{grid-template-columns:1fr;gap:40px;text-align:center}
     .show-feats{text-align:left}
@@ -240,8 +242,6 @@
     .hero h1{font-size:32px}
     .bcard{flex-direction:column}
     .bcard .ph{width:100%;height:180px}
-    /* 모바일 크롭에서 인물 상단(폰 든 손)이 잘려 크롭 기준점을 위로 — 프레임·PC/태블릿 무변경 */
-    .bcard .ph img[src$="owner_iot.jpg"]{object-position:50% 0%}
     .stat b{font-size:19px}
     .final h2{font-size:27px}
   }
@@ -319,6 +319,85 @@
     .hero h1{font-size:30px}
     .ocard{padding:20px 20px;gap:13px}
   }
+
+  /* ---------- 링크 결제 전용 ---------- */
+  /* WHY: 한글 기본 줄바꿈은 어절 중간에서 꺾인다(모바일 390 에서 「달라집니/다.」) — 이 페이지 본문 전반에 어절 보존 */
+  .sec-sub,.cmpt-note,.final p,.final .fnote,.cbanner .ct p,.cbanner .ct h3,.show p,
+  h2.sec,.final h2,.show h2,.bcard .bx h3,.bcard .bx p,.vcard h3,.vcard p,.stat span,.ofeat b,.ofeat small{word-break:keep-all}
+  /* WHY: 다크 .show 밴드 안의 밝은 목업은 색 미지정 텍스트가 흰 글자로 사라진다 */
+  .show .app-top,.show .cmp{color:var(--text)}
+
+  /* 히어로 사진 — .phone 과 동일한 무게감(그림자) + .vcard radius 유지 */
+  .hphoto{position:relative;z-index:1;width:340px;max-width:100%;border-radius:20px;overflow:hidden;border:1px solid var(--hair);box-shadow:0 30px 60px rgba(10,20,30,.24);flex:none;background:#fff}
+  .hphoto img{width:100%;aspect-ratio:1/1;object-fit:cover}
+
+  /* 히어로 3스텝 칩 */
+  .steps3{display:flex;align-items:center;gap:10px;margin-top:26px;flex-wrap:wrap}
+  .steps3 .st{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--hair);border-radius:999px;padding:9px 16px;font-size:14.5px;font-weight:800;white-space:nowrap}
+  .steps3 .st i{font-style:normal;width:20px;height:20px;border-radius:50%;background:var(--sky-tint2);color:var(--sky-text);font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;flex:none}
+  .steps3 .ar{color:var(--fog);font-weight:900;font-size:15px}
+
+  /* 케이스 3카드 — 상단 미디어(사진 또는 목업) + 본문 */
+  .case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap);margin-top:var(--head-gap)}
+  .ccard{background:#fff;border:1px solid var(--hair);border-radius:20px;overflow:hidden;transition:.18s;display:flex;flex-direction:column}
+  .ccard:hover{box-shadow:0 16px 40px rgba(10,20,30,.09);transform:translateY(-3px)}
+  .ccard .cph{aspect-ratio:4/3;overflow:hidden;background:var(--bg);position:relative}
+  .ccard .cph img{width:100%;height:100%;object-fit:cover}
+  .ccard .cbx{padding:24px 26px}
+  .ccard .cn{color:var(--sky-text);font-weight:900;font-size:14px}
+  .ccard h3{font-size:18px;font-weight:900;margin:6px 0 9px;line-height:1.35;word-break:keep-all}
+  .ccard p{color:var(--slate);font-size:14.5px;line-height:1.6;word-break:keep-all}
+  /* WHY: 3번째 케이스는 사진이 없다 — 기존 목업 톤(밝은 배경+말풍선)으로 같은 비율을 채운다 */
+  .cmock{position:absolute;inset:0;padding:22px 24px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+  .cmock .bub{background:#fff;border:1px solid var(--hair);border-radius:14px 14px 14px 4px;padding:11px 13px;font-size:12.5px;font-weight:800;color:var(--text);max-width:90%}
+  .cmock .bub small{display:block;color:var(--slate);font-size:11px;font-weight:600;margin-top:4px;line-height:1.4}
+  .cmock .tag{align-self:flex-end;background:var(--pink-tint2);color:var(--pink-pressed);font-size:11.5px;font-weight:900;padding:6px 12px;border-radius:999px}
+
+  /* 비교표 */
+  .cmpt{margin-top:var(--head-gap);border:1px solid var(--hair);border-radius:20px;overflow:hidden;background:#fff}
+  .cmpt table{width:100%;border-collapse:collapse}
+  .cmpt th,.cmpt td{padding:17px 20px;text-align:left;font-size:15px;border-bottom:1px solid var(--hair);vertical-align:middle;word-break:keep-all}
+  .cmpt thead th{background:var(--bg);font-size:14px;font-weight:900;color:var(--slate)}
+  .cmpt thead th.hi{background:var(--sky-tint);color:var(--sky-text)}
+  .cmpt tbody th{font-weight:800;color:var(--text);width:30%}
+  .cmpt td{color:var(--slate);font-weight:600}
+  .cmpt td.hi{background:var(--sky-tint);color:var(--text);font-weight:800}
+  .cmpt tbody tr:last-child th,.cmpt tbody tr:last-child td{border-bottom:0}
+  .cmpt .mk{font-weight:900;margin-right:5px}
+  .cmpt .no .mk{color:var(--fog)}
+  .cmpt .hi .mk{color:var(--success)}
+  .cmpt-note{color:var(--slate);font-size:13.5px;margin-top:16px}
+
+  /* 동작 흐름 4스텝 */
+  .flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--grid-gap);margin-top:var(--head-gap)}
+  .fcard{background:#fff;border:1px solid var(--hair);border-radius:20px;padding:26px 24px;transition:.18s}
+  .fcard:hover{box-shadow:0 16px 40px rgba(10,20,30,.09);transform:translateY(-3px)}
+  .fcard .fi{width:46px;height:46px;border-radius:13px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:16px}
+  .fcard .fn{color:var(--sky-text);font-weight:900;font-size:13.5px}
+  .fcard h3{font-size:17px;font-weight:900;margin:6px 0 9px;line-height:1.35;word-break:keep-all}
+  .fcard p{color:var(--slate);font-size:14px;line-height:1.6;word-break:keep-all}
+  .flow-result{margin-top:var(--grid-gap)}
+
+  /* WHY: 다른 기능이 5개(홀수)라 마지막 카드가 왼쪽에 혼자 남는다 */
+  .others-grid .ocard:nth-child(odd):last-child{grid-column:1/-1}
+
+  @media(max-width:900px){
+    .case-grid{grid-template-columns:1fr;gap:18px}
+    .flow-grid{grid-template-columns:1fr 1fr}
+    .steps3{justify-content:center}
+    .hphoto{width:300px}
+    .cmpt th,.cmpt td{padding:14px 13px;font-size:14px}
+    .cmpt tbody th{width:34%}
+  }
+  @media(max-width:560px){
+    .flow-grid{grid-template-columns:1fr}
+    .steps3{gap:8px}
+    .steps3 .st{font-size:13.5px;padding:8px 13px}
+    .steps3 .ar{display:none}
+    .cmpt th,.cmpt td{padding:13px 10px;font-size:13px}
+    .cmpt thead th{font-size:12.5px}
+    .ccard .cbx{padding:20px 20px}
+  }
 </style>
 </head>
 <body>
@@ -340,10 +419,10 @@
         <a href="enter.html">전체 서비스</a>
         <a href="enter-ad.html">온라인광고</a>
         <a href="enter-members.html">회원관리</a>
-        <a href="enter-unmanned.html" class="is-active" aria-current="page">24시 무인운영</a>
+        <a href="enter-unmanned.html">24시 무인운영</a>
         <a href="enter-subscription.html">월 정기결제 구독멤버십</a>
         <a href="enter-remote.html">시설 원격제어 · IoT</a>
-        <a href="enter-link.html">링크 결제</a>
+        <a href="enter-link.html" class="is-active" aria-current="page">링크 결제</a>
         </div>
       </div>
       <a href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener" data-signup-modal="skip">센터관리자메뉴</a>
@@ -357,40 +436,25 @@
 <section class="hero" id="top">
   <div class="wrap hero-grid" id="hero">
     <div class="hero-copy">
-      <span class="hero-badge">24시 무인운영</span>
-      <h1>사람 없이도<br><span class="sk">24시간 문을 엽니다</span></h1>
-      <p class="lead">멤버십 발급·출입·전자계약까지 AI가 자동으로 처리합니다. 비싼 키오스크 없이 폰 하나면 됩니다.</p>
+      <span class="hero-badge">링크 결제</span>
+      <h1>링크 하나만<br><span class="sk">보내세요</span></h1>
+      <p class="lead">문자·카톡으로 판매페이지 링크만 보내면, 결제부터 등록까지 고객이 알아서 끝냅니다. 결제받으러 센터로 오라고 할 일도, 계좌번호를 불러줄 일도 없습니다.</p>
+      <div class="steps3">
+        <span class="st"><i>1</i>링크 전송</span>
+        <span class="ar" aria-hidden="true">→</span>
+        <span class="st"><i>2</i>고객이 결제</span>
+        <span class="ar" aria-hidden="true">→</span>
+        <span class="st"><i>3</i>등록 완료</span>
+      </div>
       <div class="hero-cta">
-        <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">무인운영 무료로 시작하기</a>
+        <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">링크 결제 무료로 시작하기</a>
         <a class="btn btn-ghost" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡 문의</a>
       </div>
     </div>
     <div class="hero-visual">
       <div class="blob"></div>
-      <div class="phone">
-        <div class="notch"></div>
-        <div class="screen">
-          <div class="app">
-            <div class="octl">
-              <div class="octl-head"><b>파워핏 역삼 · 무인 운영</b><span class="live">LIVE</span></div>
-              <div class="orow"><b>🚪 QR 출입</b><span class="ok">자동 승인</span></div>
-              <div class="orow"><b>🎫 멤버십 발급</b><span class="ok">자동</span></div>
-              <div class="orow"><b>📝 전자계약</b><span class="ok">완료</span></div>
-              <div class="orow"><b>🖥 키오스크</b><span class="ov">필요 없음</span></div>
-              <div class="orow"><b>🧑‍💼 상주 인력</b><span class="ov">필요 없음</span></div>
-              <div class="oai">
-                <div class="oai-head"><span class="ai-badge">AI</span><b>AI 자동 처리 중</b><span class="ai-dot"></span></div>
-                <small>✓ 신규 회원 앱 등록 → 멤버십 자동 발급</small>
-                <small>✓ 출입구 QR 인식 → 즉시 입장</small>
-                <small>✓ 전자계약 서명 완료 → 서류 자동 보관</small>
-              </div>
-              <div class="osched">
-                <div class="ic">🕛</div>
-                <div><b>24시간 무인 운영</b><small>사장님이 없어도 센터는 열려 있습니다</small></div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="hphoto">
+        <img src="media/link_send.jpg" alt="사장님이 고객에게 결제 링크를 문자로 보내는 모습" width="720" height="720">
       </div>
     </div>
   </div>
@@ -400,38 +464,119 @@
 <section class="stats">
   <div class="wrap">
     <div class="stats-grid">
-      <div class="stat"><b class="sk">24시운영</b><span>IoT·AI로 완전자동화</span></div>
-      <div class="stat"><b class="sk">0원</b><span>입점비·초기비용 제로</span></div>
-      <div class="stat"><b class="sk">QR 출입</b><span>모바일 회원증으로 바로 입장</span></div>
-      <div class="stat"><b class="sk">무인등록</b><span>멤버십 발급·전자계약 자동</span></div>
+      <div class="stat"><b class="sk">수수료 0%</b><span>결제 중개수수료 없음</span></div>
+      <div class="stat"><b class="sk">링크 1개</b><span>문자·카톡으로 전송</span></div>
+      <div class="stat"><b class="sk">카드결제</b><span>고객이 링크에서 바로</span></div>
+      <div class="stat"><b class="sk">자동 등록</b><span>결제 즉시 멤버십·회원</span></div>
+      <div class="stat"><b class="sk">앱 없이</b><span>웹에서 링크만 열면 끝</span></div>
     </div>
   </div>
 </section>
 
-<!-- VALUE -->
-<section class="value">
+<!-- CASES -->
+<section class="value" id="cases">
   <div class="wrap">
-    <span class="eyebrow">Unmanned 24h</span>
-    <h2 class="sec">상주 인력도, 비싼 키오스크도 없이</h2>
-    <p class="sec-sub">등록부터 입장까지 회원이 앱에서 스스로 끝냅니다. 사장님은 확인만 하세요.</p>
-    <div class="value-grid">
-      <div class="vcard">
-        <div class="vico">🎫</div>
-        <div class="vn">01</div>
-        <h3>멤버십 발급이 자동으로</h3>
-        <p>회원이 앱에서 결제하면 멤버십이 바로 발급됩니다. 사장님이 카운터에서 처리할 일이 없어요.</p>
+    <span class="eyebrow">Pain points</span>
+    <h2 class="sec">이런 상황 있으시죠</h2>
+    <p class="sec-sub">상담은 다 끝났는데 마지막 결제에서 막히는 순간들입니다.</p>
+    <div class="case-grid">
+      <div class="ccard">
+        <div class="cph"><img src="media/link_chat.jpg" alt="전화로 상담 중인 센터 관장님" width="720" height="720"></div>
+        <div class="cbx">
+          <div class="cn">01</div>
+          <h3>상담은 끝났는데 결제받으러 오라고 할 때</h3>
+          <p>채팅·전화로 안내는 다 했습니다. 그런데 결제 한 번 받으려고 센터로 와달라고 말하는 순간, 마음이 식습니다.</p>
+        </div>
       </div>
-      <div class="vcard">
-        <div class="vico">🚪</div>
-        <div class="vn">02</div>
-        <h3>QR 하나로 출입 처리</h3>
-        <p>결제하면 앱에 모바일 회원증(QR)이 발급됩니다. 출입구에서 인식시키면 바로 입장합니다.</p>
+      <div class="ccard">
+        <div class="cph"><img src="media/link_presale.jpg" alt="공사 중인 헬스장에서 사전판매 결제를 받는 모습" width="720" height="720"></div>
+        <div class="cbx">
+          <div class="cn">02</div>
+          <h3>오픈 전 프리세일인데 현장이 공사 중일 때</h3>
+          <p>아직 인테리어 중이라 결제받을 데스크도 단말기도 없습니다. 관심이 몰리는 건 지금인데 받을 방법이 없습니다.</p>
+        </div>
       </div>
-      <div class="vcard">
-        <div class="vico">📝</div>
-        <div class="vn">03</div>
-        <h3>계약도 종이 없이</h3>
-        <p>전자계약으로 서명까지 앱에서. 종이 계약서를 보관하고 찾을 일이 사라집니다.</p>
+      <div class="ccard">
+        <div class="cph">
+          <div class="cmock" aria-hidden="true">
+            <div class="bub">○○은행 123-456-7890<small>입금하시면 등록 처리해 드릴게요</small></div>
+            <span class="tag">카드결제 불가</span>
+          </div>
+        </div>
+        <div class="cbx">
+          <div class="cn">03</div>
+          <h3>계좌이체만 안내하다 카드 고객을 놓칠 때</h3>
+          <p>계좌로 보내달라고 하면 카드로 결제하려던 고객은 그대로 멈춥니다. 입금 확인도 사장님이 통장을 보고 직접 해야 합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="feat" id="compare">
+  <div class="wrap">
+    <span class="eyebrow">Compare</span>
+    <h2 class="sec">계좌이체 대신, 링크 하나</h2>
+    <p class="sec-sub">같은 금액을 받아도 사장님이 해야 하는 일이 달라집니다.</p>
+    <div class="cmpt">
+      <table>
+        <thead>
+          <tr><th scope="col">항목</th><th scope="col">계좌이체 안내</th><th scope="col" class="hi">판매페이지 링크</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">카드결제</th><td class="no"><span class="mk">✕</span>불가</td><td class="hi"><span class="mk">✓</span>가능</td></tr>
+          <tr><th scope="row">입금 확인</th><td class="no"><span class="mk">✕</span>통장 보고 수작업</td><td class="hi"><span class="mk">✓</span>결제 즉시 자동</td></tr>
+          <tr><th scope="row">멤버십 발급</th><td class="no"><span class="mk">✕</span>사장님이 직접 등록</td><td class="hi"><span class="mk">✓</span>자동 발급</td></tr>
+          <tr><th scope="row">회원 등록</th><td class="no"><span class="mk">✕</span>회원 정보 직접 입력</td><td class="hi"><span class="mk">✓</span>자동 등록</td></tr>
+          <tr><th scope="row">영수증</th><td class="no"><span class="mk">✕</span>따로 발행</td><td class="hi"><span class="mk">✓</span>자동 발행</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cmpt-note">링크로 결제가 이뤄져도 센터가 니짐내짐에 내는 결제 중개수수료는 0%입니다.</p>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="value" id="feat">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2 class="sec">링크 복사부터 회원 등록까지 4단계</h2>
+    <p class="sec-sub">사장님이 하는 일은 링크를 보내는 것까지입니다.</p>
+    <div class="flow-grid">
+      <div class="fcard">
+        <div class="fi">🔗</div>
+        <div class="fn">STEP 01</div>
+        <h3>판매페이지 링크 복사</h3>
+        <p>관리자 화면에서 내 센터 판매페이지 링크를 복사합니다.</p>
+      </div>
+      <div class="fcard">
+        <div class="fi">💬</div>
+        <div class="fn">STEP 02</div>
+        <h3>문자·카톡으로 전송</h3>
+        <p>상담하던 그 대화창에 링크를 그대로 붙여넣어 보냅니다.</p>
+      </div>
+      <div class="fcard">
+        <div class="fi">💳</div>
+        <div class="fn">STEP 03</div>
+        <h3>고객이 열어 결제</h3>
+        <p>고객이 링크를 열어 상품을 고르고 카드로 결제합니다.</p>
+      </div>
+      <div class="fcard">
+        <div class="fi">✅</div>
+        <div class="fn">STEP 04</div>
+        <h3>멤버십·회원 자동 등록</h3>
+        <p>결제 즉시 멤버십이 발급되고 회원 명단에 자동으로 올라갑니다.</p>
+      </div>
+    </div>
+    <div class="flow-result">
+      <div class="bcard hl">
+        <div class="ph"><img src="media/link_done.jpg" alt="고객이 카페에서 링크로 결제를 마친 모습" width="720" height="720"></div>
+        <div class="bx">
+          <div class="n">결과</div>
+          <h3>결제 뒤에 사장님이 따로 할 일은 없습니다</h3>
+          <p>고객이 결제를 마치는 순간 멤버십이 발급되고 회원 명단에 자동으로 올라갑니다. 입금을 확인할 일도, 회원 정보를 다시 입력할 일도 없습니다.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -441,58 +586,61 @@
 <section class="show">
   <div class="wrap show-grid">
     <div>
-      <span class="eyebrow">No staff needed</span>
-      <h2>카운터를 비워도<br><span class="sky">센터는 돌아갑니다</span></h2>
-      <p>회원 등록·출입·계약을 AI가 자동으로 처리합니다. 사장님은 매장에 붙어 있지 않아도 됩니다.</p>
+      <span class="eyebrow">No app needed</span>
+      <h2>앱 설치 없이<br><span class="sky">웹에서 바로 열립니다</span></h2>
+      <p>고객에게 앱을 깔라고 할 필요가 없습니다. 보낸 링크를 누르면 웹페이지가 바로 열리고, 그 자리에서 상품을 고르고 결제합니다.</p>
       <div class="show-feats">
-        <div class="ofeat"><div class="bar" style="background:var(--sky)"></div><b>자동 멤버십</b><small>앱 결제 즉시 멤버십 발급.</small></div>
-        <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>QR 출입</b><small>모바일 회원증으로 바로 입장.</small></div>
-        <div class="ofeat"><div class="bar" style="background:var(--pink-ondark)"></div><b>전자계약</b><small>종이 계약서 없이 앱에서 서명.</small></div>
-        <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>비용 절감</b><small>키오스크·상주 인력 없이 운영.</small></div>
+        <div class="ofeat"><div class="bar" style="background:var(--sky)"></div><b>설치 없이</b><small>링크를 누르면 웹에서 바로 열립니다.</small></div>
+        <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>어디로든</b><small>문자·카톡·DM 어디에 붙여도 됩니다.</small></div>
+        <div class="ofeat"><div class="bar" style="background:var(--pink-ondark)"></div><b>카드결제</b><small>계좌번호를 부르지 않아도 됩니다.</small></div>
+        <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>수수료 0%</b><small>링크로 결제해도 결제 중개수수료는 0%.</small></div>
       </div>
       <div class="show-cta">
-        <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">무인운영 무료로 시작하기</a>
+        <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">링크 결제 무료로 시작하기</a>
       </div>
     </div>
     <div class="show-visual">
       <div class="phone"><div class="notch"></div><div class="screen"><div class="app">
-        <div class="octl">
-              <div class="octl-head"><b>파워핏 역삼 · 무인 운영</b><span class="live">LIVE</span></div>
-              <div class="orow"><b>🚪 QR 출입</b><span class="ok">자동 승인</span></div>
-              <div class="orow"><b>🎫 멤버십 발급</b><span class="ok">자동</span></div>
-              <div class="orow"><b>📝 전자계약</b><span class="ok">완료</span></div>
-              <div class="orow"><b>🖥 키오스크</b><span class="ov">필요 없음</span></div>
-              <div class="orow"><b>🧑‍💼 상주 인력</b><span class="ov">필요 없음</span></div>
-              <div class="oai">
-                <div class="oai-head"><span class="ai-badge">AI</span><b>AI 자동 처리 중</b><span class="ai-dot"></span></div>
-                <small>✓ 신규 회원 앱 등록 → 멤버십 자동 발급</small>
-                <small>✓ 출입구 QR 인식 → 즉시 입장</small>
-                <small>✓ 전자계약 서명 완료 → 서류 자동 보관</small>
-              </div>
-              <div class="osched">
-                <div class="ic">🕛</div>
-                <div><b>24시간 무인 운영</b><small>사장님이 없어도 센터는 열려 있습니다</small></div>
-              </div>
+        <div class="app-top"><span class="app-loc">파워핏 역삼</span><span class="app-search">🔗 판매페이지</span></div>
+            <div class="cmp">
+              <h5>상품을 선택하세요</h5>
+              <div class="crow best"><span>헬스 3개월권</span><span class="cp">선택됨</span></div>
+              <div class="crow"><span>헬스 6개월권</span><span class="cp">보기</span></div>
+              <div class="crow"><span>PT 10회권</span><span class="cp">보기</span></div>
+              <div class="crow"><span>결제 수단</span><span class="cp">카드</span></div>
+              <div class="crow"><span>앱 설치</span><span class="cp">필요 없음</span></div>
+              <div class="cbtn">카드로 결제하기</div>
+              <div class="cnote">결제하면 멤버십이 자동으로 발급됩니다</div>
             </div>
       </div></div></div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="feat" id="feat">
+<!-- FEE -->
+<section class="feat" id="fee">
   <div class="wrap">
-    <span class="eyebrow">Features</span>
-    <h2 class="sec">무인운영, 폰 하나로 충분합니다</h2>
-    <p class="sec-sub">키오스크 설치비도 상주 인건비도 들이지 않고 24시간 운영합니다.</p>
-    <div class="feat-grid">
-      <div class="bcard hl">
-        <div class="ph"><img src="media/owner_unmanned.jpg" alt="QR 출입 24시간 무인운영"></div>
-        <div class="bx"><div class="n">01</div><h3>사람 없이도 24시간 무인운영</h3><p>멤버십 발급·출입·전자계약까지 AI가 처리합니다. 비싼 키오스크 없이 폰만 있으면 인건비·관리 부담이 확 줄어요.</p></div>
+    <span class="eyebrow">Fee</span>
+    <h2 class="sec">결제 중개수수료 0%</h2>
+    <p class="sec-sub">링크로 받은 결제에도 센터가 니짐내짐에 내는 중개수수료는 없습니다.</p>
+    <div class="value-grid">
+      <div class="vcard">
+        <div class="vico">💸</div>
+        <div class="vn">01</div>
+        <h3>결제 중개수수료 0%</h3>
+        <p>링크로 결제가 이뤄져도 센터가 니짐내짐에 내는 결제 중개수수료는 없습니다.</p>
       </div>
-      <div class="bcard">
-        <div class="ph"><img src="media/feat_signup.jpg" alt="터치 한 번으로 가입·결제"></div>
-        <div class="bx"><div class="n">02</div><h3>등록도 회원이 앱에서 직접</h3><p>종이 계약서도 긴 상담 전화도 없이 회원이 앱에서 결제합니다. 결제하면 모바일 회원증(QR)이 발급돼 바로 입장해요.</p></div>
+      <div class="vcard">
+        <div class="vico">🎁</div>
+        <div class="vn">02</div>
+        <h3>입점비·초기비용 0원</h3>
+        <p>가입비도 설치비도 없습니다. 회원가입만 하면 오늘 바로 판매페이지 링크를 보낼 수 있어요.</p>
+      </div>
+      <div class="vcard">
+        <div class="vico">📊</div>
+        <div class="vn">03</div>
+        <h3>결제 내역은 한 곳에</h3>
+        <p>누가 언제 어떤 상품을 결제했는지 관리자 화면에서 바로 확인합니다. 통장을 따로 들여다볼 필요가 없어요.</p>
       </div>
     </div>
   </div>
@@ -501,13 +649,13 @@
 <!-- FINAL CTA -->
 <section class="final">
   <div class="wrap">
-    <h2>오늘부터 24시간 무인운영</h2>
-    <p>입점비·초기비용 0원. 출입 기기 설치만 현장에 맞춰 안내해 드립니다.</p>
+    <h2>오늘부터 링크로 결제받으세요</h2>
+    <p>입점비·초기비용 0원, 결제 중개수수료 0%. 회원가입만 하면 바로 시작할 수 있습니다.</p>
     <div class="fcta">
-        <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">무인운영 무료로 시작하기</a>
+        <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">링크 결제 무료로 시작하기</a>
         <a class="btn btn-ghost" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡으로 상담하기</a>
     </div>
-    <p class="fnote">출입 기기 설치가 필요한 서비스라, 상담 후 현장에 맞는 견적을 안내해 드립니다.</p>
+    <p class="fnote">회원가입만 하면 바로 이용할 수 있습니다. 설치할 것도, 방문 상담도 없습니다.</p>
   </div>
 </section>
 
@@ -524,11 +672,15 @@
       </a>
       <a class="ocard" href="enter-members.html">
         <div class="oi">👥</div>
-        <div class="ob"><h3>회원관리</h3><p>회원 현황·구독·결제를 한 화면에서. 만료 임박 회원 알림까지 자동으로.</p><span class="go">자세히 보기 →</span></div>
+        <div class="ob"><h3>회원관리</h3><p>회원 현황·결제를 한 화면에서. 만료 임박 회원 알림까지 자동으로.</p><span class="go">자세히 보기 →</span></div>
+      </a>
+      <a class="ocard" href="enter-unmanned.html">
+        <div class="oi">🤖</div>
+        <div class="ob"><h3>24시 무인운영</h3><p>멤버십 발급·출입·전자계약을 AI가 처리해 사람 없이 24시간 운영합니다.</p><span class="go">자세히 보기 →</span></div>
       </a>
       <a class="ocard" href="enter-subscription.html">
         <div class="oi">🔄</div>
-        <div class="ob"><h3>월 정기결제 구독멤버십</h3><p>1년 약정 없는 월 구독으로 등록의 문턱을 낮춥니다.</p><span class="go">자세히 보기 →</span></div>
+        <div class="ob"><h3>월 정기결제 구독멤버십</h3><p>1년 약정 없이 매달 결제하는 방식으로 등록의 문턱을 낮춥니다.</p><span class="go">자세히 보기 →</span></div>
       </a>
       <a class="ocard" href="enter-remote.html">
         <div class="oi">📱</div>
@@ -550,7 +702,6 @@
     <a class="btn btn-pink" href="index.html">내 주변 헬스장 찾기</a>
   </div>
 </section>
-
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
