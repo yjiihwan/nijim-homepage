@@ -159,9 +159,14 @@
   .show p{color:var(--fog);font-size:17px;margin-top:18px;line-height:1.6}
   .show-feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
   .ofeat{background:var(--ink-card);border:1px solid #2a2a34;border-radius:14px;padding:18px}
+  /* WHY: 카드가 홀수(3개)라 2열 그리드 마지막 줄 오른쪽에 빈칸이 생김.
+     PC는 3열 1행, 태블릿·모바일(2열)은 마지막 칸을 가로 전체로 채운다 */
+  @media(min-width:901px){.show-feats{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:900px){.show-feats .ofeat:nth-child(odd):last-child{grid-column:1/-1}}
   .ofeat .bar{width:26px;height:3px;border-radius:2px;margin-bottom:12px}
   .ofeat b{font-size:15px;font-weight:800;display:block}
-  .ofeat small{color:var(--fog);font-size:12.5px;line-height:1.5;display:block;margin-top:6px}
+  /* WHY: 3열에서 폭이 좁아 "앱에서 바/로."처럼 단어 중간에서 꺾임 — 어절 단위로만 줄바꿈 */
+  .ofeat small{color:var(--fog);font-size:12.5px;line-height:1.5;display:block;margin-top:6px;word-break:keep-all}
   .show-cta{margin-top:34px}
   .show-visual{display:flex;justify-content:center}
 
@@ -443,7 +448,6 @@
       <div class="show-feats">
         <div class="ofeat"><div class="bar" style="background:var(--sky)"></div><b>월 단위 구독</b><small>1년 약정 없이 가볍게 시작.</small></div>
         <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>자동 결제</b><small>매달 자동으로 이어지는 결제. 결제 중개수수료는 0%.</small></div>
-        <div class="ofeat"><div class="bar" style="background:var(--pink-ondark)"></div><b>수납 부담 감소</b><small>결제일마다 미납을 챙기고 독촉할 일이 줄어요.</small></div>
         <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>상담 없이</b><small>전화·종이계약 없이 앱에서 바로.</small></div>
       </div>
       <div class="show-cta">
