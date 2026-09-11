@@ -118,7 +118,7 @@
 
   /* ---------- STATS ---------- */
   .stats{background:var(--ink);color:#fff;padding:var(--stats-y) 0}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stats-grid{display:grid;grid-template-columns:repeat(5,1fr)}
   .stat{text-align:center;border-right:1px solid rgba(255,255,255,.1)}
   .stat:last-child{border-right:0}
   .stat b{font-size:clamp(20px,2.3vw,30px);font-weight:900;display:block;letter-spacing:-.02em;white-space:nowrap}
@@ -194,6 +194,8 @@
     .nav-links a{font-size:14px}
     .nav-links .nav-cta{padding:9px 14px;font-size:13.5px}
     .hero-grid{gap:32px}
+    /* WHY: 통계 5열에서 중간폭(≤960)일 때 긴 설명이 2줄로 꺾임 — 네비와 동일하게 폰트만 축소 */
+    .stat span{font-size:13px}
   }
   @media(max-width:900px){
     :root{--sec-y:76px;--band-y:76px;--stats-y:40px;--banner-y:58px;--head-gap:40px;--grid-gap:20px;--gutter:24px}
@@ -225,7 +227,8 @@
     .value-grid{grid-template-columns:1fr;gap:18px}
     .feat-grid{grid-template-columns:1fr}
     .stats-grid{grid-template-columns:1fr 1fr;gap:26px 0}
-    .stat:nth-child(2){border-right:0}
+    .stat:nth-child(even){border-right:0}
+    .stat:nth-child(odd):last-child{grid-column:1/-1;border-right:0}
     .stat{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}
     .show-grid{grid-template-columns:1fr;gap:40px;text-align:center}
     .show-feats{text-align:left}
@@ -358,7 +361,7 @@
     <div class="hero-copy">
       <span class="hero-badge">온라인광고 · 회원모집</span>
       <h1>광고비 들이지 않고<br><span class="sk">새 회원이 알아서 찾아옵니다</span></h1>
-      <p class="lead">입점하면 내 주변 헬스장을 찾는 니짐내짐 이용자에게 우리 센터가 바로 노출됩니다. 센터 주변 광고까지 자동으로.</p>
+      <p class="lead">입점하면 내 주변 헬스장을 찾는 니짐내짐 이용자에게 우리 센터가 바로 노출됩니다. 센터 주변 광고까지 자동으로. 광고비도, 회원 결제 중개수수료도 0원입니다.</p>
       <div class="hero-cta">
         <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">광고 무료로 시작하기</a>
         <a class="btn btn-ghost" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡 문의</a>
@@ -400,6 +403,7 @@
   <div class="wrap">
     <div class="stats-grid">
       <div class="stat"><b class="sk">0원</b><span>입점비·초기비용 제로</span></div>
+      <div class="stat"><b class="sk">수수료 0%</b><span>결제 중개수수료 없음</span></div>
       <div class="stat"><b class="sk">앱 노출</b><span>내 주변 검색 회원에게 매장 노출</span></div>
       <div class="stat"><b class="sk">자동광고</b><span>입점 시 내 센터 주변에 자동광고</span></div>
       <div class="stat"><b class="sk">전단 없이</b><span>상주 인력·전단 없이 회원 모집</span></div>
@@ -430,7 +434,7 @@
         <div class="vico">⚡</div>
         <div class="vn">03</div>
         <h3>앱에서 바로 등록까지</h3>
-        <p>상담 전화도 종이 계약도 없이, 회원이 앱에서 결제하고 오늘 바로 등록합니다.</p>
+        <p>상담 전화도 종이 계약도 없이, 회원이 앱에서 결제하고 오늘 바로 등록합니다. 이때 센터가 부담하는 중개수수료는 없습니다.</p>
       </div>
     </div>
   </div>
@@ -447,7 +451,7 @@
         <div class="ofeat"><div class="bar" style="background:var(--sky)"></div><b>내 주변 노출</b><small>검색하는 회원에게 우리 센터가 바로.</small></div>
         <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>자동 광고</b><small>입점 시 센터 주변에 자동으로 노출.</small></div>
         <div class="ofeat"><div class="bar" style="background:var(--pink-ondark)"></div><b>터치 가입</b><small>상담·종이계약 없이 앱에서 등록.</small></div>
-        <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>비용 절감</b><small>전단·광고비 없이 회원 모집.</small></div>
+        <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>비용 절감</b><small>전단·광고비 없이 모집하고, 결제 중개수수료도 0%.</small></div>
       </div>
       <div class="show-cta">
         <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">광고 무료로 시작하기</a>
