@@ -118,7 +118,7 @@
 
   /* ---------- STATS ---------- */
   .stats{background:var(--ink);color:#fff;padding:var(--stats-y) 0}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stats-grid{display:grid;grid-template-columns:repeat(5,1fr)}
   .stat{text-align:center;border-right:1px solid rgba(255,255,255,.1)}
   .stat:last-child{border-right:0}
   .stat b{font-size:clamp(20px,2.3vw,30px);font-weight:900;display:block;letter-spacing:-.02em;white-space:nowrap}
@@ -194,6 +194,8 @@
     .nav-links a{font-size:14px}
     .nav-links .nav-cta{padding:9px 14px;font-size:13.5px}
     .hero-grid{gap:32px}
+    /* WHY: 통계 5열에서 중간폭(≤960)일 때 긴 설명이 2줄로 꺾임 — 네비와 동일하게 폰트만 축소 */
+    .stat span{font-size:13px}
   }
   @media(max-width:900px){
     :root{--sec-y:76px;--band-y:76px;--stats-y:40px;--banner-y:58px;--head-gap:40px;--grid-gap:20px;--gutter:24px}
@@ -225,7 +227,8 @@
     .value-grid{grid-template-columns:1fr;gap:18px}
     .feat-grid{grid-template-columns:1fr}
     .stats-grid{grid-template-columns:1fr 1fr;gap:26px 0}
-    .stat:nth-child(2){border-right:0}
+    .stat:nth-child(even){border-right:0}
+    .stat:nth-child(odd):last-child{grid-column:1/-1;border-right:0}
     .stat{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}
     .show-grid{grid-template-columns:1fr;gap:40px;text-align:center}
     .show-feats{text-align:left}
@@ -358,7 +361,7 @@
     <div class="hero-copy">
       <span class="hero-badge">월 정기결제 구독멤버십</span>
       <h1>월 정기결제 구독으로<br><span class="sk">등록의 문턱을 낮춥니다</span></h1>
-      <p class="lead">1년 약정 대신 월 단위 구독. 회원은 부담 없이 시작하고, 결제는 매달 자동으로 이어집니다.</p>
+      <p class="lead">1년 약정 대신 월 단위 구독. 회원은 부담 없이 시작하고, 결제는 매달 자동으로 이어집니다. 매달 결제가 이어져도 결제 중개수수료는 0%입니다.</p>
       <div class="hero-cta">
         <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">구독멤버십 무료로 시작하기</a>
         <a class="btn btn-ghost" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡 문의</a>
@@ -395,6 +398,7 @@
       <div class="stat"><b class="sk">월 구독</b><span>약정 없이 월 단위로</span></div>
       <div class="stat"><b class="sk">자동 결제</b><span>매달 자동으로 이어지는 구독</span></div>
       <div class="stat"><b class="sk">0원</b><span>입점비·초기비용 제로</span></div>
+      <div class="stat"><b class="sk">수수료 0%</b><span>결제 중개수수료 없음</span></div>
       <div class="stat"><b class="sk">앱에서</b><span>구독·해지·결제 모두 앱으로</span></div>
     </div>
   </div>
@@ -417,7 +421,7 @@
         <div class="vico">🔁</div>
         <div class="vn">02</div>
         <h3>결제는 매달 자동으로</h3>
-        <p>한 번 구독하면 매달 자동으로 결제가 이어집니다. 재등록을 매번 설득할 필요가 없어요.</p>
+        <p>한 번 구독하면 매달 자동으로 결제가 이어집니다. 재등록을 매번 설득할 필요가 없고, 결제 중개수수료도 0%예요.</p>
       </div>
       <div class="vcard">
         <div class="vico">📱</div>
@@ -438,7 +442,7 @@
       <p>월 정기결제로 등록의 문턱은 낮추고, 결제는 매달 자동으로 이어지게 합니다.</p>
       <div class="show-feats">
         <div class="ofeat"><div class="bar" style="background:var(--sky)"></div><b>월 단위 구독</b><small>1년 약정 없이 가볍게 시작.</small></div>
-        <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>자동 결제</b><small>매달 자동으로 이어지는 결제.</small></div>
+        <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>자동 결제</b><small>매달 자동으로 이어지는 결제. 결제 중개수수료는 0%.</small></div>
         <div class="ofeat"><div class="bar" style="background:var(--pink-ondark)"></div><b>앱에서 해지</b><small>다음 결제일 전 해지 시 추가 비용 없음.</small></div>
         <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>상담 없이</b><small>전화·종이계약 없이 앱에서 바로.</small></div>
       </div>
@@ -487,7 +491,7 @@
 <section class="final">
   <div class="wrap">
     <h2>구독멤버십, 우리 센터에도</h2>
-    <p>입점비·초기비용 0원. 도입 방법은 니짐내짐이 안내해 드립니다.</p>
+    <p>입점비·초기비용 0원, 결제 중개수수료 0%. 도입 방법은 니짐내짐이 안내해 드립니다.</p>
     <div class="fcta">
         <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">구독멤버십 무료로 시작하기</a>
         <a class="btn btn-ghost" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡으로 상담하기</a>
