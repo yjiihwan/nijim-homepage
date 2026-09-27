@@ -50,7 +50,7 @@
   /* ---------- NAV ---------- */
   header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--hair)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .brand{display:flex;align-items:center;gap:11px}
+  .brand{display:flex;align-items:center;gap:11px;min-height:44px}
   .brand img{height:23px}
   .brand span{font-size:12.5px;color:var(--slate);font-weight:600}
   .nav-links{display:flex;gap:30px;align-items:center}
@@ -538,7 +538,7 @@
     <div class="stats-grid">
       <div class="stat"><b class="sk">재고 없음</b><span>식사권은 쌓아둘 재고가 없어요</span></div>
       <div class="stat"><b class="sk">스티커 1장</b><span>식당이 할 일은 부착 한 번</span></div>
-      <div class="stat"><b class="sk">앱 설치 없음</b><span>식당 직원은 조작하지 않아요</span></div>
+      <div class="stat"><b class="sk">직원 조작 없음</b><span>식사권은 회원 폰 QR로 끝나요</span></div>
       <div class="stat"><b class="sk">정산 자동</b><span>월별 정산 명세가 알아서</span></div>
       <div class="stat"><b class="sk">수수료 협의</b><span>식당과 정한 조건 그대로</span></div>
     </div>
@@ -647,7 +647,7 @@
     <div>
       <span class="eyebrow">At the counter</span>
       <h2>식당은 계산대에<br><span class="sky">QR 스티커 한 장</span></h2>
-      <p>식당 직원은 아무 조작도 하지 않습니다. 앱 설치도, 번호 입력도 없습니다. 회원이 자기 폰으로 QR을 스캔하면 그 자리에서 사용 처리됩니다.</p>
+      <p>식사권을 쓸 때 식당 직원은 아무 조작도 하지 않습니다. 번호 입력도 없습니다. 회원이 자기 폰으로 QR을 스캔하면 그 자리에서 사용 처리됩니다.</p>
       <div class="show-feats">
         <div class="ofeat"><div class="bar" style="background:var(--sky)"></div><b>스캔 기록</b><small>어느 식당에서 언제 누가 썼는지 남습니다.</small></div>
         <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>되돌릴 수 없는 사용</b><small>한 번 쓴 식사권은 다시 쓸 수 없습니다.</small></div>
@@ -693,9 +693,9 @@
       </div>
       <div class="step">
         <div class="sn">3</div>
-        <h3>QR 스티커 붙이고 판매 시작</h3>
-        <p>제휴가 맺어지면 식당 QR이 자동으로 발급됩니다. 식당 계산대에 스티커 한 장을 붙이고 [판매 시작]을 누르면 회원 앱에 식사권이 보입니다.</p>
-        <div class="by"><span>사장님: 판매 시작</span><span class="r">식당: 스티커 부착 1회</span></div>
+        <h3>식당이 승인하면 바로 판매 시작</h3>
+        <p>식당이 조건을 승인하면 바로 판매가 시작돼 회원 앱에 식사권이 보입니다. 식당 QR은 제휴가 맺어질 때 자동으로 발급되고, 식당 계산대에는 스티커 한 장만 붙이면 됩니다.</p>
+        <div class="by"><span>사장님: 따로 할 일 없음</span><span class="r">식당: 스티커 부착 1회</span></div>
       </div>
     </div>
   </div>
@@ -752,7 +752,7 @@
       </details>
       <details>
         <summary>식당은 무엇을 해야 하나요? 부담이 있나요?</summary>
-        <div class="ans"><p>식당용 앱 설치, 번호 입력, 직원 교육이 모두 필요 없습니다. 초대 링크로 한 번 가입(휴대폰 인증·서류 제출)하고, 식사권 조건과 수수료를 확인해 승인한 뒤, 계산대에 QR 스티커 한 장을 붙이면 됩니다.</p><p>손님이 오면 직원은 회원 폰의 사용 완료 화면만 확인하면 됩니다.</p></div>
+        <div class="ans"><p>식사권만 판다면 식당용 앱 설치, 번호 입력, 직원 교육이 모두 필요 없습니다(배달 주문까지 받으려면 N오더 주방 앱 설치를 권장합니다). 초대 링크로 한 번 가입(휴대폰 인증·서류 제출)하고, 식사권 조건과 수수료를 확인해 승인한 뒤, 계산대에 QR 스티커 한 장을 붙이면 됩니다.</p><p>손님이 오면 직원은 회원 폰의 사용 완료 화면만 확인하면 됩니다.</p></div>
       </details>
       <details>
         <summary>QR 스티커를 누가 찍어 가면 어떡하나요?</summary>
@@ -837,7 +837,7 @@
     <p>서울특별시 강동구 고덕비즈밸리로4길 30, 4층</p>
     <p>대표전화 : 1877-6972</p>
     <p class="cr">(c) 2021 IDE Inc. All rights Reserved</p>
-    <p class="flinks"><a href="#" onclick="return false;">개인정보 처리방침</a> · <a href="#" onclick="return false;">서비스 이용약관</a></p>
+    <p class="flinks"><a href="https://www.ngym.co.kr/privacy.html" target="_blank" rel="noopener">개인정보 처리방침</a> · <a href="https://www.ngym.co.kr/provision.html" target="_blank" rel="noopener">서비스 이용약관</a></p>
   </div>
 </footer>
 
