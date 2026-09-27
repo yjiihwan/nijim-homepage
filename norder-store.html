@@ -150,6 +150,33 @@
   .step .docs span{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--bg);border:1px solid var(--hair);color:#3a3a42}
   .start-cta{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
 
+  /* ---------- 서브: 배달상품 (메인 3단계보다 한 단계 낮은 위계 · enter-norder.html .more와 같은 방식) ---------- */
+  .more{padding:88px 0;border-top:1px solid var(--hair)}
+  #delivery,#faq-delivery{scroll-margin-top:72px}  /* WHY: #앵커 진입 시 고정 헤더(64px)가 제목을 가리지 않게 */
+  .more .eyebrow{font-size:12px}
+  .more h2.sub{font-size:26px;font-weight:900;letter-spacing:-.02em;margin-top:8px;line-height:1.3}
+  .more .sub-lead{color:var(--slate);font-size:16px;margin-top:10px}
+  .dcard{display:grid;grid-template-columns:5fr 7fr;margin-top:36px;background:#fff;border:1px solid var(--hair);border-radius:18px;overflow:hidden}
+  .dcard .ph{background:var(--bg);min-height:100%}
+  .dcard .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+  .dcard .bd{padding:28px 30px 30px}
+  .dcard .tag{display:inline-block;font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;background:var(--pink-tint);color:var(--pink-strong)}
+  .dcard h3{font-size:18px;font-weight:900;margin:12px 0 8px;line-height:1.35}
+  .dcard p{color:var(--slate);font-size:15px;line-height:1.6}
+  .dcard .route{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--text)}
+  .dcard .route span{background:var(--bg);border:1px solid var(--hair);border-radius:8px;padding:5px 9px}
+  .dcard .route em{display:inline-flex;align-items:center;gap:6px;font-style:normal}  /* WHY: 줄바꿈 때 화살표가 줄 끝에 홀로 남지 않게 다음 칩과 묶음 */
+  .dcard .route i{font-style:normal;color:var(--fog)}
+  .dcard .checks{margin-top:16px;display:flex;flex-direction:column;gap:7px}
+  .dcard .checks li{list-style:none;position:relative;padding-left:22px;font-size:13.5px;color:var(--slate);line-height:1.55}
+  .dcard .checks li::before{content:"";position:absolute;left:2px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--sky-tint2)}
+  .dcard .checks li::after{content:"";position:absolute;left:6px;top:6.5px;width:3px;height:6px;border:solid var(--sky-text);border-width:0 1.6px 1.6px 0;transform:rotate(45deg)}
+  .dcard .checks b{color:var(--text);font-weight:700}
+  .rider{margin-top:18px;background:var(--sky-tint);border:1px solid var(--sky-tint2);border-radius:12px;padding:14px 16px}
+  .rider strong{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:800;color:var(--sky-text)}
+  .rider strong svg{width:16px;height:16px;flex:none}
+  .rider p{font-size:13.5px;color:#24445a;line-height:1.6;margin-top:5px}
+
   /* ---------- FAQ ---------- */
   .faq{padding:var(--sec-y) 0;background:var(--bg)}
   .faq-list{margin-top:var(--head-gap);border-top:1px solid var(--hair);max-width:860px}
@@ -197,6 +224,11 @@
     .show h2,h2.sec,.final h2{font-size:28px}
     .value-grid{grid-template-columns:1fr}
     .vcard,.vcard:nth-child(4),.vcard:nth-child(5){grid-column:auto}
+    .more{padding:64px 0}
+    .more h2.sub{font-size:23px}
+    .dcard{grid-template-columns:1fr;margin-top:28px}
+    .dcard .ph{height:200px;min-height:0}
+    .dcard .bd{padding:22px 22px 24px}
     .faq-list summary{font-size:16.5px;padding:19px 2px}
     .faq-list .ans{font-size:15px;padding:0 2px 20px}
     .nav-r .kk{display:none}
@@ -425,6 +457,33 @@
   </div>
 </section>
 
+<!-- 서브: 배달상품도 판매 (본문 3단계보다 한 단계 작은 곁들임) -->
+<section class="more" id="delivery">
+  <div class="wrap">
+    <span class="eyebrow">More with N-Order</span>
+    <h2 class="sub">식사권 말고 배달상품도 팔 수 있습니다</h2>
+    <p class="sub-lead">제휴 센터 회원에게 우리 메뉴를 배달로도 팔 수 있어요.</p>
+    <div class="dcard">
+      <div class="ph"><img src="media/norder_delivery_desk.jpg" alt="식당 음식이 헬스장 인포데스크로 배달되는 모습" loading="lazy" width="1200" height="800"></div>
+      <div class="bd">
+        <span class="tag">배달상품 · 받는 곳 = 제휴 헬스장</span>
+        <h3>회원은 센터 앱에서 주문, 음식은 헬스장으로</h3>
+        <p>회원이 센터 앱에서 우리 가게 메뉴를 주문하면, 식당이 주문을 수락하고 조리해 그 센터로 보냅니다. 회원은 도착 알림을 받고 센터 인포데스크에서 받아 가요.</p>
+        <div class="route"><span>센터 앱에서 주문</span><em><i>→</i><span>식당 수락·조리</span></em><em><i>→</i><span>헬스장 인포데스크로 배달</span></em></div>
+        <ul class="checks">
+          <li><b>받는 곳은 헬스장</b>이에요. 회원 개인 집으로는 배달하지 않습니다.</li>
+          <li>영업시간에만 주문을 받고, 식당이 수락하지 않은 주문은 자동으로 취소·전액 환불돼요.</li>
+          <li>식사권은 설치 없이 바로 시작, <b>배달까지 받으려면 N오더 주방 앱 설치</b>가 필요해요.</li>
+        </ul>
+        <div class="rider">
+          <strong><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6"/><path d="M12 7.5h.01"/></svg>배달은 식당이 직접 보내요</strong>
+          <p>배달 주문이 들어오면 사장님이 직접 계약한 배달대행업체(예: 부릉 등)를 통해 센터로 보내 주세요. N오더는 주문만 연결해 드리고, 기사 배정이나 배달 과정에는 관여하지 않아요. 일반 배달앱처럼 플랫폼이 배달까지 맡는 방식이 아닙니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="wrap">
@@ -454,6 +513,10 @@
       <details>
         <summary>어떤 센터와 제휴할 수 있나요?</summary>
         <div class="ans"><p>우리 가게 근처에서 N오더를 쓰고 있는 센터와 제휴할 수 있습니다. 너무 먼 센터는 제휴 목록에 나오지 않습니다.</p><p>우리 동네에 어떤 센터가 있는지 궁금하면 카카오톡으로 먼저 물어봐 주세요.</p></div>
+      </details>
+      <details id="faq-delivery">
+        <summary>배달은 누가 하나요?</summary>
+        <div class="ans"><p>식당이 직접 보냅니다. 배달 주문이 들어오면 사장님이 직접 계약한 배달대행업체(예: 부릉 등)를 통해 보내 주세요. N오더는 센터 회원의 주문을 식당에 연결하는 역할만 하고, 배달 기사 배정이나 배달 과정에는 관여하지 않습니다.</p><p>받는 곳은 항상 주문한 회원이 다니는 센터(인포데스크)이고, 개인 집으로는 배달하지 않습니다.</p></div>
       </details>
     </div>
     <p class="faq-more">더 궁금한 점은 <a href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡으로 상담</a>해 주세요.</p>
