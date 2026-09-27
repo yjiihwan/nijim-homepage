@@ -409,6 +409,33 @@
   .step .by span{font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;background:var(--sky-tint);color:var(--sky-text)}
   .step .by span.r{background:var(--pink-tint);color:var(--pink-strong)}
 
+
+  /* 서브: 함께 팔 수 있는 상품 (메인 3단계보다 한 단계 낮은 위계) */
+  .more{padding:88px 0;border-bottom:1px solid var(--hair)}
+  .more .eyebrow{font-size:12px}
+  .more h2.sub{font-size:26px;font-weight:900;letter-spacing:-.02em;margin-top:8px;word-break:keep-all}
+  .more .sub-lead{color:var(--slate);font-size:16px;margin-top:10px;word-break:keep-all}
+  .more-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}
+  .mcard{background:#fff;border:1px solid var(--hair);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+  .mcard .ph{height:220px;background:var(--bg)}
+  .mcard .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+  .mcard .bd{padding:22px 24px 24px}
+  .mcard .tag{display:inline-block;font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;background:var(--sky-tint);color:var(--sky-text)}
+  .mcard .tag.r{background:var(--pink-tint);color:var(--pink-strong)}
+  .mcard h3{font-size:18px;font-weight:900;margin:12px 0 8px;line-height:1.35;word-break:keep-all}
+  .mcard p{color:var(--slate);font-size:15px;line-height:1.6;word-break:keep-all}
+  .mcard .route{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--text)}
+  .mcard .route span{background:var(--bg);border:1px solid var(--hair);border-radius:8px;padding:5px 9px}
+  .mcard .route em{display:inline-flex;align-items:center;gap:6px;font-style:normal}
+  .mcard .route i{font-style:normal;color:var(--fog)}
+  .mcard .note{margin-top:12px;font-size:13px;color:var(--slate);line-height:1.55;word-break:keep-all}
+  @media(max-width:900px){
+    .more{padding:64px 0}
+    .more-grid{grid-template-columns:1fr;gap:18px;margin-top:28px}
+    .more h2.sub{font-size:23px}
+    .mcard .ph{height:200px}
+  }
+
   /* FAQ */
   .faq{padding:var(--sec-y) 0}
   .faq-list{margin-top:var(--head-gap);border-top:1px solid var(--hair);max-width:860px}
@@ -668,6 +695,37 @@
         <h3>QR 스티커 붙이고 판매 시작</h3>
         <p>제휴가 맺어지면 식당 QR이 자동으로 발급됩니다. 식당 계산대에 스티커 한 장을 붙이고 [판매 시작]을 누르면 회원 앱에 식사권이 보입니다.</p>
         <div class="by"><span>사장님: 판매 시작</span><span class="r">식당: 스티커 부착 1회</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 서브: 식사권 말고도 함께 팔 수 있는 상품 -->
+<section class="more" id="more">
+  <div class="wrap">
+    <span class="eyebrow">More with N-Order</span>
+    <h2 class="sub">식사권 말고도 함께 팔 수 있습니다</h2>
+    <p class="sub-lead">같은 센터 앱 스토어에서 두 가지를 더 판매할 수 있습니다.</p>
+    <div class="more-grid">
+      <div class="mcard">
+        <div class="ph"><img src="media/norder_goods_pickup.jpg" alt="센터 카운터에 준비된 보충제·음료" loading="lazy"></div>
+        <div class="bd">
+          <span class="tag">일반상품 · 센터 픽업</span>
+          <h3>보충제·음료도 센터 앱에서 판매</h3>
+          <p>센터에 있는 보충제·음료·운동용품을 앱에 올려 판매합니다. 회원이 앱에서 결제하면 사장님은 준비되는 대로 [준비완료]를 누르고, 회원은 알림을 받고 센터에서 픽업합니다.</p>
+          <div class="route"><span>앱에서 결제</span><em><i>→</i><span>준비완료 알림</span></em><em><i>→</i><span>센터에서 픽업</span></em></div>
+          <p class="note">재고 수량을 등록해 두면 판매·픽업에 맞춰 함께 관리됩니다. 배송은 없고 센터 픽업만 가능합니다.</p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="ph"><img src="media/norder_delivery_desk.jpg" alt="제휴 식당 음식이 센터 인포데스크로 배달되는 모습" loading="lazy"></div>
+        <div class="bd">
+          <span class="tag r">제휴식당 배달 · 수령지 = 우리 센터</span>
+          <h3>식당 음식을 우리 센터로 배달</h3>
+          <p>회원이 앱에서 제휴 식당 메뉴를 주문하면, 식당이 조리해 우리 센터 인포데스크로 배달합니다. 회원은 도착 알림을 받고 인포데스크에서 받아 갑니다.</p>
+          <div class="route"><span>앱에서 주문</span><em><i>→</i><span>식당 조리·배달</span></em><em><i>→</i><span>센터 인포데스크 수령</span></em></div>
+          <p class="note">식당 영업시간에만 주문을 받고, 식당이 주문을 수락하지 않으면 자동으로 취소되고 전액 환불됩니다.</p>
+        </div>
       </div>
     </div>
   </div>
