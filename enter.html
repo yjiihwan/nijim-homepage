@@ -140,6 +140,8 @@
   /* ---------- FEATURES (cascade photo cards) ---------- */
   .feat{padding:var(--sec-y) 0;background:var(--bg)}
   .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--grid-gap);margin-top:var(--head-gap)}
+  /* WHY: 기능 카드가 7개(홀수)라 마지막 카드가 왼쪽에 혼자 남는다 — 가로 전체로 채운다 */
+  .feat-grid>.bcard:nth-child(odd):last-child{grid-column:1/-1}
   .bcard{background:#fff;border:1px solid var(--hair);border-radius:20px;overflow:hidden;display:flex;transition:.18s}
   a.bcard{text-decoration:none;color:inherit}
   .bcard:hover{box-shadow:0 16px 40px rgba(10,20,30,.09);transform:translateY(-3px)}
@@ -273,6 +275,7 @@
         <a href="enter-subscription.html">월 정기결제 구독멤버십</a>
         <a href="enter-remote.html">시설 원격제어 · IoT</a>
         <a href="enter-link.html">링크 결제</a>
+        <a href="enter-norder.html">N오더 · 식당 연계</a>
         </div>
       </div>
       <a href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener" data-signup-modal="skip">센터관리자메뉴</a>
@@ -369,8 +372,8 @@
 <section class="feat" id="feat">
   <div class="wrap">
     <span class="eyebrow">Features</span>
-    <h2 class="sec">센터 운영, 이 여섯 가지로 끝냅니다</h2>
-    <p class="sec-sub">원격제어·무인운영·온라인광고·회원관리에 구독멤버십과 링크 결제까지, 앱 하나에서.</p>
+    <h2 class="sec">센터 운영, 이 일곱 가지로 끝냅니다</h2>
+    <p class="sec-sub">원격제어·무인운영·온라인광고·회원관리에 구독멤버십·링크 결제·식당 연계까지, 앱 하나에서.</p>
     <div class="feat-grid">
       <a class="bcard hl" href="enter-remote.html">
         <div class="ph"><img src="media/owner_iot.jpg" alt="폰으로 시설 원격제어"></div>
@@ -395,6 +398,10 @@
       <a class="bcard" href="enter-link.html">
         <div class="ph"><img src="media/link_send.jpg" alt="문자로 보내는 결제 링크"></div>
         <div class="bx"><div class="n">06</div><h3>링크 하나로 결제받기</h3><p>문자·카톡으로 판매페이지 링크만 보내면 결제부터 멤버십 발급·회원 등록까지 자동으로 끝납니다.</p></div>
+      </a>
+      <a class="bcard" href="enter-norder.html">
+        <div class="ph"><img src="media/norder_meal.jpg" alt="제휴 식당 식사권 — 백반 정식"></div>
+        <div class="bx"><div class="n">07</div><h3>근처 식당 식사권으로 부가수익</h3><p>제휴 식당의 식사권을 우리 센터 앱에서 대신 판매. 재고 없이 식사권이 쓰일 때마다 판매 수수료가 정산되고, 식당은 QR 스티커 한 장이면 됩니다.</p></div>
       </a>
     </div>
   </div>
