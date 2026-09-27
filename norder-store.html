@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N오더 식당 제휴 — 근처 센터 회원을 우리 가게 손님으로</title>
+<meta name="description" content="근처 헬스장·필라테스 센터가 앱에서 우리 가게 식사권을 대신 팔아 드려요. 회원은 계산대 QR을 자기 폰으로 스캔, 직원은 조작할 것이 없고 정산금은 플랫폼이 매달 식당 계좌로 보내 드립니다.">
+<meta property="og:title" content="운동 끝난 근처 회원이, 우리 가게 손님으로 | N오더 식당 제휴">
+<meta property="og:description" content="근처 센터가 우리 가게 식사권을 대신 판매. 식당은 계산대에 QR 스티커 한 장이면 됩니다.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="media/store_hero_meal.jpg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<style>
+  /* 식당 광고 유입용 단독 랜딩 — 색·글꼴·간격 변수는 사장님 페이지(enter-*.html)와 동일 */
+  :root{
+    --pink:#FC2066; --pink-strong:#D4004E; --pink-tint:#FFF0F5;
+    --sky:#39B4FF; --sky-strong:#1E93DD; --sky-text:#0A6FA8; --sky-tint:#EAF6FF; --sky-tint2:#D3ECFF;
+    --ink:#16161C; --ink-card:#1F1F27;
+    --text:#202024; --slate:#6B6B73; --fog:#A8A8B2;
+    --hair:#ECECEF; --bg:#FAFAFA; --surface:#FFFFFF;
+    --success:#00C281;
+    --maxw:1180px;
+    --sec-y:118px; --band-y:118px; --stats-y:56px; --head-gap:56px; --grid-gap:28px; --gutter:32px;
+    --font:'Pretendard','Pretendard Variable',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--text);background:var(--surface);-webkit-font-smoothing:antialiased;line-height:1.5;letter-spacing:-.01em;word-break:keep-all}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;border-radius:12px;cursor:pointer;border:0;transition:.15s;white-space:nowrap;font-family:var(--font)}
+  .btn-sky{background:var(--sky);color:#06344d;padding:16px 28px;font-size:17px;box-shadow:0 8px 20px rgba(57,180,255,.32)}
+  .btn-sky:hover{background:var(--sky-strong)}
+  .btn-ghost{background:#fff;color:var(--text);padding:16px 26px;font-size:17px;border:1.5px solid var(--hair)}
+  .btn-ghost:hover{border-color:#d8d8dd;background:#fbfbfc}
+  .eyebrow{font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--sky-text);text-transform:uppercase}
+  h2.sec{font-size:34px;font-weight:900;letter-spacing:-.02em;margin-top:10px;line-height:1.25}
+  .sec-sub{color:var(--slate);font-size:17px;margin-top:14px;max-width:640px}
+
+  /* ---------- NAV (단독 페이지: 메뉴 없이 로고 + 상담·가입만) ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--hair)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+  .brand{display:flex;align-items:center;gap:10px;min-width:0}
+  .brand img{height:22px;flex:none}
+  .brand span{font-size:12.5px;font-weight:800;color:var(--sky-text);background:var(--sky-tint);padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .nav-r{display:flex;align-items:center;gap:18px}
+  .nav-r .kk{font-size:15px;font-weight:700;color:#3a3a42;white-space:nowrap}
+  .nav-r .kk:hover{color:var(--sky-text)}
+  .nav-r .nav-cta{background:var(--sky);color:#06344d;padding:10px 18px;border-radius:10px;font-weight:800;font-size:14.5px;white-space:nowrap}
+  .nav-r .nav-cta:hover{background:var(--sky-strong)}
+
+  /* ---------- HERO ---------- */
+  .hero{background:linear-gradient(180deg,#EEF8FF 0%,#FAFAFA 100%);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-top:88px;padding-bottom:100px}
+  .hero-badge{display:inline-block;background:var(--sky-tint2);color:var(--sky-text);font-weight:800;font-size:13.5px;padding:8px 15px;border-radius:999px}
+  .hero h1{font-size:clamp(38px,4.4vw,54px);line-height:1.16;font-weight:900;letter-spacing:-.035em;margin-top:18px}
+  .hero h1 .sk{color:var(--sky-strong)}
+  .hero p.lead{font-size:19px;color:var(--slate);margin-top:22px;font-weight:500;max-width:32em;line-height:1.62}
+  .hero-cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+  .hero-note{font-size:13.5px;color:var(--slate);margin-top:14px}
+  .hero-photo{border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(10,20,30,.16);aspect-ratio:3/2}
+  .hero-photo img{width:100%;height:100%;object-fit:cover}
+
+  /* ---------- STATS ---------- */
+  .stats{background:var(--ink);color:#fff;padding:var(--stats-y) 0}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{text-align:center;border-right:1px solid rgba(255,255,255,.1);padding:0 10px}
+  .stat:last-child{border-right:0}
+  .stat b{font-size:clamp(20px,2.2vw,28px);font-weight:900;display:block;letter-spacing:-.02em;color:var(--sky);white-space:nowrap}
+  .stat span{font-size:14px;color:var(--fog);margin-top:5px;display:block}
+
+  /* ---------- PHONE MOCKUP ---------- */
+  .phone{position:relative;z-index:1;width:220px;background:#0f0f14;border-radius:34px;padding:9px;box-shadow:0 18px 40px rgba(10,20,30,.16);flex:none}
+  .screen{background:#fff;color:var(--text);border-radius:26px;overflow:hidden;position:relative;aspect-ratio:9/19.2}
+  .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:80px;height:19px;background:#0f0f14;border-radius:0 0 14px 14px;z-index:3}
+  .app{position:absolute;inset:0;font-size:11px;display:flex;flex-direction:column}
+  .nx{flex:1;display:flex;flex-direction:column;background:#fafafa;text-align:left}
+  .nx-bar{padding:32px 13px 10px;background:#fff;border-bottom:1px solid #f0f0f2;font-size:12.5px;font-weight:900}
+  .nx-body{padding:11px 11px 12px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .nx-cta{background:linear-gradient(90deg,#FF0065,#FF3D7F);color:#fff;text-align:center;font-weight:800;font-size:11.5px;padding:11px;border-radius:10px}
+  .nx-tag{display:inline-block;font-size:8.5px;font-weight:700;color:#55555e;background:#f0f0f3;padding:2px 7px;border-radius:999px}
+  .nx-prod{background:#fff;border:1px solid #ececef;border-radius:12px;overflow:hidden}
+  .nx-prod img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .nx-prod .pb{padding:9px 11px 11px}
+  .nx-prod b{display:block;font-size:10.5px;font-weight:800;margin:6px 0 3px}
+  .nx-prod small{display:block;font-size:8.5px;color:#6b6b73}
+  .nx-buy{margin-top:auto}
+  .nx-done{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:44px 14px 14px;background:#fff}
+  .nx-ok{width:46px;height:46px;border-radius:50%;background:#E6F9F1;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .nx-ok svg{width:24px;height:24px}
+  .nx-done h6{font-size:15px;font-weight:900}
+  .nx-done p{font-size:10px;font-weight:700;margin-top:8px;line-height:1.5}
+  .nx-done .staff{font-size:9px;color:#6b6b73;font-weight:600;margin-top:6px}
+  .nx-clock{margin-top:14px;font-size:14px;font-weight:900;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+  .nx-no{margin-top:8px;font-size:8.5px;color:#6b6b73;letter-spacing:.03em}
+  .nx-done .nx-cta{margin-top:auto;width:100%;background:#16161C}
+  .nx-info{background:#EAF6FF;border:1px solid #D3ECFF;border-radius:10px;padding:9px 10px;font-size:8.5px;line-height:1.55;color:#24445a}
+  .nx-kv{background:#fff;border:1px solid #ececef;border-radius:11px;padding:9px 11px}
+  .nx-kv small{display:block;font-size:8.5px;color:#6b6b73}
+  .nx-kv b{display:block;font-size:10.5px;font-weight:800;margin-top:2px}
+  .nx-kv .st{display:inline-block;margin-top:3px;font-size:8.5px;font-weight:700;background:#f0f0f3;color:#55555e;padding:2px 7px;border-radius:999px}
+  .nx-sub{font-size:8.5px;color:#6b6b73;line-height:1.5}
+
+  /* ---------- ① 이해: 흐름 3칸 ---------- */
+  .flow{padding:var(--sec-y) 0}
+  .flow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap);margin-top:var(--head-gap)}
+  .fstep{background:var(--bg);border:1px solid var(--hair);border-radius:22px;padding:28px 24px 0;display:flex;flex-direction:column;overflow:hidden}
+  .fstep .who{display:inline-block;align-self:flex-start;font-size:12.5px;font-weight:800;color:var(--sky-text);background:var(--sky-tint);padding:5px 11px;border-radius:999px}
+  .fstep>h3{font-size:20px;font-weight:900;margin:12px 0 8px;line-height:1.3}
+  .fstep>p{color:var(--slate);font-size:15px;line-height:1.6}
+  .fstep .fv{margin-top:auto;padding-top:26px;box-sizing:content-box;display:flex;justify-content:center;height:300px;overflow:hidden}
+  .flow-note{margin-top:22px;color:var(--slate);font-size:14px}
+
+  /* ---------- 계산대 밴드 (사진) ---------- */
+  .show{padding:var(--band-y) 0;background:var(--ink);color:#fff;overflow:hidden}
+  .show-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .show .eyebrow{color:var(--sky)}
+  .show h2{font-size:36px;font-weight:900;line-height:1.22;margin-top:14px;letter-spacing:-.02em}
+  .show h2 .sky{color:var(--sky)}
+  .show p{color:var(--fog);font-size:17px;margin-top:18px;line-height:1.6}
+  .show-list{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+  .show-list li{list-style:none;background:var(--ink-card);border:1px solid #2a2a34;border-radius:14px;padding:15px 18px;display:flex;gap:14px;align-items:flex-start}
+  .show-list li .n{flex:none;width:26px;height:26px;border-radius:50%;background:rgba(57,180,255,.16);color:var(--sky);font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .show-list li b{display:block;font-size:15.5px;font-weight:800}
+  .show-list li small{display:block;color:var(--fog);font-size:13.5px;margin-top:3px;line-height:1.5}
+  .show-photo{border-radius:22px;overflow:hidden;aspect-ratio:4/3}
+  .show-photo img{width:100%;height:100%;object-fit:cover}
+
+  /* ---------- ② 욕구: 얻는 것 5가지 ---------- */
+  .value{padding:var(--sec-y) 0;background:var(--bg)}
+  .value-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--grid-gap);margin-top:var(--head-gap)}
+  .vcard{grid-column:span 2;background:#fff;border:1px solid var(--hair);border-radius:20px;padding:30px 28px}
+  .vcard:nth-child(4),.vcard:nth-child(5){grid-column:span 3}
+  .vico{width:52px;height:52px;border-radius:14px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px}
+  .vcard .vn{color:var(--sky-text);font-weight:900;font-size:14px}
+  .vcard h3{font-size:19px;font-weight:900;margin:6px 0 10px;line-height:1.3}
+  .vcard p{color:var(--slate);font-size:15px;line-height:1.6}
+
+  /* ---------- ③ 쉬운 시작: 3단계 ---------- */
+  .start{padding:var(--sec-y) 0}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap);margin-top:var(--head-gap)}
+  .step{background:#fff;border:1px solid var(--hair);border-radius:20px;padding:28px 26px}
+  .step .sn{width:40px;height:40px;border-radius:50%;background:var(--sky);color:#06344d;font-weight:900;font-size:17px;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:19px;font-weight:900;margin:16px 0 8px;line-height:1.35}
+  .step p{color:var(--slate);font-size:15px;line-height:1.6}
+  .step p+p{margin-top:8px}
+  .step .docs{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .step .docs span{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--bg);border:1px solid var(--hair);color:#3a3a42}
+  .start-cta{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
+
+  /* ---------- FAQ ---------- */
+  .faq{padding:var(--sec-y) 0;background:var(--bg)}
+  .faq-list{margin-top:var(--head-gap);border-top:1px solid var(--hair);max-width:860px}
+  .faq-list details{border-bottom:1px solid var(--hair)}
+  .faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 4px;font-size:18px;font-weight:800}
+  .faq-list summary::-webkit-details-marker{display:none}
+  .faq-list summary::after{content:"+";font-size:24px;font-weight:500;color:var(--sky-text);flex:none;transition:transform .15s}
+  .faq-list details[open] summary::after{transform:rotate(45deg)}
+  .faq-list .ans{padding:0 4px 24px;color:var(--slate);font-size:15.5px;line-height:1.7}
+  .faq-list .ans p+p{margin-top:8px}
+  .faq-more{margin-top:26px;font-size:15px;color:var(--slate)}
+  .faq-more a{color:var(--sky-text);font-weight:800}
+
+  /* ---------- FINAL CTA ---------- */
+  .final{padding:var(--band-y) 0;text-align:center;background:#fff}
+  .final h2{font-size:40px;font-weight:900;letter-spacing:-.03em;line-height:1.2}
+  .final p{color:var(--slate);font-size:17px;margin-top:16px}
+  .final .fcta{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--fog);padding:54px 0 46px}
+  footer .fbrand img{height:26px;margin-bottom:16px}
+  footer p{font-size:13.5px;line-height:1.7}
+  footer .cr{font-size:12px;color:#5b5b66;margin-top:16px}
+
+  /* ---------- 모바일 하단 고정 버튼 (광고 유입 대부분 휴대폰) ---------- */
+  .mbar{display:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1100px) and (min-width:901px){
+    .hero-grid{gap:36px}
+    .stat span{font-size:13px}
+  }
+  @media(max-width:900px){
+    :root{--sec-y:72px;--band-y:72px;--stats-y:36px;--head-gap:36px;--grid-gap:18px;--gutter:24px}
+    .hero-grid{grid-template-columns:1fr;gap:28px;padding-top:30px;padding-bottom:44px}
+    .hero h1{font-size:38px;margin-top:14px}
+    .hero p.lead{font-size:17px;margin-top:16px;max-width:none}
+    .hero-cta{margin-top:24px}
+    .stats-grid{grid-template-columns:1fr 1fr;gap:22px 0}
+    .stat:nth-child(even){border-right:0}
+    .flow-grid,.steps{grid-template-columns:1fr}
+    .fstep .fv{height:280px}
+    .show-grid{grid-template-columns:1fr;gap:36px}
+    .show h2,h2.sec,.final h2{font-size:28px}
+    .value-grid{grid-template-columns:1fr}
+    .vcard,.vcard:nth-child(4),.vcard:nth-child(5){grid-column:auto}
+    .faq-list summary{font-size:16.5px;padding:19px 2px}
+    .faq-list .ans{font-size:15px;padding:0 2px 20px}
+    .nav-r .kk{display:none}
+    .mbar{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--hair);box-shadow:0 -6px 18px rgba(0,0,0,.06)}
+    .mbar .btn{flex:1;padding:14px 10px;font-size:16px}
+    .mbar .btn-ghost{flex:0 0 38%}
+    body{padding-bottom:76px}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px}
+    .hero h1{font-size:31px}
+    .hero-cta .btn{flex:1}
+    .brand span{font-size:11.5px;padding:3px 8px}
+    .nav-r .nav-cta{padding:9px 13px;font-size:13.5px}
+    .stat b{font-size:19px}
+    .stat span{font-size:12.5px}
+    .vcard{padding:24px 22px}
+    .step{padding:24px 22px}
+    .start-cta .btn{flex:1}
+    .final h2{font-size:26px}
+    .final .fcta{flex-direction:column}
+    .final .fcta .btn{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img src="media/nijim_logo_full_black.svg" alt="니짐내짐">
+      <span>N오더 · 식당 제휴</span>
+    </a>
+    <div class="nav-r">
+      <a class="kk" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡 상담</a>
+      <a class="nav-cta" href="https://norder-web-staging.up.railway.app/partner/signup" target="_blank" rel="noopener">식당 가입하기</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="hero-badge">식당 사장님을 위한 N오더</span>
+      <h1>운동 끝난 근처 회원이<br><span class="sk">우리 가게 손님으로</span></h1>
+      <p class="lead">근처 헬스장·필라테스 센터가 회원 앱에서 우리 가게 식사권을 대신 팔아 드려요. 회원은 계산대 QR을 자기 폰으로 스캔하고 식사하면 끝, 정산금은 매달 식당 계좌로 들어옵니다.</p>
+      <div class="hero-cta">
+        <a class="btn btn-sky" href="https://norder-web-staging.up.railway.app/partner/signup" target="_blank" rel="noopener">식당 가입하기</a>
+        <a class="btn btn-ghost" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡 상담</a>
+      </div>
+      <p class="hero-note">휴대폰으로 가입하고 서류를 올리면 입점 심사가 시작돼요.</p>
+    </div>
+    <div class="hero-photo"><img src="media/store_hero_meal.jpg" alt="운동복 차림의 손님 두 명이 동네 식당에서 백반 정식을 먹는 모습" width="1200" height="806"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><b>새 손님</b><span>근처 센터 회원이 찾아와요</span></div>
+      <div class="stat"><b>선결제 없음</b><span>쓰인 식사권만 정산해요</span></div>
+      <div class="stat"><b>조작 없음</b><span>앱 설치·교육도 필요 없어요</span></div>
+      <div class="stat"><b>매달 입금</b><span>정산금은 플랫폼이 보내요</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ① 이해: 흐름 3칸 -->
+<section class="flow" id="how">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2 class="sec">센터가 팔고, 회원이 오고,<br>정산금이 들어옵니다</h2>
+    <p class="sec-sub">식당이 하는 일은 손님을 맞고 음식을 내는 것, 평소와 같습니다.</p>
+    <div class="flow-grid">
+      <div class="fstep">
+        <span class="who">01 · 센터가 판매</span>
+        <h3>근처 센터 앱에 우리 가게 식사권이 올라가요</h3>
+        <p>제휴한 센터가 회원 앱에서 우리 가게 식사권을 판매합니다. 회원은 운동하러 온 그 앱에서 바로 삽니다.</p>
+        <div class="fv">
+          <div class="phone"><div class="notch"></div><div class="screen"><div class="app">
+            <div class="nx">
+              <div class="nx-bar">스토어</div>
+              <div class="nx-body">
+                <div class="nx-prod">
+                  <img src="media/norder_meal.jpg" alt="" loading="lazy">
+                  <div class="pb"><span class="nx-tag">교환권</span><b>한상차림 백반 정식 교환권</b><small>사용 가능 식당 · 한상차림</small></div>
+                </div>
+                <div class="nx-cta nx-buy">구매하기</div>
+              </div>
+            </div>
+          </div></div></div>
+        </div>
+      </div>
+      <div class="fstep">
+        <span class="who">02 · 회원이 스캔</span>
+        <h3>계산대 QR을 회원이 자기 폰으로 스캔</h3>
+        <p>회원이 계산대에 붙은 QR을 스캔하면 바로 사용 완료. 직원은 회원 폰에 뜬 사용 완료 화면만 확인하면 됩니다.</p>
+        <div class="fv">
+          <div class="phone"><div class="notch"></div><div class="screen"><div class="app">
+            <div class="nx-done">
+              <div class="nx-ok"><svg viewBox="0 0 24 24" fill="none" stroke="#00A870" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+              <h6>사용 완료</h6>
+              <p>한상차림에서 교환권 1장이<br>사용되었습니다.</p>
+              <div class="staff">식당 직원분께 이 화면을 보여 주세요.</div>
+              <div class="nx-clock">2026.10.02 12:04:11</div>
+              <div class="nx-no">ASDC-SMYR-WHAL</div>
+              <div class="nx-cta">확인</div>
+            </div>
+          </div></div></div>
+        </div>
+      </div>
+      <div class="fstep">
+        <span class="who">03 · 매달 정산</span>
+        <h3>쓰인 만큼 매달 식당 계좌로 입금</h3>
+        <p>식사권이 실제로 쓰인 건만 한 달 단위로 묶어 정산합니다. 정산금은 플랫폼이 식당 계좌로 직접 보내 드려요.</p>
+        <div class="fv">
+          <div class="phone"><div class="notch"></div><div class="screen"><div class="app">
+            <div class="nx">
+              <div class="nx-bar">정산</div>
+              <div class="nx-body">
+                <div class="nx-info">정산금은 플랫폼이 보내요. 고객 결제 대금을 플랫폼이 받아서, 확정 후 식당 계좌로 직접 지급해요. 센터에서 이체하지 않아요.</div>
+                <div class="nx-kv"><small>플랫폼이 지급할 금액</small><b>2026-10-01 ~ 2026-10-31</b><span class="st">집계 중</span></div>
+                <div class="nx-kv"><small>받을 금액 · 지급일</small><b>마감·확정 후 표시</b></div>
+                <div class="nx-sub">마감·확정·지급은 N오더 운영팀이 처리해요. 금액이 이상하면 이의제기를 남겨 주세요.</div>
+              </div>
+            </div>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="flow-note">※ 화면 속 가게 이름·날짜·번호는 예시입니다.</p>
+  </div>
+</section>
+
+<!-- 계산대 밴드 -->
+<section class="show">
+  <div class="wrap show-grid">
+    <div>
+      <span class="eyebrow">At the counter</span>
+      <h2>계산대에 필요한 건<br><span class="sky">QR 스티커 한 장</span></h2>
+      <p>식당 직원분은 아무 조작도 하지 않아요. 앱 설치나 번호 입력도 필요 없어요.</p>
+      <ul class="show-list">
+        <li><span class="n">1</span><div><b>회원이 QR을 스캔</b><small>회원이 자기 폰으로 계산대 QR을 비춥니다.</small></div></li>
+        <li><span class="n">2</span><div><b>직원은 화면만 확인</b><small>「사용 완료」 화면을 보고 음식을 내면 됩니다.</small></div></li>
+        <li><span class="n">3</span><div><b>기록은 자동으로</b><small>언제 어느 센터 식사권이 쓰였는지 사용 내역에 쌓입니다.</small></div></li>
+      </ul>
+    </div>
+    <div class="show-photo"><img src="media/store_counter_qr.jpg" alt="식당 계산대에 붙은 QR 스티커 앞에서 손님이 휴대폰을 드는 모습" loading="lazy" width="1200" height="904"></div>
+  </div>
+</section>
+
+<!-- ② 욕구: 얻는 것 -->
+<section class="value">
+  <div class="wrap">
+    <span class="eyebrow">Why N-Order</span>
+    <h2 class="sec">사장님 가게에 생기는 다섯 가지</h2>
+    <p class="sec-sub">손님은 늘리고, 해야 할 일과 미리 드는 돈은 늘리지 않습니다.</p>
+    <div class="value-grid">
+      <div class="vcard">
+        <div class="vico">🏃</div>
+        <div class="vn">01</div>
+        <h3>근처 센터 회원이 새 손님으로</h3>
+        <p>운동 끝나고 뭘 먹을지 고민하는 근처 센터 회원에게, 센터 앱 안에서 우리 가게가 보입니다.</p>
+      </div>
+      <div class="vcard">
+        <div class="vico">📣</div>
+        <div class="vn">02</div>
+        <h3>광고비 대신, 쓰인 만큼만 수수료</h3>
+        <p>따로 광고를 집행하지 않아도 센터가 회원에게 식사권을 팝니다. 판매 수수료는 식사권이 실제로 쓰였을 때만 정산됩니다.</p>
+      </div>
+      <div class="vcard">
+        <div class="vico">📦</div>
+        <div class="vn">03</div>
+        <h3>재고·선결제 부담 없음</h3>
+        <p>식당이 미리 사 두거나 미리 돈을 내는 것이 없습니다. 손님이 와서 식사권을 쓰면 그때 음식을 내면 됩니다.</p>
+      </div>
+      <div class="vcard">
+        <div class="vico">🙌</div>
+        <div class="vn">04</div>
+        <h3>직원 조작·앱 설치·교육 없음</h3>
+        <p>직원용 앱도, 번호 입력도, 교육도 필요 없습니다. 바쁜 점심시간에도 계산대 흐름이 그대로입니다.</p>
+      </div>
+      <div class="vcard">
+        <div class="vico">💳</div>
+        <div class="vn">05</div>
+        <h3>정산금은 플랫폼이 직접 지급</h3>
+        <p>회원이 낸 돈은 플랫폼이 받아, 확정 후 식당 계좌로 보내 드립니다. 센터에 따로 받으러 갈 일이 없습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ 쉬운 시작: 3단계 -->
+<section class="start" id="start">
+  <div class="wrap">
+    <span class="eyebrow">Get started</span>
+    <h2 class="sec">시작은 3단계</h2>
+    <p class="sec-sub">가입부터 제휴 신청까지 휴대폰으로 할 수 있어요.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="sn">1</div>
+        <h3>가입하고 입점 심사 받기</h3>
+        <p>휴대폰번호로 가입하고 사업자 정보와 서류를 올리면 N오더 운영팀이 심사해요. 보통 1~2 영업일이 걸려요.</p>
+        <div class="docs"><span>사업자등록증</span><span>대표자 신분증</span><span>통장사본</span><span>영업신고증</span></div>
+      </div>
+      <div class="step">
+        <div class="sn">2</div>
+        <h3>근처 센터에 제휴 신청</h3>
+        <p>「제휴」 메뉴에서 우리 가게 근처의 N오더 센터를 찾아 제휴를 신청할 수 있어요. 센터가 수락하고 N오더 운영팀이 승인하면 제휴가 시작돼요.</p>
+        <p>센터에서 초대 링크를 받았다면 그 링크로 가입해도 됩니다.</p>
+      </div>
+      <div class="step">
+        <div class="sn">3</div>
+        <h3>조건 승인하고 QR 스티커 붙이기</h3>
+        <p>센터가 정한 판매가·수수료를 확인하고 승인하면 판매가 시작돼요. 제휴가 맺어지면 우리 가게 QR이 나오니, 인쇄용 스티커를 출력해 계산대에 붙이면 끝입니다.</p>
+      </div>
+    </div>
+    <div class="start-cta">
+      <a class="btn btn-sky" href="https://norder-web-staging.up.railway.app/partner/signup" target="_blank" rel="noopener">식당 가입하기</a>
+      <a class="btn btn-ghost" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡 상담</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <span class="eyebrow">FAQ</span>
+    <h2 class="sec">식당 사장님이 자주 묻는 질문</h2>
+    <div class="faq-list">
+      <details open>
+        <summary>수수료는 얼마인가요?</summary>
+        <div class="ans"><p>정해진 요율이 없습니다. 제휴하는 센터와 협의해 정하고, 비율(%)·건당 금액·둘을 섞은 방식 모두 가능합니다. 수수료는 식당이 승인해야 적용되고, 나중에 바뀌어도 이미 판매된 식사권에는 영향이 없습니다.</p><p>정산할 때는 판매 수수료와 함께 카드 수수료(결제사 몫)와 플랫폼 수수료가 빠집니다. 이 두 가지 요율은 플랫폼에서 정하며, 관리자 화면 정산 내역에서 항목별로 확인할 수 있습니다.</p></div>
+      </details>
+      <details>
+        <summary>정산은 언제, 어떻게 받나요?</summary>
+        <div class="ans"><p>식사권이 실제로 쓰인 건만 매월 1일부터 말일까지 묶어 집계하고, 다음 달 초 확정한 뒤 플랫폼이 식당 계좌로 직접 보내 드립니다. 센터에서 이체하는 방식이 아닙니다.</p><p>관리자 화면 「정산」에서 받을 금액·상태·지급일을 볼 수 있고, 「자료 받기」에서 정산 명세와 사용 내역을 엑셀로 받을 수 있습니다. 금액이 이상하면 이의제기를 남겨 주세요.</p></div>
+      </details>
+      <details>
+        <summary>직원은 무엇을 해야 하나요?</summary>
+        <div class="ans"><p>아무 조작도 하지 않습니다. 앱 설치, 번호 입력, 직원 교육이 모두 필요 없습니다.</p><p>손님이 계산대 QR을 스캔하고 「사용 완료」 화면을 보여 주면, 확인하고 음식을 내면 됩니다.</p></div>
+      </details>
+      <details>
+        <summary>환불되거나 쓰지 않은 식사권은 어떻게 되나요?</summary>
+        <div class="ans"><p>쓰지 않은 식사권은 식당 정산에 들어가지 않습니다. 음식을 내지 않은 건이라 식당이 돈을 돌려주거나 환불을 처리할 일이 없습니다.</p><p>이미 사용 완료된 식사권은 환불되지 않습니다.</p></div>
+      </details>
+      <details>
+        <summary>QR 스티커가 유출되면 어떡하나요?</summary>
+        <div class="ans"><p>QR만으로는 아무것도 할 수 없고, 앱에서 산 식사권이 있어야 쓸 수 있습니다. 한 번 쓴 식사권은 다시 쓸 수 없고, 모든 사용은 언제 어느 QR로 쓰였는지 기록이 남습니다.</p><p>유출이 의심되면 센터 또는 N오더 운영팀에 재발급을 요청해 주세요. 재발급되면 이전 스티커는 즉시 무효가 됩니다.</p></div>
+      </details>
+      <details>
+        <summary>어떤 센터와 제휴할 수 있나요?</summary>
+        <div class="ans"><p>우리 가게 근처에서 N오더를 쓰고 있는 센터와 제휴할 수 있습니다. 너무 먼 센터는 제휴 목록에 나오지 않습니다.</p><p>우리 동네에 어떤 센터가 있는지 궁금하면 카카오톡으로 먼저 물어봐 주세요.</p></div>
+      </details>
+    </div>
+    <p class="faq-more">더 궁금한 점은 <a href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡으로 상담</a>해 주세요.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>근처 센터 회원을<br>우리 가게 손님으로</h2>
+    <p>가입과 서류 제출은 휴대폰으로. 계산대에는 QR 스티커 한 장이면 됩니다.</p>
+    <div class="fcta">
+      <a class="btn btn-sky" href="https://norder-web-staging.up.railway.app/partner/signup" target="_blank" rel="noopener">식당 가입하기</a>
+      <a class="btn btn-ghost" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡으로 상담하기</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="media/nijim_logo_full_white.svg" alt="니짐내짐"></div>
+    <p>주식회사 아이디이 | 대표 : 윤지환, 강건영</p>
+    <p>사업자등록번호 : 312-86-78370 | <span style="white-space:nowrap">통신판매업신고번호 : 제2025-서울강동-0641호</span></p>
+    <p>서울특별시 강동구 고덕비즈밸리로4길 30, 4층</p>
+    <p>대표전화 : 1877-6972</p>
+    <p class="cr">(c) 2021 IDE Inc. All rights Reserved</p>
+  </div>
+</footer>
+
+<!-- 모바일 하단 고정 버튼 -->
+<div class="mbar">
+  <a class="btn btn-ghost" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카톡 상담</a>
+  <a class="btn btn-sky" href="https://norder-web-staging.up.railway.app/partner/signup" target="_blank" rel="noopener">식당 가입하기</a>
+</div>
+
+</body>
+</html>
