@@ -380,8 +380,6 @@
   .fcard p{color:var(--slate);font-size:14px;line-height:1.6;word-break:keep-all}
   .flow-result{margin-top:var(--grid-gap)}
 
-  /* WHY: 다른 기능이 5개(홀수)라 마지막 카드가 왼쪽에 혼자 남는다 */
-  .others-grid .ocard:nth-child(odd):last-child{grid-column:1/-1}
 
   @media(max-width:900px){
     .case-grid{grid-template-columns:1fr;gap:18px}
@@ -688,6 +686,10 @@
       <a class="ocard" href="enter-remote.html">
         <div class="oi">📱</div>
         <div class="ob"><h3>시설 원격제어 · IoT</h3><p>조명·에어컨·출입문까지 폰으로 원격 제어하고 영업시간에 맞춰 자동으로.</p><span class="go">자세히 보기 →</span></div>
+      </a>
+      <a class="ocard" href="enter-norder.html">
+        <div class="oi">🍱</div>
+        <div class="ob"><h3>N오더 · 식당 연계</h3><p>제휴 식당의 식사권을 우리 센터 앱에서 대신 판매. 재고 없이 식사권이 쓰일 때마다 판매 수수료가 정산되고, 식당은 QR 스티커 한 장이면 됩니다.</p><span class="go">자세히 보기 →</span></div>
       </a>
     </div>
     <p class="hub"><a href="enter.html">사장님 서비스 전체 보기 →</a></p>
