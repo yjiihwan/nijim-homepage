@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>니짐내짐 사장님 — 레슨 예약과 선생님 관리를 한 화면에서</title>
-<meta name="description" content="선생님마다 따로 잡던 레슨 예약도, 회원별 남은 횟수도 센터가 직접 봅니다. 당일 취소와 노쇼는 센터 규정대로 횟수가 차감되고, 선생님별 수업 횟수는 매달 정리됩니다.">
+<title>니짐내짐 사장님 — 실제로 한 수업만 기록, 선생님 급여 정산은 자동으로</title>
+<meta name="description" content="선생님이 하지 않은 수업은 기록되지 않습니다. 회원 확인을 거친 수업만 횟수가 차감되고, 그 기록대로 선생님 급여 정산까지 자동으로 됩니다. 레슨 일정과 남은 횟수도 앱으로 한눈에 확인하세요.">
 <meta property="og:title" content="레슨 관리 | 니짐내짐 사장님">
-<meta property="og:description" content="선생님마다 카톡과 메모로 따로 챙기던 레슨 예약과 남은 횟수, 이제 센터가 직접 봅니다.">
+<meta property="og:description" content="실제로 진행한 수업만 기록되고, 선생님 급여 정산은 자동으로. 레슨 일정과 남은 횟수도 앱으로 한눈에.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
@@ -120,7 +120,7 @@
 
   /* ---------- STATS ---------- */
   .stats{background:var(--ink);color:#fff;padding:var(--stats-y) 0}
-  .stats-grid{display:grid;grid-template-columns:repeat(5,1fr)}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
   .stat{text-align:center;border-right:1px solid rgba(255,255,255,.1)}
   .stat:last-child{border-right:0}
   .stat b{font-size:clamp(20px,2.3vw,30px);font-weight:900;display:block;letter-spacing:-.02em;white-space:nowrap}
@@ -130,7 +130,7 @@
 
   /* ---------- VALUE (3분할) ---------- */
   .value{padding:var(--sec-y) 0}
-  .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap);margin-top:var(--head-gap);align-items:start}
+  .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap);margin-top:var(--head-gap);align-items:stretch}
   .vcard{background:#fff;border:1px solid var(--hair);border-radius:20px;padding:30px 28px;transition:.18s}
   .vcard:hover{box-shadow:0 16px 40px rgba(10,20,30,.09);transform:translateY(-3px)}
   .vico{width:52px;height:52px;border-radius:14px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px}
@@ -337,11 +337,15 @@
   .hphoto{position:relative;z-index:1;width:340px;max-width:100%;border-radius:20px;overflow:hidden;border:1px solid var(--hair);box-shadow:0 30px 60px rgba(10,20,30,.24);flex:none;background:#fff}
   .hphoto img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
 
-  /* 히어로 3스텝 칩 */
-  .steps3{display:flex;align-items:center;gap:10px;margin-top:26px;flex-wrap:wrap}
-  .steps3 .st{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--hair);border-radius:999px;padding:9px 16px;font-size:14.5px;font-weight:800;white-space:nowrap}
-  .steps3 .st i{font-style:normal;width:20px;height:20px;border-radius:50%;background:var(--sky-tint2);color:var(--sky-text);font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;flex:none}
-  .steps3 .ar{color:var(--fog);font-weight:900;font-size:15px}
+  /* 히어로 위조 방지 강조 상자 */
+  .proof{display:flex;gap:14px;align-items:flex-start;margin-top:26px;max-width:560px;background:var(--sky-tint);border:1px solid var(--sky-tint2);border-radius:18px;padding:17px 20px;text-align:left}
+  .proof .pk{width:30px;height:30px;border-radius:50%;background:var(--sky);color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px}
+  .proof b{display:block;font-size:17px;font-weight:900;color:var(--text);line-height:1.4;word-break:keep-all}
+  .proof em,.tag{font-style:normal;font-size:12px;font-weight:900;color:#fff;background:var(--sky-text);border-radius:999px;padding:3px 9px;white-space:nowrap}
+  .proof em{margin-left:6px;vertical-align:2px}
+  .proof small{display:block;font-size:14.5px;color:var(--slate);margin-top:5px;line-height:1.55;word-break:keep-all}
+  .stat.key b em{font-style:normal;font-size:11.5px;font-weight:900;color:var(--ink);background:var(--sky);border-radius:999px;padding:3px 8px;margin-left:7px;vertical-align:4px;letter-spacing:0}
+  .stat.key span{color:#fff}
 
   /* 케이스 3카드 — 상단 미디어(사진 또는 목업) + 본문 */
   .case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap);margin-top:var(--head-gap)}
@@ -379,21 +383,33 @@
   .fcard h3{font-size:17px;font-weight:900;margin:6px 0 9px;line-height:1.35;word-break:keep-all}
   .fcard p{color:var(--slate);font-size:14px;line-height:1.6;word-break:keep-all}
   .flow-result{margin-top:var(--grid-gap)}
+  .fcard{position:relative}
+  .fcard.key{border:2px solid var(--sky);background:var(--sky-tint);padding:25px 23px}
+  .fcard.key .fi{background:#fff}
+  .fcard.key p{color:var(--text)}
+  .fcard .tag{position:absolute;top:24px;right:20px}
+  .cmpt tr.key th{color:var(--sky-text)}
+  .fcard{position:relative}
+  .fcard.key{border:2px solid var(--sky);background:var(--sky-tint);padding:25px 23px}
+  .fcard.key .fi{background:#fff}
+  .fcard.key p{color:var(--text)}
+  .fcard .tag{position:absolute;top:24px;right:20px}
+  .cmpt tr.key th{color:var(--sky-text)}
 
 
   @media(max-width:900px){
     .case-grid{grid-template-columns:1fr;gap:18px}
     .flow-grid{grid-template-columns:1fr 1fr}
-    .steps3{justify-content:center}
+    .proof{margin-left:auto;margin-right:auto}
     .hphoto{width:300px}
     .cmpt th,.cmpt td{padding:14px 13px;font-size:14px}
     .cmpt tbody th{width:34%}
   }
   @media(max-width:560px){
     .flow-grid{grid-template-columns:1fr}
-    .steps3{gap:8px}
-    .steps3 .st{font-size:13.5px;padding:8px 13px}
-    .steps3 .ar{display:none}
+    .proof{padding:15px 16px;gap:12px}
+    .proof b{font-size:16px}
+    .proof small{font-size:14px}
     .cmpt th,.cmpt td{padding:13px 10px;font-size:13px}
     .cmpt thead th{font-size:12.5px}
     .ccard .cbx{padding:20px 20px}
@@ -440,13 +456,10 @@
     <div class="hero-copy">
       <span class="hero-badge">레슨 관리</span>
       <h1>레슨 예약·선생님 관리,<br><span class="sk">센터가 한 화면에서</span></h1>
-      <p class="lead">어느 선생님이 언제 누구를 가르치는지, 회원마다 몇&nbsp;회 남았는지 사장님이 관리자 화면에서 바로 봅니다. 선생님 카톡과 개인 메모에 흩어져 있던 예약과 횟수가 센터 기록으로 남습니다.</p>
-      <div class="steps3">
-        <span class="st"><i>1</i>회원이 앱으로 예약</span>
-        <span class="ar" aria-hidden="true">→</span>
-        <span class="st"><i>2</i>센터 달력에 표시</span>
-        <span class="ar" aria-hidden="true">→</span>
-        <span class="st"><i>3</i>횟수 자동 차감</span>
+      <p class="lead">어느 선생님이 언제 누구를 가르치는지, 회원마다 몇&nbsp;회 남았는지 앱으로 한눈에 확인 가능합니다. 선생님 카톡과 개인 메모에 흩어져 있던 예약과 횟수가 센터 시스템에 저장됩니다.</p>
+      <div class="proof">
+        <span class="pk" aria-hidden="true">✓</span>
+        <div><b>실제 진행한 수업만 기록됩니다<em>위조 방지</em></b><small>선생님 보고만으로는 기록되지 않습니다. 회원 확인을 거쳐야 횟수가 차감되고 급여 정산에 들어갑니다.</small></div>
       </div>
       <div class="hero-cta">
         <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">레슨 관리 시작하기</a>
@@ -466,11 +479,10 @@
 <section class="stats">
   <div class="wrap">
     <div class="stats-grid">
-      <div class="stat"><b class="sk">전체 일정</b><span>선생님별 달력으로 확인</span></div>
+      <div class="stat"><b class="sk">수업 전체 현황</b><span>앱으로 한눈에 확인</span></div>
       <div class="stat"><b class="sk">남은 횟수</b><span>회원마다 바로 확인</span></div>
-      <div class="stat"><b class="sk">취소·노쇼</b><span>센터가 정한 대로 차감</span></div>
-      <div class="stat"><b class="sk">수업 완료</b><span>수업마다 기록</span></div>
-      <div class="stat"><b class="sk">정산 자료</b><span>선생님별 수업 횟수</span></div>
+      <div class="stat key"><b class="sk">수업 완료<em>위조 방지</em></b><span>실제 진행한 수업만 기록</span></div>
+      <div class="stat"><b class="sk">자동 정산</b><span>선생님 급여까지 매달 자동</span></div>
     </div>
   </div>
 </section>
@@ -480,7 +492,7 @@
   <div class="wrap">
     <span class="eyebrow">Pain points</span>
     <h2 class="sec">이런 상황 있으시죠</h2>
-    <p class="sec-sub">수업은 선생님이 해도, 문제가 생기면 회원은 센터를 찾아옵니다.</p>
+    <p class="sec-sub">수업은 선생님이 하지만, 기록이 없으면 손해도 뒷수습도 센터 몫입니다.</p>
     <div class="case-grid">
       <div class="ccard">
         <div class="cph"><img src="media/lesson_case_manual.jpg" alt="휴대폰 메시지와 종이 다이어리를 번갈아 보며 레슨 일정을 맞추는 사장님" width="720" height="720"></div>
@@ -494,16 +506,16 @@
         <div class="cph"><img src="media/lesson_case_count.jpg" alt="데스크에서 회원이 남은 횟수를 묻자 노트를 뒤적이는 사장님" width="720" height="720"></div>
         <div class="cbx">
           <div class="cn">02</div>
-          <h3>회원이 데스크에 남은 횟수를 물을 때</h3>
-          <p>몇 회 남았는지는 담당 선생님만 알고 있습니다. 선생님이 쉬는 날이면 데스크에서는 답을 못 하고, 회원 기억과 다르면 확인할 기록도 없습니다.</p>
+          <h3>회원이 데스크에 레슨 관련 문의할 때</h3>
+          <p>레슨 일정도 남은 횟수도 담당 선생님만 압니다. 선생님이 쉬는 날이면 데스크는 답을 못 하고, 회원이 다르게 알고 있어도 확인할 기록이 없습니다.</p>
         </div>
       </div>
       <div class="ccard">
         <div class="cph"><img src="media/lesson_case_cancel.jpg" alt="예약 시간에 회원이 오지 않아 비어 있는 PT 자리와 데스크에서 휴대폰을 확인하는 사장님" width="720" height="720"></div>
         <div class="cbx">
           <div class="cn">03</div>
-          <h3>취소·노쇼 기준이 선생님마다 다를 때</h3>
-          <p>못 온다는 연락은 선생님이 받고, 횟수를 뺄지 말지도 선생님이 정합니다. 선생님마다 기준이 다르다 보니, 회원이 따지러 오면 센터가 난처해집니다.</p>
+          <h3>선생님이 안 한 수업을 했다고 올릴 때</h3>
+          <p>수업을 했는지는 선생님 말만 믿어야 합니다. 하지도 않은 수업을 했다고 올려도 확인할 길이 없고, 그 수업 수당은 고스란히 나갑니다.</p>
         </div>
       </div>
     </div>
@@ -515,22 +527,22 @@
   <div class="wrap">
     <span class="eyebrow">Compare</span>
     <h2 class="sec">카톡과 메모 대신, 레슨 관리</h2>
-    <p class="sec-sub">예약도, 취소도, 남은 횟수도 선생님 개인 메모가 아니라 센터에 기록됩니다.</p>
+    <p class="sec-sub">예약도, 취소도, 남은 횟수도 선생님 개인 메모가 아니라 센터 시스템에 기록됩니다.</p>
     <div class="cmpt">
       <table>
         <thead>
           <tr><th scope="col">센터가 챙길 일</th><th scope="col">카톡·메모</th><th scope="col" class="hi">레슨 관리</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">전체 레슨 일정</th><td class="no"><span class="mk">✕</span>선생님께 물어봐야</td><td class="hi"><span class="mk">✓</span>센터 달력에서 바로</td></tr>
-          <tr><th scope="row">남은 횟수</th><td class="no"><span class="mk">✕</span>선생님 메모에만</td><td class="hi"><span class="mk">✓</span>관리자 화면과 회원 앱에</td></tr>
+          <tr><th scope="row">전체 레슨 일정</th><td class="no"><span class="mk">✕</span>선생님께 물어봐야</td><td class="hi"><span class="mk">✓</span>앱으로 확인</td></tr>
+          <tr><th scope="row">남은 횟수</th><td class="no"><span class="mk">✕</span>선생님 메모로 확인</td><td class="hi"><span class="mk">✓</span>앱으로 확인</td></tr>
           <tr><th scope="row">당일 취소·노쇼</th><td class="no"><span class="mk">✕</span>선생님마다 다르게</td><td class="hi"><span class="mk">✓</span>센터 규정대로 차감</td></tr>
-          <tr><th scope="row">수업 완료 여부</th><td class="no"><span class="mk">✕</span>확인할 기록 없음</td><td class="hi"><span class="mk">✓</span>수업마다 완료 기록</td></tr>
-          <tr><th scope="row">선생님 수업 횟수</th><td class="no"><span class="mk">✕</span>월말에 직접 세기</td><td class="hi"><span class="mk">✓</span>매달 자동으로 정리</td></tr>
+          <tr class="key"><th scope="row">실제 수업 완료 여부</th><td class="no"><span class="mk">✕</span>확인할 방법 없음, 위조 가능</td><td class="hi"><span class="mk">✓</span>실제 완료된 수업만 기록, 선생님 혼자 위조 불가</td></tr>
+          <tr><th scope="row">선생님 수업 횟수</th><td class="no"><span class="mk">✕</span>월말에 직접 세기</td><td class="hi"><span class="mk">✓</span>매달 자동 정리, 자동 급여 정산</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="cmpt-note">취소 기한은 센터가 정합니다. 기본은 수업 24시간 전까지이고, 이후에 취소하면 1회가 차감됩니다.</p>
+    <p class="cmpt-note">선생님 보고만으로는 완료가 되지 않습니다. 당일 취소·노쇼 기준과 취소 기한은 센터가 정하며, 기본 취소 기한은 수업 24시간 전입니다.</p>
   </div>
 </section>
 
@@ -538,8 +550,8 @@
 <section class="value" id="feat">
   <div class="wrap">
     <span class="eyebrow">How it works</span>
-    <h2 class="sec">선생님 초대부터 횟수 차감까지 4단계</h2>
-    <p class="sec-sub">선생님과 수업만 한 번 등록해 두면, 그다음은 예약부터 횟수 차감까지 앱 안에서 진행됩니다.</p>
+    <h2 class="sec">선생님 초대부터 횟수 차감까지&nbsp;4단계</h2>
+    <p class="sec-sub">선생님과 수업만 한 번 등록해 두면 나머지는 앱 안에서 진행됩니다. 선생님 보고만으로는 수업 기록이 남지 않습니다.</p>
     <div class="flow-grid">
       <div class="fcard">
         <div class="fi">🗓️</div>
@@ -553,17 +565,19 @@
         <h3>회원이 앱에서 예약</h3>
         <p>회원이 앱에서 원하는 시간을 요청하면 선생님이 수락하거나 다른 시간을 제안합니다. 잡힌 예약은 센터 달력에 바로 나옵니다.</p>
       </div>
-      <div class="fcard">
+      <div class="fcard key">
+        <span class="tag">위조 방지</span>
         <div class="fi">✅</div>
         <div class="fn">03</div>
-        <h3>수업 뒤 완료 보고</h3>
-        <p>수업이 끝나면 선생님이 참석인지 노쇼인지 골라 완료 보고를 올립니다. 보고가 아직 없는 수업은 센터 달력에 따로 표시됩니다.</p>
+        <h3>선생님은 보고만 올립니다</h3>
+        <p>수업이 끝나면 선생님이 참석인지 노쇼인지 골라 완료 보고를 올립니다. 보고만으로는 횟수가 차감되지 않고, 급여 정산에도 들어가지 않습니다.</p>
       </div>
-      <div class="fcard">
-        <div class="fi">🎟️</div>
+      <div class="fcard key">
+        <span class="tag">위조 방지</span>
+        <div class="fi">🔒</div>
         <div class="fn">04</div>
-        <h3>횟수 자동 차감</h3>
-        <p>회원이 앱에서 「수강 확인」을 누르면 남은 횟수에서 1회가 차감됩니다. 누르지 않아도 센터가 정해 둔 시간이 지나면 자동으로 차감됩니다.</p>
+        <h3>회원이 확인해야 차감</h3>
+        <p>회원 본인이 앱에서 「받았어요」를 눌러야 1회가 차감됩니다. 선생님은 대신 누를 수 없습니다. 센터가 정한 시간 안에 회원 답이 없으면 자동 확인되고, 이 수업은 따로 표시돼 회원이 이의를 신청할 수 있습니다.</p>
       </div>
     </div>
     <div class="flow-result">
@@ -572,7 +586,7 @@
         <div class="bx">
           <div class="n">회원 쪽에서는</div>
           <h3>남은 횟수는 회원 앱에도 그대로 보입니다</h3>
-          <p>회원은 앱에서 남은 횟수와 이용 내역을 직접 확인합니다. 횟수가 잘못 차감됐다 싶으면 회원이 앱에서 다시 봐 달라고 요청하고, 센터가 기록을 보고 되돌릴지 정합니다. 횟수 때문에 데스크에서 실랑이할 일이 줄어듭니다.</p>
+          <p>회원은 앱에서 남은 횟수와 이용 내역을 직접 확인합니다. 횟수가 잘못 차감됐다 싶으면 회원이 앱에서 정정을 요청하고, 센터가 기록을 확인해 되돌릴지 정합니다. 횟수 때문에 데스크에서 실랑이할 일이 줄어듭니다.</p>
         </div>
       </div>
     </div>
@@ -585,12 +599,12 @@
     <div>
       <span class="eyebrow">For owners</span>
       <h2>사장님은<br><span class="sky">관리자 화면 하나만 보면 됩니다</span></h2>
-      <p>관리자 화면의 「레슨 관리」 메뉴에 선생님 전체 일정과 예약, 남은 횟수, 정산 자료가 모여 있습니다. 선생님께 일일이 묻지 않아도 됩니다.</p>
+      <p>관리자 화면의 「레슨 관리」 메뉴에 선생님 전체 일정과 예약, 남은 횟수, 급여 정산이 모여 있습니다. 선생님께 일일이 묻지 않아도 됩니다.</p>
       <div class="show-feats">
         <div class="ofeat"><div class="bar" style="background:var(--sky)"></div><b>예약 현황</b><small>선생님별로 골라 볼 수 있습니다.</small></div>
         <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>남은 횟수</b><small>언제 몇 회 썼는지까지 나옵니다.</small></div>
-        <div class="ofeat"><div class="bar" style="background:var(--pink-ondark)"></div><b>수업 완료 여부</b><small>보고가 아직 없는 수업은 따로 표시됩니다.</small></div>
-        <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>선생님별 정산</b><small>매달 수업 횟수와 금액이 나옵니다.</small></div>
+        <div class="ofeat"><div class="bar" style="background:var(--pink-ondark)"></div><b>수업 완료 여부</b><small>회원 확인을 거친 수업만 완료로 잡힙니다.</small></div>
+        <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>급여 정산</b><small>매달 선생님별 금액이 자동 계산됩니다.</small></div>
       </div>
       <p class="tline">선생님도 편해집니다. 오늘 레슨과 아직 답하지 않은 예약 요청이 선생님 앱 첫 화면에 뜹니다.</p>
       <div class="show-cta">
@@ -606,7 +620,7 @@
               <div class="crow"><span>14:00 박 선생님 · 이○○</span><span class="cp">확정</span></div>
               <div class="crow"><span>19:00 김 선생님 · 정○○</span><span class="cp">예약 대기</span></div>
               <div class="crow"><span>완료 보고 필요</span><span class="cp">1건</span></div>
-              <div class="crow"><span>이번 달 확정</span><span class="cp">128회</span></div>
+              <div class="crow"><span>이번 달 완료</span><span class="cp">128회</span></div>
               <div class="cbtn">선생님별로 보기</div>
               <div class="cnote">선생님 전체 일정이 달력 하나에</div>
             </div>
@@ -619,37 +633,36 @@
 <section class="feat" id="settle">
   <div class="wrap">
     <span class="eyebrow">Settlement</span>
-    <h2 class="sec">선생님 정산 자료도 함께 모입니다</h2>
-    <p class="sec-sub">월말에 선생님마다 수업 횟수를 일일이 세지 않아도 됩니다.</p>
+    <h2 class="sec">선생님 급여 정산도 자동으로</h2>
+    <p class="sec-sub">월말에 선생님마다 수업 횟수를 세고 금액을 맞춰 볼 필요가 없습니다.</p>
     <div class="value-grid">
       <div class="vcard">
         <div class="vico">🧮</div>
         <div class="vn">01</div>
-        <h3>횟수가 차감된 수업만 자동 집계</h3>
-        <p>회원의 남은 횟수에서 실제로 1회가 차감된 수업만 선생님별로 셉니다. 누가 이번 달 몇 회 수업했는지 관리자 화면에서 바로 확인합니다.</p>
+        <h3>확인된 수업만 자동으로 셉니다</h3>
+        <p>회원 확인을 거쳐 1회가 차감된 수업만 선생님별로 셉니다. 보고만 하고 확인받지 못한 수업은 들어가지 않습니다.</p>
       </div>
       <div class="vcard">
         <div class="vico">💰</div>
         <div class="vn">02</div>
-        <h3>회당 가격은 결제 당시 기준으로</h3>
-        <p>수업 금액은 수업 횟수에 회원이 결제한 회당 가격을 곱한 값입니다. 나중에 가격을 바꿔도 지난 수업 금액은 달라지지 않습니다.</p>
+        <h3>금액도 자동으로 계산됩니다</h3>
+        <p>수업 횟수에 회원이 결제한 회당 가격을 곱해 선생님별 정산 금액이 나옵니다. 나중에 상품 가격을 바꿔도 이미 결제한 수업은 결제 당시 가격 그대로입니다.</p>
       </div>
       <div class="vcard">
         <div class="vico">🔁</div>
         <div class="vn">03</div>
-        <h3>대신 들어간 수업도 따로 집계</h3>
-        <p>다른 선생님이 대신 수업하면 그 회차는 대신 수업한 선생님 몫으로 잡힙니다. 원래 담당 선생님 횟수에는 들어가지 않습니다.</p>
+        <h3>대신 들어간 수업도 정확하게</h3>
+        <p>다른 선생님이 대신 수업하면 그 회차는 대신 들어간 선생님 몫으로 잡힙니다. 원래 담당 선생님 금액에는 들어가지 않습니다.</p>
       </div>
     </div>
-    <p class="cmpt-note">여기서는 선생님별 수업 횟수와 수업 금액까지만 나옵니다. 선생님 수당 비율이나 세금을 반영한 급여는 따로 계산하셔야 합니다.</p>
-  </div>
+      </div>
 </section>
 
 <!-- FINAL CTA -->
 <section class="final">
   <div class="wrap">
-    <h2>레슨 예약과 선생님 관리, 이제 한 화면에서 보세요</h2>
-    <p>선생님 전체 일정, 회원별 남은 횟수, 선생님 정산 자료까지 센터가 직접 확인합니다.</p>
+    <h2>수업 기록은 정확하게,<br>급여 정산은 자동으로</h2>
+    <p>실제로 진행한 수업만 남고, 그 기록대로 선생님 급여가 정산됩니다. 레슨 일정과 남은 횟수도 앱으로 한눈에 확인하세요.</p>
     <div class="fcta">
         <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">레슨 관리 시작하기</a>
         <a class="btn btn-ghost" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡 문의</a>
