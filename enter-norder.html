@@ -6,7 +6,7 @@
 <title>니짐내짐 사장님 — N오더 식당 연계</title>
 <meta name="description" content="근처 제휴 식당 할인을 우리 센터 회원만 받게 하세요. 회원 전용 혜택으로 멤버십 가치를 높이고, 재고 없는 부가수익까지. 식당은 QR 스티커 한 장, 정산 명세는 자동.">
 <meta property="og:title" content="N오더 식당 연계 | 니짐내짐 사장님">
-<meta property="og:description" content="근처 식당 식사권으로 재고 없는 부가수익. 식당은 QR 스티커 한 장이면 끝.">
+<meta property="og:description" content="근처 식당 식권으로 재고 없는 부가수익. 식당은 QR 스티커 한 장이면 끝.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
@@ -296,6 +296,8 @@
   /* ---------- 다른 기능 링크 카드 ---------- */
   .others{padding:var(--sec-y) 0;background:var(--bg);border-top:1px solid var(--hair)}
   .others-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--grid-gap);margin-top:var(--head-gap)}
+  /* WHY: 다른 기능 카드가 7개(홀수)라 마지막 카드가 왼쪽 반폭에 혼자 남는다 */
+  .others-grid .ocard:nth-child(odd):last-child{grid-column:1/-1}
   .ocard{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--hair);border-radius:20px;padding:24px 26px;transition:.18s}
   .ocard:hover{box-shadow:0 16px 40px rgba(10,20,30,.09);transform:translateY(-3px);border-color:var(--sky)}
   .ocard .oi{width:46px;height:46px;border-radius:13px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;font-size:23px;flex:none}
@@ -480,6 +482,7 @@
         <a href="enter.html">전체 서비스</a>
         <a href="enter-ad.html">온라인광고</a>
         <a href="enter-members.html">회원관리</a>
+        <a href="enter-lesson.html">레슨 관리</a>
         <a href="enter-unmanned.html">24시 무인운영</a>
         <a href="enter-subscription.html">월 정기결제 구독멤버십</a>
         <a href="enter-remote.html">시설 원격제어 · IoT</a>
@@ -499,8 +502,8 @@
   <div class="wrap hero-grid" id="hero">
     <div class="hero-copy">
       <span class="hero-badge">N오더 · 식당 연계</span>
-      <h1>근처 식당 식사권으로<br><span class="sk">재고 없는 부가수익</span></h1>
-      <p class="lead">센터 근처 제휴 식당을 우리 센터 회원만 할인가로 이용하게 하세요. 회원 전용 혜택이 멤버십의 가치를 높여 줍니다. 식당은 계산대에 QR 스티커 한 장만 붙이면 되고, 회원이 식사권을 쓸 때마다 판매 수수료가 센터 몫으로 정산됩니다.</p>
+      <h1>근처 식당 식권으로<br><span class="sk">재고 없는 부가수익</span></h1>
+      <p class="lead">센터 근처 제휴 식당을 우리 센터 회원만 할인가로 이용하게 하세요. 회원 전용 혜택이 멤버십의 가치를 높여 줍니다. 식당은 계산대에 QR 스티커 한 장만 붙이면 되고, 회원이 식권을 쓸 때마다 판매 수수료가 센터 몫으로 정산됩니다.</p>
       <div class="hero-cta">
         <a class="btn btn-sky" href="https://www.ngym.co.kr:21080/authentication/signin/basic" target="_blank" rel="noopener">무료로 시작하기</a>
         <a class="btn btn-ghost" href="http://pf.kakao.com/_piFxeK/chat" target="_blank" rel="noopener">카카오톡 문의</a>
@@ -534,9 +537,9 @@
 <section class="stats">
   <div class="wrap">
     <div class="stats-grid">
-      <div class="stat"><b class="sk">재고 없음</b><span>식사권은 쌓아둘 재고가 없어요</span></div>
+      <div class="stat"><b class="sk">재고 없음</b><span>식권은 쌓아둘 재고가 없어요</span></div>
       <div class="stat"><b class="sk">스티커 1장</b><span>식당이 할 일은 부착 한 번</span></div>
-      <div class="stat"><b class="sk">직원 조작 없음</b><span>식사권은 회원 폰 QR로 끝나요</span></div>
+      <div class="stat"><b class="sk">직원 조작 없음</b><span>식권은 회원 폰 QR로 끝나요</span></div>
       <div class="stat"><b class="sk">정산 자동</b><span>월별 정산 명세가 알아서</span></div>
       <div class="stat"><b class="sk">수수료 협의</b><span>식당과 정한 조건 그대로</span></div>
     </div>
@@ -552,8 +555,8 @@
     <div class="flow-grid">
       <div class="fstep">
         <span class="who">01 · 센터가 판매</span>
-        <h3>우리 회원만 사는 할인 식사권</h3>
-        <p>제휴 식당의 할인 식사권을 센터 스토어에 올려 판매합니다. 우리 센터 회원만 받을 수 있는 혜택입니다.</p>
+        <h3>우리 회원만 사는 할인 식권</h3>
+        <p>제휴 식당의 할인 식권을 센터 스토어에 올려 판매합니다. 우리 센터 회원만 받을 수 있는 혜택입니다.</p>
         <div class="fv">
           <div class="phone mini"><div class="notch"></div><div class="screen"><div class="app">
             <div class="nx">
@@ -572,7 +575,7 @@
       <div class="fstep">
         <span class="who">02 · 회원이 사용</span>
         <h3>계산대 QR을 내 폰으로 스캔하면 끝</h3>
-        <p>회원은 앱에서 산 식사권을 열고, 식당 계산대에 붙은 QR을 자기 폰으로 스캔합니다. 사용 완료 화면을 직원에게 보여주면 끝이에요.</p>
+        <p>회원은 앱에서 산 식권을 열고, 식당 계산대에 붙은 QR을 자기 폰으로 스캔합니다. 사용 완료 화면을 직원에게 보여주면 끝이에요.</p>
         <div class="fv">
           <div class="phone mini"><div class="notch"></div><div class="screen"><div class="app">
             <div class="nx-done">
@@ -606,7 +609,7 @@
         </div>
       </div>
     </div>
-    <p class="flow-note">※ 식사권이 실제로 사용된 건만 정산에 들어갑니다. 정산은 매월 1일부터 말일까지 묶어서 집계됩니다.</p>
+    <p class="flow-note">※ 식권이 실제로 사용된 건만 정산에 들어갑니다. 정산은 매월 1일부터 말일까지 묶어서 집계됩니다.</p>
   </div>
 </section>
 
@@ -621,7 +624,7 @@
         <div class="vico">💰</div>
         <div class="vn">01</div>
         <h3>재고 없는 부가수익</h3>
-        <p>식사권은 사입·보관할 재고가 없습니다. 식당과 정한 판매 수수료가 식사권이 사용될 때마다 센터 몫으로 정산됩니다.</p>
+        <p>식권은 사입·보관할 재고가 없습니다. 식당과 정한 판매 수수료가 식권이 사용될 때마다 센터 몫으로 정산됩니다.</p>
       </div>
       <div class="vcard">
         <div class="vico">🍱</div>
@@ -633,7 +636,7 @@
         <div class="vico">✅</div>
         <div class="vn">03</div>
         <h3>식당 신청을 수락하면 시작</h3>
-        <p>식당이 먼저 신청하고, 센터는 수락한 뒤 판매할 식사권만 올리면 됩니다. 정산은 자동입니다.</p>
+        <p>식당이 먼저 신청하고, 센터는 수락한 뒤 판매할 식권만 올리면 됩니다. 정산은 자동입니다.</p>
       </div>
     </div>
   </div>
@@ -645,10 +648,10 @@
     <div>
       <span class="eyebrow">At the counter</span>
       <h2>식당은 계산대에<br><span class="sky">QR 스티커 한 장</span></h2>
-      <p>식사권을 쓸 때 식당 직원은 아무 조작도 하지 않습니다. 번호 입력도 없습니다. 회원이 자기 폰으로 QR을 스캔하면 그 자리에서 사용 처리됩니다.</p>
+      <p>식권을 쓸 때 식당 직원은 아무 조작도 하지 않습니다. 번호 입력도 없습니다. 회원이 자기 폰으로 QR을 스캔하면 그 자리에서 사용 처리됩니다.</p>
       <div class="show-feats">
         <div class="ofeat"><div class="bar" style="background:var(--sky)"></div><b>스캔 기록</b><small>어느 식당에서 언제 누가 썼는지 남습니다.</small></div>
-        <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>되돌릴 수 없는 사용</b><small>한 번 쓴 식사권은 다시 쓸 수 없습니다.</small></div>
+        <div class="ofeat"><div class="bar" style="background:var(--success)"></div><b>되돌릴 수 없는 사용</b><small>한 번 쓴 식권은 다시 쓸 수 없습니다.</small></div>
         <div class="ofeat"><div class="bar" style="background:#F5A623"></div><b>QR 재발급</b><small>유출·훼손 시 새 QR로 바꾸면 옛 QR은 바로 막힙니다.</small></div>
       </div>
       <div class="show-cta">
@@ -685,25 +688,25 @@
       </div>
       <div class="step">
         <div class="sn">2</div>
-        <h3>식사권 등록하고 식당 확인받기</h3>
-        <p>식사권 이름·가격·사용 기간과 판매 수수료를 정해 등록합니다. 식당이 조건을 확인하고 승인하면 판매할 준비가 끝납니다.</p>
-        <div class="by"><span>사장님: 식사권 등록</span><span class="r">식당: 조건 승인</span></div>
+        <h3>식권 등록하고 식당 확인받기</h3>
+        <p>식권 이름·가격·사용 기간과 판매 수수료를 정해 등록합니다. 식당이 조건을 확인하고 승인하면 판매할 준비가 끝납니다.</p>
+        <div class="by"><span>사장님: 식권 등록</span><span class="r">식당: 조건 승인</span></div>
       </div>
       <div class="step">
         <div class="sn">3</div>
         <h3>식당이 승인하면 바로 판매 시작</h3>
-        <p>식당이 조건을 승인하면 바로 판매가 시작돼 회원 앱에 식사권이 보입니다. 식당 QR은 제휴가 맺어질 때 자동으로 발급되고, 식당 계산대에는 스티커 한 장만 붙이면 됩니다.</p>
+        <p>식당이 조건을 승인하면 바로 판매가 시작돼 회원 앱에 식권이 보입니다. 식당 QR은 제휴가 맺어질 때 자동으로 발급되고, 식당 계산대에는 스티커 한 장만 붙이면 됩니다.</p>
         <div class="by"><span>사장님: 따로 할 일 없음</span><span class="r">식당: 스티커 부착 1회</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 서브: 식사권 말고도 함께 팔 수 있는 상품 -->
+<!-- 서브: 식권 말고도 함께 팔 수 있는 상품 -->
 <section class="more" id="more">
   <div class="wrap">
     <span class="eyebrow">More with N-Order</span>
-    <h2 class="sub">식사권 말고도 함께 팔 수 있습니다</h2>
+    <h2 class="sub">식권 말고도 함께 팔 수 있습니다</h2>
     <p class="sub-lead">같은 센터 앱 스토어에서 두 가지를 더 판매할 수 있습니다.</p>
     <div class="more-grid">
       <div class="mcard">
@@ -717,13 +720,13 @@
         </div>
       </div>
       <div class="mcard">
-        <div class="ph"><img src="media/norder_delivery_desk.jpg" alt="제휴 식당 음식이 센터 인포데스크로 배달되는 모습" loading="lazy"></div>
+        <div class="ph"><img src="media/norder_delivery_home.jpg" alt="집 현관 앞에서 제휴 식당 음식을 배달받는 모습" loading="lazy"></div>
         <div class="bd">
-          <span class="tag r">제휴식당 배달 · 수령지 = 우리 센터</span>
-          <h3>식당 음식을 우리 센터로 배달</h3>
-          <p>회원이 앱에서 제휴 식당 메뉴를 주문하면, 식당이 조리해 우리 센터 인포데스크로 배달합니다. 회원은 도착 알림을 받고 인포데스크에서 받아 갑니다.</p>
-          <div class="route"><span>앱에서 주문</span><em><i>→</i><span>식당 조리·배달</span></em><em><i>→</i><span>센터 인포데스크 수령</span></em></div>
-          <p class="note">식당 영업시간에만 주문을 받고, 식당이 주문을 수락하지 않으면 자동으로 취소되고 전액 환불됩니다.</p>
+          <span class="tag r">제휴식당 배달 · 받는 곳 = 회원 집</span>
+          <h3>식당 음식을 회원 집으로 배달</h3>
+          <p>회원이 앱에서 제휴 식당 메뉴를 주문하고 배달 주소를 적으면, 식당이 조리해 그 주소로 배달합니다. 배달은 식당이 맡고, 센터에서 따로 할 일은 없습니다.</p>
+          <div class="route"><span>앱에서 주문</span><em><i>→</i><span>식당 조리·배달</span></em><em><i>→</i><span>집에서 받기</span></em></div>
+          <p class="note">식당 영업시간에만 주문을 받고, 식당이 주문을 수락하지 않으면 자동으로 취소되고 전액 환불됩니다. 배달 지역과 배달비는 식당이 정합니다.</p>
         </div>
       </div>
     </div>
@@ -738,19 +741,19 @@
     <div class="faq-list">
       <details open>
         <summary>판매 수수료는 얼마인가요?</summary>
-        <div class="ans"><p>정해진 요율이 없습니다. 사장님과 식당이 협의해 정하고, 비율(%)·건당 금액·둘을 섞은 방식 모두 가능합니다.</p><p>수수료는 식당이 승인해야 적용되고, 나중에 바꿔도 이미 판매된 식사권에는 판매 당시 조건이 그대로 적용됩니다.</p></div>
+        <div class="ans"><p>정해진 요율이 없습니다. 사장님과 식당이 협의해 정하고, 비율(%)·건당 금액·둘을 섞은 방식 모두 가능합니다.</p><p>수수료는 식당이 승인해야 적용되고, 나중에 바꿔도 이미 판매된 식권에는 판매 당시 조건이 그대로 적용됩니다.</p></div>
       </details>
       <details>
         <summary>정산은 어떻게 받나요?</summary>
-        <div class="ans"><p>회원이 결제한 대금은 니짐내짐이 받아, 식당에는 지급액을, 센터에는 판매 수수료를 각각 보냅니다. 사장님이 식당에 직접 이체하지 않습니다.</p><p>식사권이 실제로 사용된 건만 매월 1일부터 말일까지 묶어 정산 명세가 자동으로 만들어지고, 관리자 화면에서 확인하거나 엑셀로 내려받을 수 있습니다.</p></div>
+        <div class="ans"><p>회원이 결제한 대금은 니짐내짐이 받아, 식당에는 지급액을, 센터에는 판매 수수료를 각각 보냅니다. 사장님이 식당에 직접 이체하지 않습니다.</p><p>식권이 실제로 사용된 건만 매월 1일부터 말일까지 묶어 정산 명세가 자동으로 만들어지고, 관리자 화면에서 확인하거나 엑셀로 내려받을 수 있습니다.</p></div>
       </details>
       <details>
         <summary>회원이 환불을 원하면 어떻게 되나요?</summary>
-        <div class="ans"><p>아직 쓰지 않은 식사권은 회원이 앱에서 환불을 요청하고, 센터가 승인하면 결제가 실제로 취소됩니다.</p><p>이미 사용한 식사권은 환불되지 않습니다. 사용 기간이 지나면 식사권은 소멸되며, 이 내용은 구매 화면에 미리 안내됩니다.</p></div>
+        <div class="ans"><p>아직 쓰지 않은 식권은 회원이 앱에서 환불을 요청하고, 센터가 승인하면 결제가 실제로 취소됩니다.</p><p>이미 사용한 식권은 환불되지 않습니다. 사용 기간이 지나면 식권은 소멸되며, 이 내용은 구매 화면에 미리 안내됩니다.</p></div>
       </details>
       <details>
         <summary>식당은 무엇을 해야 하나요? 부담이 있나요?</summary>
-        <div class="ans"><p>식사권만 판다면 식당용 앱 설치, 번호 입력, 직원 교육이 모두 필요 없습니다(배달 주문까지 받으려면 N오더 주방 앱 설치를 권장합니다). 초대 링크로 한 번 가입(휴대폰 인증·서류 제출)하고, 식사권 조건과 수수료를 확인해 승인한 뒤, 계산대에 QR 스티커 한 장을 붙이면 됩니다.</p><p>손님이 오면 직원은 회원 폰의 사용 완료 화면만 확인하면 됩니다.</p></div>
+        <div class="ans"><p>식권만 판다면 식당용 앱 설치, 번호 입력, 직원 교육이 모두 필요 없습니다(배달 주문까지 받으려면 N오더 주방 앱 설치를 권장합니다). 초대 링크로 한 번 가입(휴대폰 인증·서류 제출)하고, 식권 조건과 수수료를 확인해 승인한 뒤, 계산대에 QR 스티커 한 장을 붙이면 됩니다.</p><p>손님이 오면 직원은 회원 폰의 사용 완료 화면만 확인하면 됩니다.</p></div>
       </details>
       <details>
         <summary>QR 스티커를 누가 찍어 가면 어떡하나요?</summary>
@@ -788,6 +791,10 @@
       <a class="ocard" href="enter-ad.html">
         <div class="oi">📣</div>
         <div class="ob"><h3>온라인광고</h3><p>입점하면 내 주변 헬스장을 찾는 니짐내짐 이용자에게 우리 센터가 노출됩니다.</p><span class="go">자세히 보기 →</span></div>
+      </a>
+      <a class="ocard" href="enter-lesson.html">
+        <div class="oi">🗓️</div>
+        <div class="ob"><h3>레슨 관리</h3><p>회원은 앱에서 PT 수업을 예약하고, 수업이 끝나면 남은 횟수가 자동으로 차감됩니다. 선생님별 수업 횟수도 함께 집계됩니다.</p><span class="go">자세히 보기 →</span></div>
       </a>
       <a class="ocard" href="enter-unmanned.html">
         <div class="oi">🤖</div>

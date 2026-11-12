@@ -295,6 +295,8 @@
   /* ---------- 다른 기능 링크 카드 ---------- */
   .others{padding:var(--sec-y) 0;background:var(--bg);border-top:1px solid var(--hair)}
   .others-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--grid-gap);margin-top:var(--head-gap)}
+  /* WHY: 다른 기능 카드가 7개(홀수)라 마지막 카드가 왼쪽 반폭에 혼자 남는다 */
+  .others-grid .ocard:nth-child(odd):last-child{grid-column:1/-1}
   .ocard{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--hair);border-radius:20px;padding:24px 26px;transition:.18s}
   .ocard:hover{box-shadow:0 16px 40px rgba(10,20,30,.09);transform:translateY(-3px);border-color:var(--sky)}
   .ocard .oi{width:46px;height:46px;border-radius:13px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;font-size:23px;flex:none}
@@ -350,6 +352,7 @@
         <a href="enter.html">전체 서비스</a>
         <a href="enter-ad.html">온라인광고</a>
         <a href="enter-members.html">회원관리</a>
+        <a href="enter-lesson.html">레슨 관리</a>
         <a href="enter-unmanned.html">24시 무인운영</a>
         <a href="enter-subscription.html" class="is-active" aria-current="page">월 정기결제 구독멤버십</a>
         <a href="enter-remote.html">시설 원격제어 · IoT</a>
@@ -519,6 +522,10 @@
         <div class="oi">📣</div>
         <div class="ob"><h3>온라인광고</h3><p>입점하면 내 주변 헬스장을 찾는 니짐내짐 이용자에게 우리 센터가 노출됩니다.</p><span class="go">자세히 보기 →</span></div>
       </a>
+      <a class="ocard" href="enter-lesson.html">
+        <div class="oi">🗓️</div>
+        <div class="ob"><h3>레슨 관리</h3><p>회원은 앱에서 PT 수업을 예약하고, 수업이 끝나면 남은 횟수가 자동으로 차감됩니다. 선생님별 수업 횟수도 함께 집계됩니다.</p><span class="go">자세히 보기 →</span></div>
+      </a>
       <a class="ocard" href="enter-unmanned.html">
         <div class="oi">🤖</div>
         <div class="ob"><h3>24시 무인운영</h3><p>멤버십 발급·출입·전자계약을 AI가 처리해 사람 없이 24시간 운영합니다.</p><span class="go">자세히 보기 →</span></div>
@@ -537,7 +544,7 @@
       </a>
       <a class="ocard" href="enter-norder.html">
         <div class="oi">🍱</div>
-        <div class="ob"><h3>N오더 · 식당 연계</h3><p>제휴 식당의 식사권을 우리 센터 앱에서 대신 판매. 재고 없이 식사권이 쓰일 때마다 판매 수수료가 정산되고, 식당은 QR 스티커 한 장이면 됩니다.</p><span class="go">자세히 보기 →</span></div>
+        <div class="ob"><h3>N오더 · 식당 연계</h3><p>제휴 식당의 식권을 우리 센터 앱에서 대신 판매. 재고 없이 식권이 쓰일 때마다 판매 수수료가 정산되고, 식당은 QR 스티커 한 장이면 됩니다.</p><span class="go">자세히 보기 →</span></div>
       </a>
     </div>
     <p class="hub"><a href="enter.html">사장님 서비스 전체 보기 →</a></p>
